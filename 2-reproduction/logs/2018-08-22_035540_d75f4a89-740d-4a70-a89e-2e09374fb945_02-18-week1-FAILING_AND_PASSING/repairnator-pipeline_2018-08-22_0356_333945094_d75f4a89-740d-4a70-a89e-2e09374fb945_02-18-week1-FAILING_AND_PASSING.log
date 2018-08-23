@@ -1,0 +1,78 @@
+11:06:57.417 [main] INFO  f.i.s.repairnator.pipeline.Launcher - PIPELINE VERSION: 3.0-2018-08-09 19:04
+11:06:57.570 [main] INFO  f.i.s.repairnator.pipeline.Launcher - The pipeline will try to reproduce a bug from build 333945094 and its corresponding patch from build 336034517
+11:06:57.570 [main] INFO  f.i.s.repairnator.pipeline.Launcher - Initialize file serializer engines.
+11:06:57.572 [main] INFO  f.i.s.repairnator.pipeline.Launcher - MongoDB won't be used for serialization.
+11:06:57.572 [main] INFO  f.i.s.repairnator.pipeline.Launcher - The email notifier engine won't be used.
+11:06:57.575 [main] INFO  f.i.s.repairnator.pipeline.Launcher - Start by getting the build (buildId: 333945094) with the following config: RepairnatorConfig{runId='d75f4a89-740d-4a70-a89e-2e09374fb945_02-18-week1-FAILING_AND_PASSING', launcherMode=BEARS, serializeJson=true, inputPath='null', outputPath='/var/log', mongodbHost='null', mongodbName='repairnator', smtpServer='null', notifyTo=[], notifyEndProcess=false, push=true, pushRemoteRepo='https://github.com/fermadeiral/bears-collection-fp', fork=false, lookFromDate=null, lookToDate=null, buildId=333945094, z3solverPath='./z3_for_linux', workspacePath='./workspace', githubToken='c8a341a903[...]', dockerImageName='null', skipDelete=false, createOutputDir=false, logDirectory='null', nbThreads=0, globalTimeout=0, whiteList=null, blackList=null, jobSleepTime=0, buildSleepTime=0, maxInspectedBuilds=0, duration=null, humanPatch=false, repository='null', clean=true, bearsMode=BOTH, bearsDelimiter = false, repairTools=NopolAllTests,NPEFix,AssertFixer,AstorJGenProg,AstorJKali,NopolSingleTest,AstorJMut,NopolTestExclusionStrategy, githubUserName= fermadeiral, githubUserEmail=fer.madeiral@gmail.com}
+11:06:59.024 [main] DEBUG fr.inria.jtravis.helpers.BuildHelper - Get request to :https://api.travis-ci.org/build/333945094 done after 904 ms
+11:06:59.320 [main] DEBUG fr.inria.jtravis.helpers.BuildHelper - Get request to :https://api.travis-ci.org/build/336034517 done after 149 ms
+11:06:59.348 [main] INFO  f.i.s.repairnator.pipeline.Launcher - The patched build (336034517) was successfully retrieved from Travis.
+11:07:00.774 [main] INFO  fr.inria.jtravis.JTravis - GitHub ratelimit: Limit: 5000 Remaining: 4711 Reset hour: 19:22:09
+11:07:01.032 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+11:07:01.032 [main] INFO  f.i.s.r.p.i.ProjectInspector - PIPELINE STEPS
+11:07:01.032 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+11:07:01.033 [main] INFO  f.i.s.r.p.i.ProjectInspector - CloneRepository
+11:07:01.033 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildCandidate
+11:07:01.033 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeSourceDir
+11:07:01.033 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeTestDir
+11:07:01.033 [main] INFO  f.i.s.r.p.i.ProjectInspector - BuildProjectBuggyBuildCandidate
+11:07:01.033 [main] INFO  f.i.s.r.p.i.ProjectInspector - TestProjectBuggyBuildCandidate
+11:07:01.034 [main] INFO  f.i.s.r.p.i.ProjectInspector - GatherTestInformationBuggyBuildCandidate
+11:07:01.034 [main] INFO  f.i.s.r.p.i.ProjectInspector - InitRepoToPush
+11:07:01.034 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeClasspath
+11:07:01.034 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeModules
+11:07:01.034 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutPatchedBuildCandidate
+11:07:01.035 [main] INFO  f.i.s.r.p.i.ProjectInspector - BuildProjectPatchedBuildCandidate
+11:07:01.035 [main] INFO  f.i.s.r.p.i.ProjectInspector - TestProjectPatchedBuildCandidate
+11:07:01.035 [main] INFO  f.i.s.r.p.i.ProjectInspector - GatherTestInformationPatchedBuildCandidate
+11:07:01.035 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitPatch
+11:07:01.035 [main] INFO  f.i.s.r.p.i.ProjectInspector - WritePropertyFile
+11:07:01.035 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitProcessEnd
+11:07:01.036 [main] INFO  f.i.s.r.p.i.ProjectInspector - PushProcessEnd
+11:07:01.036 [main] DEBUG f.i.s.r.process.step.CloneRepository - ----------------------------------------------------------------------
+11:07:01.036 [main] DEBUG f.i.s.r.process.step.CloneRepository - STEP 1/18: CloneRepository
+11:07:01.036 [main] DEBUG f.i.s.r.process.step.CloneRepository - ----------------------------------------------------------------------
+11:07:01.037 [main] DEBUG f.i.s.r.process.step.CloneRepository - Cloning repository dropwizard/metrics in the following directory: ./workspace/dropwizard/metrics/333945094
+11:07:08.766 [main] DEBUG f.i.s.r.process.step.CloneRepository - STEP STATUS: [ CloneRepository : SUCCESS ]
+11:07:08.766 [main] DEBUG f.i.s.r.process.step.CloneRepository - STEP DURATION: 7s
+11:07:08.767 [main] DEBUG f.i.s.r.process.step.CloneRepository - EXECUTE NEXT STEP
+11:07:08.767 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuild - ----------------------------------------------------------------------
+11:07:08.768 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuild - STEP 2/18: CheckoutBuggyBuildCandidate
+11:07:08.768 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuild - ----------------------------------------------------------------------
+11:07:08.768 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuild - Checking out buggy build candidate...
+11:07:09.102 [main] INFO  fr.inria.jtravis.JTravis - GitHub ratelimit: Limit: 5000 Remaining: 4710 Reset hour: 19:22:09
+11:07:11.345 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuild - Reproduce the PR for dropwizard/metrics by fetching remote branch and merging.
+11:07:11.560 [main] ERROR f.i.s.r.p.s.c.CheckoutBuggyBuild - Error while testing commit: org.eclipse.jgit.errors.MissingObjectException: Missing unknown d9a8102a34bb8b1a0e53ef420432b5b4e011e568
+11:07:11.561 [main] ERROR f.i.s.r.p.s.c.CheckoutBuggyBuild - Commit head ref cannot be retrieved from the repository: d9a8102a34bb8b1a0e53ef420432b5b4e011e568. Operation aborted.
+11:07:11.561 [main] ERROR f.i.s.r.p.s.c.CheckoutBuggyBuild - Error while merging two commits to reproduce the PR.
+11:07:11.562 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuild - STEP STATUS: [ CheckoutBuggyBuildCandidate : FAILURE ( BUILDNOTCHECKEDOUT ) ]
+11:07:11.563 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuild - STEP DURATION: 2s
+11:07:11.563 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuild - TERMINATE PIPELINE
+11:07:11.563 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuild - FINAL STEPS SKIPPED: The reproduction of the bug and/or the patch failed.
+11:07:11.564 [main] INFO  f.i.s.r.p.s.c.CheckoutBuggyBuild - Serialize all data for the pair of builds 333945094, 336034517
+11:07:11.686 [main] INFO  fr.inria.jtravis.JTravis - GitHub ratelimit: Limit: 5000 Remaining: 4703 Reset hour: 19:22:09
+11:07:12.355 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+11:07:12.356 [main] INFO  f.i.s.r.p.i.ProjectInspector - PIPELINE EXECUTION SUMMARY
+11:07:12.356 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+11:07:12.356 [main] INFO  f.i.s.r.p.i.ProjectInspector - CloneRepository........................................SUCCESS [ 7 s ]
+11:07:12.356 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildCandidate............................FAILURE [ 2 s ]
+11:07:12.357 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeSourceDir.......................................NOT RUN        
+11:07:12.357 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeTestDir.........................................NOT RUN        
+11:07:12.357 [main] INFO  f.i.s.r.p.i.ProjectInspector - BuildProjectBuggyBuildCandidate........................NOT RUN        
+11:07:12.357 [main] INFO  f.i.s.r.p.i.ProjectInspector - TestProjectBuggyBuildCandidate.........................NOT RUN        
+11:07:12.358 [main] INFO  f.i.s.r.p.i.ProjectInspector - GatherTestInformationBuggyBuildCandidate...............NOT RUN        
+11:07:12.358 [main] INFO  f.i.s.r.p.i.ProjectInspector - InitRepoToPush.........................................NOT RUN        
+11:07:12.358 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeClasspath.......................................NOT RUN        
+11:07:12.359 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeModules.........................................NOT RUN        
+11:07:12.359 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutPatchedBuildCandidate..........................NOT RUN        
+11:07:12.359 [main] INFO  f.i.s.r.p.i.ProjectInspector - BuildProjectPatchedBuildCandidate......................NOT RUN        
+11:07:12.359 [main] INFO  f.i.s.r.p.i.ProjectInspector - TestProjectPatchedBuildCandidate.......................NOT RUN        
+11:07:12.360 [main] INFO  f.i.s.r.p.i.ProjectInspector - GatherTestInformationPatchedBuildCandidate.............NOT RUN        
+11:07:12.360 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitPatch............................................NOT RUN        
+11:07:12.360 [main] INFO  f.i.s.r.p.i.ProjectInspector - WritePropertyFile......................................NOT RUN        
+11:07:12.360 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitProcessEnd.......................................NOT RUN        
+11:07:12.361 [main] INFO  f.i.s.r.p.i.ProjectInspector - PushProcessEnd.........................................NOT RUN        
+11:07:12.361 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+11:07:12.361 [main] INFO  f.i.s.r.p.i.ProjectInspector - PIPELINE FINDING: BUILDNOTCHECKEDOUT
+11:07:12.361 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+11:07:12.362 [main] INFO  f.i.s.repairnator.pipeline.Launcher - Inspector is finished. The process will exit now.
