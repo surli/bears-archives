@@ -1,0 +1,380 @@
+23:41:07.917 [main] INFO  f.i.s.repairnator.pipeline.Launcher - PIPELINE VERSION: 3.0-2018-08-09 19:04
+23:41:08.096 [main] INFO  f.i.s.repairnator.pipeline.Launcher - The pipeline will try to reproduce a bug from build 343557607 and its corresponding patch from build 343786580
+23:41:08.096 [main] INFO  f.i.s.repairnator.pipeline.Launcher - Initialize file serializer engines.
+23:41:08.098 [main] INFO  f.i.s.repairnator.pipeline.Launcher - MongoDB won't be used for serialization.
+23:41:08.099 [main] INFO  f.i.s.repairnator.pipeline.Launcher - The email notifier engine won't be used.
+23:41:08.103 [main] INFO  f.i.s.repairnator.pipeline.Launcher - Start by getting the build (buildId: 343557607) with the following config: RepairnatorConfig{runId='f6547159-c29d-40d6-8a8e-3c2ad13c6286_02-18-week3-FAILING_AND_PASSING', launcherMode=BEARS, serializeJson=true, inputPath='null', outputPath='/var/log', mongodbHost='null', mongodbName='repairnator', smtpServer='null', notifyTo=[], notifyEndProcess=false, push=true, pushRemoteRepo='https://github.com/fermadeiral/bears-collection-fp', fork=false, lookFromDate=null, lookToDate=null, buildId=343557607, z3solverPath='./z3_for_linux', workspacePath='./workspace', githubToken='c8a341a903[...]', dockerImageName='null', skipDelete=false, createOutputDir=false, logDirectory='null', nbThreads=0, globalTimeout=0, whiteList=null, blackList=null, jobSleepTime=0, buildSleepTime=0, maxInspectedBuilds=0, duration=null, humanPatch=false, repository='null', clean=true, bearsMode=BOTH, bearsDelimiter = false, repairTools=NopolAllTests,NPEFix,AssertFixer,AstorJGenProg,AstorJKali,NopolSingleTest,AstorJMut,NopolTestExclusionStrategy, githubUserName= fermadeiral, githubUserEmail=fer.madeiral@gmail.com}
+23:41:09.741 [main] DEBUG fr.inria.jtravis.helpers.BuildHelper - Get request to :https://api.travis-ci.org/build/343557607 done after 1008 ms
+23:41:10.034 [main] DEBUG fr.inria.jtravis.helpers.BuildHelper - Get request to :https://api.travis-ci.org/build/343786580 done after 152 ms
+23:41:10.061 [main] INFO  f.i.s.repairnator.pipeline.Launcher - The patched build (343786580) was successfully retrieved from Travis.
+23:41:11.272 [main] INFO  fr.inria.jtravis.JTravis - GitHub ratelimit: Limit: 5000 Remaining: 4846 Reset hour: 19:25:47
+23:41:11.559 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+23:41:11.560 [main] INFO  f.i.s.r.p.i.ProjectInspector - PIPELINE STEPS
+23:41:11.561 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+23:41:11.561 [main] INFO  f.i.s.r.p.i.ProjectInspector - CloneRepository
+23:41:11.561 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildCandidate
+23:41:11.562 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeSourceDir
+23:41:11.562 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeTestDir
+23:41:11.562 [main] INFO  f.i.s.r.p.i.ProjectInspector - BuildProjectBuggyBuildCandidate
+23:41:11.562 [main] INFO  f.i.s.r.p.i.ProjectInspector - TestProjectBuggyBuildCandidate
+23:41:11.563 [main] INFO  f.i.s.r.p.i.ProjectInspector - GatherTestInformationBuggyBuildCandidate
+23:41:11.563 [main] INFO  f.i.s.r.p.i.ProjectInspector - InitRepoToPush
+23:41:11.564 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeClasspath
+23:41:11.564 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeModules
+23:41:11.564 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutPatchedBuildCandidate
+23:41:11.565 [main] INFO  f.i.s.r.p.i.ProjectInspector - BuildProjectPatchedBuildCandidate
+23:41:11.565 [main] INFO  f.i.s.r.p.i.ProjectInspector - TestProjectPatchedBuildCandidate
+23:41:11.566 [main] INFO  f.i.s.r.p.i.ProjectInspector - GatherTestInformationPatchedBuildCandidate
+23:41:11.566 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitPatch
+23:41:11.567 [main] INFO  f.i.s.r.p.i.ProjectInspector - WritePropertyFile
+23:41:11.567 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitProcessEnd
+23:41:11.568 [main] INFO  f.i.s.r.p.i.ProjectInspector - PushProcessEnd
+23:41:11.569 [main] DEBUG f.i.s.r.process.step.CloneRepository - ----------------------------------------------------------------------
+23:41:11.570 [main] DEBUG f.i.s.r.process.step.CloneRepository - STEP 1/18: CloneRepository
+23:41:11.571 [main] DEBUG f.i.s.r.process.step.CloneRepository - ----------------------------------------------------------------------
+23:41:11.572 [main] DEBUG f.i.s.r.process.step.CloneRepository - Cloning repository Activiti/Activiti in the following directory: ./workspace/Activiti/Activiti/343557607
+23:41:42.504 [main] DEBUG f.i.s.r.process.step.CloneRepository - STEP STATUS: [ CloneRepository : SUCCESS ]
+23:41:42.504 [main] DEBUG f.i.s.r.process.step.CloneRepository - STEP DURATION: 30s
+23:41:42.504 [main] DEBUG f.i.s.r.process.step.CloneRepository - EXECUTE NEXT STEP
+23:41:42.505 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuild - ----------------------------------------------------------------------
+23:41:42.505 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuild - STEP 2/18: CheckoutBuggyBuildCandidate
+23:41:42.505 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuild - ----------------------------------------------------------------------
+23:41:42.505 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuild - Checking out buggy build candidate...
+23:41:42.526 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuild - Get commit 815fece8e49aa4bb7b7ed1114dfcfc7b00e9270b for repo Activiti/Activiti
+23:41:42.922 [main] INFO  f.i.s.r.process.git.GitHelper - Init git submodules.
+23:41:43.002 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuild - STEP STATUS: [ CheckoutBuggyBuildCandidate : SUCCESS ]
+23:41:43.003 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuild - STEP DURATION: 0s
+23:41:43.003 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuild - EXECUTE NEXT STEP
+23:41:43.003 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - ----------------------------------------------------------------------
+23:41:43.004 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - STEP 3/18: ComputeSourceDir
+23:41:43.004 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - ----------------------------------------------------------------------
+23:41:43.004 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Computing the source directory ...
+23:41:43.006 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - The default source directory (/root/workspace/Activiti/Activiti/343557607/src/main/java) does not exist. Try to read pom.xml to get information.
+23:41:43.121 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:43.338 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:43.375 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:43.392 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:43.591 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.activiti:activiti-root:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom: /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+
+23:41:44.310 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Build section does not exist in the following pom.xml: /root/workspace/Activiti/Activiti/343557607/pom.xml. Continue to try to get source dir from all modules.
+23:41:44.317 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:44.405 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:44.422 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:44.440 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:44.578 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.activiti:activiti-bpmn-model:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom: /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+
+23:41:44.584 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:44.677 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:44.694 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:44.713 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:44.858 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.activiti:activiti-process-validation:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom: /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+
+23:41:44.863 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:44.955 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:44.973 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:44.994 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:45.122 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.activiti:activiti-bpmn-layout:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom: /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+
+23:41:45.125 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:45.203 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:45.217 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:45.231 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:45.354 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.activiti:activiti-image-generator:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom: /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+
+23:41:45.358 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:45.436 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:45.451 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:45.464 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:45.643 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.activiti:activiti-json-converter:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom: /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+
+23:41:45.646 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:45.726 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:45.741 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:45.755 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:45.878 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.activiti:activiti-bpmn-converter:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom: /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+
+23:41:45.881 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:45.961 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:45.975 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:45.989 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:46.121 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.activiti:activiti-engine:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom: /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+
+23:41:46.126 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:46.202 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:46.216 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:46.229 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:46.360 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.activiti:activiti-spring:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom: /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+
+23:41:46.362 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - The default source directory (/root/workspace/Activiti/Activiti/src/main/java) does not exist. Try to read pom.xml to get information.
+23:41:46.364 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:46.455 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:46.471 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:46.484 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:46.617 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.activiti:activiti-root:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom: /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+
+23:41:46.619 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Build section does not exist in the following pom.xml: ./workspace/Activiti/Activiti/343557607/pom.xml. Continue to try to get source dir from all modules.
+23:41:46.619 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - It seems the step is entering in a loop while searching the source dir. The following file has already been visited: /root/workspace/Activiti/Activiti/343557607/activiti-bpmn-model/pom.xml
+23:41:46.620 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - It seems the step is entering in a loop while searching the source dir. The following file has already been visited: /root/workspace/Activiti/Activiti/343557607/activiti-process-validation/pom.xml
+23:41:46.621 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - It seems the step is entering in a loop while searching the source dir. The following file has already been visited: /root/workspace/Activiti/Activiti/343557607/activiti-bpmn-layout/pom.xml
+23:41:46.621 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - It seems the step is entering in a loop while searching the source dir. The following file has already been visited: /root/workspace/Activiti/Activiti/343557607/activiti-image-generator/pom.xml
+23:41:46.622 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - It seems the step is entering in a loop while searching the source dir. The following file has already been visited: /root/workspace/Activiti/Activiti/343557607/activiti-json-converter/pom.xml
+23:41:46.623 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - It seems the step is entering in a loop while searching the source dir. The following file has already been visited: /root/workspace/Activiti/Activiti/343557607/activiti-bpmn-converter/pom.xml
+23:41:46.623 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - It seems the step is entering in a loop while searching the source dir. The following file has already been visited: /root/workspace/Activiti/Activiti/343557607/activiti-engine/pom.xml
+23:41:46.624 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - It seems the step is entering in a loop while searching the source dir. The following file has already been visited: /root/workspace/Activiti/Activiti/343557607/activiti-spring/pom.xml
+23:41:46.626 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - 8 source dirs were found:
+23:41:46.626 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/Activiti/Activiti/343557607/activiti-bpmn-converter/src/main/java
+23:41:46.626 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/Activiti/Activiti/343557607/activiti-bpmn-layout/src/main/java
+23:41:46.627 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/Activiti/Activiti/343557607/activiti-bpmn-model/src/main/java
+23:41:46.627 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/Activiti/Activiti/343557607/activiti-engine/src/main/java
+23:41:46.628 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/Activiti/Activiti/343557607/activiti-image-generator/src/main/java
+23:41:46.628 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/Activiti/Activiti/343557607/activiti-json-converter/src/main/java
+23:41:46.629 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/Activiti/Activiti/343557607/activiti-process-validation/src/main/java
+23:41:46.629 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/Activiti/Activiti/343557607/activiti-spring/src/main/java
+23:41:46.700 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Compute the line of code of the project
+23:41:46.972 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Get result from cloc process...
+23:41:46.974 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - STEP STATUS: [ ComputeSourceDir : SUCCESS ]
+23:41:46.975 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - STEP DURATION: 3s
+23:41:46.976 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - EXECUTE NEXT STEP
+23:41:46.978 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - ----------------------------------------------------------------------
+23:41:46.978 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - STEP 4/18: ComputeTestDir
+23:41:46.979 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - ----------------------------------------------------------------------
+23:41:46.979 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - Computing the test directory ...
+23:41:46.980 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - The default test directory (/root/workspace/Activiti/Activiti/343557607/src/test/java) does not exist. Try to read pom.xml to get information.
+23:41:46.983 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:47.073 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:47.088 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:47.102 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:47.231 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.activiti:activiti-root:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom: /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+
+23:41:47.233 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - Build section does not exist in the following pom.xml: /root/workspace/Activiti/Activiti/343557607/pom.xml. Continue to try to get test dir from all modules.
+23:41:47.233 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - The default test directory (/root/workspace/Activiti/Activiti/343557607/activiti-bpmn-model/src/test/java) does not exist. Try to read pom.xml to get information.
+23:41:47.236 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:47.319 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:47.334 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:47.348 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:47.477 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.activiti:activiti-bpmn-model:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom: /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+
+23:41:47.478 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - Build section does not exist in the following pom.xml: /root/workspace/Activiti/Activiti/343557607/activiti-bpmn-model/pom.xml. Continue to try to get test dir from all modules.
+23:41:47.478 [main] ERROR f.i.s.r.p.step.paths.ComputeTestDir - The test directory is not at default location or specified in build section from pom.xml, and no parent can be found.
+23:41:47.480 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:47.562 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:47.577 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:47.591 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:47.718 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.activiti:activiti-process-validation:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom: /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+
+23:41:47.720 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - The default test directory (/root/workspace/Activiti/Activiti/343557607/activiti-bpmn-layout/src/test/java) does not exist. Try to read pom.xml to get information.
+23:41:47.722 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:47.811 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:47.826 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:47.842 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:47.974 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.activiti:activiti-bpmn-layout:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom: /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+
+23:41:47.975 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - Build section does not exist in the following pom.xml: /root/workspace/Activiti/Activiti/343557607/activiti-bpmn-layout/pom.xml. Continue to try to get test dir from all modules.
+23:41:47.975 [main] ERROR f.i.s.r.p.step.paths.ComputeTestDir - The test directory is not at default location or specified in build section from pom.xml, and no parent can be found.
+23:41:47.977 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:48.058 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:48.074 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:48.088 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:48.214 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.activiti:activiti-image-generator:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom: /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+
+23:41:48.217 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:48.294 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:48.311 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:48.327 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:48.461 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.activiti:activiti-json-converter:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom: /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+
+23:41:48.463 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:48.551 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:48.565 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:48.581 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:48.713 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.activiti:activiti-bpmn-converter:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom: /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+
+23:41:48.717 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:48.802 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:48.818 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:48.833 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:48.971 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.activiti:activiti-engine:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom: /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+
+23:41:48.977 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:49.059 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:49.076 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:49.091 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:49.223 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.activiti:activiti-spring:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom: /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+
+23:41:49.225 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - The default test directory (/root/workspace/Activiti/Activiti/src/test/java) does not exist. Try to read pom.xml to get information.
+23:41:49.228 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:49.306 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:49.320 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:49.333 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+23:41:49.459 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.activiti:activiti-root:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom: /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/Activiti/Activiti/343557607/.m2/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-SNAPSHOT.pom
+
+23:41:49.460 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - Build section does not exist in the following pom.xml: ./workspace/Activiti/Activiti/343557607/pom.xml. Continue to try to get test dir from all modules.
+23:41:49.461 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - The default test directory (/root/workspace/Activiti/Activiti/343557607/activiti-bpmn-model/src/test/java) does not exist. Try to read pom.xml to get information.
+23:41:49.461 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - It seems the step is entering in a loop while searching the test dir. The following file has already been visited: /root/workspace/Activiti/Activiti/343557607/activiti-bpmn-model/pom.xml
+23:41:49.463 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - It seems the step is entering in a loop while searching the test dir. The following file has already been visited: /root/workspace/Activiti/Activiti/343557607/activiti-process-validation/pom.xml
+23:41:49.464 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - The default test directory (/root/workspace/Activiti/Activiti/343557607/activiti-bpmn-layout/src/test/java) does not exist. Try to read pom.xml to get information.
+23:41:49.465 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - It seems the step is entering in a loop while searching the test dir. The following file has already been visited: /root/workspace/Activiti/Activiti/343557607/activiti-bpmn-layout/pom.xml
+23:41:49.466 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - It seems the step is entering in a loop while searching the test dir. The following file has already been visited: /root/workspace/Activiti/Activiti/343557607/activiti-image-generator/pom.xml
+23:41:49.467 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - It seems the step is entering in a loop while searching the test dir. The following file has already been visited: /root/workspace/Activiti/Activiti/343557607/activiti-json-converter/pom.xml
+23:41:49.467 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - It seems the step is entering in a loop while searching the test dir. The following file has already been visited: /root/workspace/Activiti/Activiti/343557607/activiti-bpmn-converter/pom.xml
+23:41:49.467 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - It seems the step is entering in a loop while searching the test dir. The following file has already been visited: /root/workspace/Activiti/Activiti/343557607/activiti-engine/pom.xml
+23:41:49.467 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - It seems the step is entering in a loop while searching the test dir. The following file has already been visited: /root/workspace/Activiti/Activiti/343557607/activiti-spring/pom.xml
+23:41:49.468 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - 6 test dirs were found:
+23:41:49.468 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/Activiti/Activiti/343557607/activiti-bpmn-converter/src/test/java
+23:41:49.468 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/Activiti/Activiti/343557607/activiti-engine/src/test/java
+23:41:49.468 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/Activiti/Activiti/343557607/activiti-image-generator/src/test/java
+23:41:49.468 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/Activiti/Activiti/343557607/activiti-json-converter/src/test/java
+23:41:49.468 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/Activiti/Activiti/343557607/activiti-process-validation/src/test/java
+23:41:49.468 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/Activiti/Activiti/343557607/activiti-spring/src/test/java
+23:41:49.484 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - STEP STATUS: [ ComputeTestDir : SUCCESS ]
+23:41:49.484 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - STEP DURATION: 2s
+23:41:49.484 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - EXECUTE NEXT STEP
+23:41:49.484 [main] DEBUG f.i.s.r.process.step.BuildProject - ----------------------------------------------------------------------
+23:41:49.484 [main] DEBUG f.i.s.r.process.step.BuildProject - STEP 5/18: BuildProjectBuggyBuildCandidate
+23:41:49.484 [main] DEBUG f.i.s.r.process.step.BuildProject - ----------------------------------------------------------------------
+23:41:49.484 [main] DEBUG f.i.s.r.process.step.BuildProject - Building project by installing artifacts with maven (skip test execution)...
+23:41:51.911 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Scanning for projects...
+23:41:52.504 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/maven-metadata.xml
+23:41:53.249 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/maven-metadata.xml (618 B at 0.8 KB/sec)
+23:41:53.279 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-20180316.105750-27.pom
+23:41:53.438 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/activiti-parent-7-201802-EA-20180316.105750-27.pom (2 KB at 11.7 KB/sec)
+23:41:53.458 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-dependencies/7-201802-EA-SNAPSHOT/maven-metadata.xml
+23:41:53.622 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-dependencies/7-201802-EA-SNAPSHOT/maven-metadata.xml (624 B at 3.7 KB/sec)
+23:41:53.627 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-dependencies/7-201802-EA-SNAPSHOT/activiti-dependencies-7-201802-EA-20180316.105749-27.pom
+23:41:53.781 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-dependencies/7-201802-EA-SNAPSHOT/activiti-dependencies-7-201802-EA-20180316.105749-27.pom (3 KB at 13.8 KB/sec)
+23:41:53.788 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-build/7-201802-EA-SNAPSHOT/maven-metadata.xml
+23:41:53.944 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-build/7-201802-EA-SNAPSHOT/maven-metadata.xml (617 B at 3.9 KB/sec)
+23:41:53.948 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-build/7-201802-EA-SNAPSHOT/activiti-build-7-201802-EA-20180316.105748-18.pom
+23:41:54.144 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://artifacts.alfresco.com/nexus/content/repositories/activiti-snapshots/org/activiti/activiti-build/7-201802-EA-SNAPSHOT/activiti-build-7-201802-EA-20180316.105748-18.pom (34 KB at 170.2 KB/sec)
+23:41:54.657 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.spring.io/snapshot/org/activiti/activiti-dependencies/7-201802-EA-SNAPSHOT/maven-metadata.xml
+23:41:54.909 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.spring.io/milestone/org/springframework/boot/spring-boot-dependencies/2.0.0.RELEASE/spring-boot-dependencies-2.0.0.RELEASE.pom
+23:41:55.481 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.spring.io/milestone/org/springframework/boot/spring-boot-dependencies/2.0.0.RELEASE/spring-boot-dependencies-2.0.0.RELEASE.pom (123 KB at 213.4 KB/sec)
+23:41:55.497 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.spring.io/milestone/com/fasterxml/jackson/jackson-bom/2.9.4/jackson-bom-2.9.4.pom
+23:41:55.606 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/com/fasterxml/jackson/jackson-bom/2.9.4/jackson-bom-2.9.4.pom
+23:41:56.688 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://jitpack.io/com/fasterxml/jackson/jackson-bom/2.9.4/jackson-bom-2.9.4.pom
+23:41:56.955 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.9.4/jackson-bom-2.9.4.pom
+23:41:57.046 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.9.4/jackson-bom-2.9.4.pom (13 KB at 131.9 KB/sec)
+23:41:57.052 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.spring.io/milestone/com/fasterxml/jackson/jackson-parent/2.9.1/jackson-parent-2.9.1.pom
+23:41:57.197 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/com/fasterxml/jackson/jackson-parent/2.9.1/jackson-parent-2.9.1.pom
+23:41:57.831 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://jitpack.io/com/fasterxml/jackson/jackson-parent/2.9.1/jackson-parent-2.9.1.pom
+23:41:57.903 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.9.1/jackson-parent-2.9.1.pom
+23:41:57.929 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.9.1/jackson-parent-2.9.1.pom (8 KB at 290.0 KB/sec)
+23:41:57.937 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.spring.io/milestone/com/fasterxml/oss-parent/30/oss-parent-30.pom
+23:41:58.081 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/com/fasterxml/oss-parent/30/oss-parent-30.pom
+23:41:58.723 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://jitpack.io/com/fasterxml/oss-parent/30/oss-parent-30.pom
+23:41:59.224 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/30/oss-parent-30.pom
+23:41:59.251 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/30/oss-parent-30.pom (21 KB at 747.1 KB/sec)
+23:41:59.272 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.spring.io/milestone/io/netty/netty-bom/4.1.22.Final/netty-bom-4.1.22.Final.pom
+23:41:59.415 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/io/netty/netty-bom/4.1.22.Final/netty-bom-4.1.22.Final.pom
+23:42:00.044 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://jitpack.io/io/netty/netty-bom/4.1.22.Final/netty-bom-4.1.22.Final.pom
+23:42:00.335 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/io/netty/netty-bom/4.1.22.Final/netty-bom-4.1.22.Final.pom
+23:42:00.358 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/io/netty/netty-bom/4.1.22.Final/netty-bom-4.1.22.Final.pom (8 KB at 351.1 KB/sec)
+23:42:00.365 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.spring.io/milestone/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
+23:42:00.516 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
+23:42:01.149 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://jitpack.io/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
+23:42:01.205 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
+23:42:01.224 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom (5 KB at 235.5 KB/sec)
+23:42:01.234 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.spring.io/milestone/io/projectreactor/reactor-bom/Bismuth-SR7/reactor-bom-Bismuth-SR7.pom
+23:42:01.372 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/io/projectreactor/reactor-bom/Bismuth-SR7/reactor-bom-Bismuth-SR7.pom
+23:42:02.006 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://jitpack.io/io/projectreactor/reactor-bom/Bismuth-SR7/reactor-bom-Bismuth-SR7.pom
+23:42:02.292 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/io/projectreactor/reactor-bom/Bismuth-SR7/reactor-bom-Bismuth-SR7.pom
+23:42:02.314 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/io/projectreactor/reactor-bom/Bismuth-SR7/reactor-bom-Bismuth-SR7.pom (4 KB at 161.0 KB/sec)
+23:42:02.322 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.spring.io/milestone/org/apache/logging/log4j/log4j-bom/2.10.0/log4j-bom-2.10.0.pom
+23:42:02.463 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/org/apache/logging/log4j/log4j-bom/2.10.0/log4j-bom-2.10.0.pom
+23:42:03.099 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://jitpack.io/org/apache/logging/log4j/log4j-bom/2.10.0/log4j-bom-2.10.0.pom
+23:42:03.157 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-bom/2.10.0/log4j-bom-2.10.0.pom
+23:42:03.179 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-bom/2.10.0/log4j-bom-2.10.0.pom (6 KB at 249.6 KB/sec)
+23:42:03.184 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.spring.io/milestone/org/apache/logging/logging-parent/1/logging-parent-1.pom
+23:42:03.336 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/org/apache/logging/logging-parent/1/logging-parent-1.pom
+23:42:03.969 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://jitpack.io/org/apache/logging/logging-parent/1/logging-parent-1.pom
+23:42:04.134 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/logging/logging-parent/1/logging-parent-1.pom
+23:42:04.155 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/logging/logging-parent/1/logging-parent-1.pom (4 KB at 140.2 KB/sec)
+23:42:04.161 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.spring.io/milestone/org/apache/apache/18/apache-18.pom
+23:42:04.287 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/org/apache/apache/18/apache-18.pom
+23:42:04.921 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://jitpack.io/org/apache/apache/18/apache-18.pom
+23:42:05.433 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/apache/18/apache-18.pom
+23:42:05.455 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/apache/18/apache-18.pom (16 KB at 695.4 KB/sec)
+23:42:05.466 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.spring.io/milestone/org/eclipse/jetty/jetty-bom/9.4.8.v20171121/jetty-bom-9.4.8.v20171121.pom
+23:42:05.609 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/org/eclipse/jetty/jetty-bom/9.4.8.v20171121/jetty-bom-9.4.8.v20171121.pom
+23:42:06.238 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://jitpack.io/org/eclipse/jetty/jetty-bom/9.4.8.v20171121/jetty-bom-9.4.8.v20171121.pom
+23:42:06.298 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-bom/9.4.8.v20171121/jetty-bom-9.4.8.v20171121.pom
+23:42:06.327 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/jetty/jetty-bom/9.4.8.v20171121/jetty-bom-9.4.8.v20171121.pom (17 KB at 732.4 KB/sec)
+23:42:06.329 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.spring.io/milestone/org/springframework/spring-framework-bom/5.0.4.RELEASE/spring-framework-bom-5.0.4.RELEASE.pom
+23:42:06.688 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.spring.io/milestone/org/springframework/spring-framework-bom/5.0.4.RELEASE/spring-framework-bom-5.0.4.RELEASE.pom (6 KB at 14.3 KB/sec)
+23:42:06.695 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.spring.io/milestone/org/springframework/data/spring-data-releasetrain/Kay-SR5/spring-data-releasetrain-Kay-SR5.pom
+23:42:06.918 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.spring.io/milestone/org/springframework/data/spring-data-releasetrain/Kay-SR5/spring-data-releasetrain-Kay-SR5.pom (5 KB at 19.6 KB/sec)
+23:42:06.924 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.spring.io/milestone/org/springframework/data/build/spring-data-build/2.0.5.RELEASE/spring-data-build-2.0.5.RELEASE.pom
+23:42:07.233 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.spring.io/milestone/org/springframework/data/build/spring-data-build/2.0.5.RELEASE/spring-data-build-2.0.5.RELEASE.pom (7 KB at 20.6 KB/sec)
+23:42:07.241 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.spring.io/milestone/org/springframework/integration/spring-integration-bom/5.0.3.RELEASE/spring-integration-bom-5.0.3.RELEASE.pom
+23:42:07.461 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.spring.io/milestone/org/springframework/integration/spring-integration-bom/5.0.3.RELEASE/spring-integration-bom-5.0.3.RELEASE.pom (9 KB at 39.5 KB/sec)
+23:42:07.467 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.spring.io/milestone/org/springframework/security/spring-security-bom/5.0.3.RELEASE/spring-security-bom-5.0.3.RELEASE.pom
+23:42:07.688 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.spring.io/milestone/org/springframework/security/spring-security-bom/5.0.3.RELEASE/spring-security-bom-5.0.3.RELEASE.pom (5 KB at 21.3 KB/sec)
+23:42:07.694 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.spring.io/milestone/org/springframework/session/spring-session-bom/Apple-SR1/spring-session-bom-Apple-SR1.pom
+23:42:07.919 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.spring.io/milestone/org/springframework/session/spring-session-bom/Apple-SR1/spring-session-bom-Apple-SR1.pom (3 KB at 11.2 KB/sec)
+23:42:07.961 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.spring.io/snapshot/org/activiti/activiti-parent/7-201802-EA-SNAPSHOT/maven-metadata.xml
+23:42:08.075 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.spring.io/snapshot/org/activiti/activiti-build/7-201802-EA-SNAPSHOT/maven-metadata.xml
+23:42:09.350 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] [ERROR] Some problems were encountered while processing the POMs:
+23:42:09.350 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] 'dependencies.dependency.version' for org.tinyjee.jgraphx:jgraphx:jar is missing. @ org.activiti:activiti-bpmn-layout:[unknown-version], /root/workspace/Activiti/Activiti/343557607/activiti-bpmn-layout/pom.xml, line 34, column 17
+23:42:09.350 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler -  @ 
+23:42:09.353 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] The build could not read 1 project -> [Help 1]
+23:42:09.353 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR]   
+23:42:09.353 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR]   The project org.activiti:activiti-bpmn-layout:7-201802-EA-SNAPSHOT (/root/workspace/Activiti/Activiti/343557607/activiti-bpmn-layout/pom.xml) has 1 error
+23:42:09.353 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR]     'dependencies.dependency.version' for org.tinyjee.jgraphx:jgraphx:jar is missing. @ org.activiti:activiti-bpmn-layout:[unknown-version], /root/workspace/Activiti/Activiti/343557607/activiti-bpmn-layout/pom.xml, line 34, column 17
+23:42:09.353 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] 
+23:42:09.353 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+23:42:09.353 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+23:42:09.353 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] 
+23:42:09.353 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] For more information about the errors and possible solutions, please read the following articles:
+23:42:09.353 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException
+23:42:09.496 [main] ERROR f.i.s.r.process.step.BuildProject - Repository Activiti/Activiti cannot be built.
+23:42:09.497 [main] DEBUG f.i.s.r.process.step.BuildProject - STEP STATUS: [ BuildProjectBuggyBuildCandidate : FAILURE ( NOTBUILDABLE ) ]
+23:42:09.497 [main] DEBUG f.i.s.r.process.step.BuildProject - STEP DURATION: 20s
+23:42:09.497 [main] DEBUG f.i.s.r.process.step.BuildProject - TERMINATE PIPELINE
+23:42:09.498 [main] DEBUG f.i.s.r.process.step.BuildProject - FINAL STEPS SKIPPED: The reproduction of the bug and/or the patch failed.
+23:42:09.498 [main] INFO  f.i.s.r.process.step.BuildProject - Serialize all data for the pair of builds 343557607, 343786580
+23:42:09.835 [main] INFO  fr.inria.jtravis.JTravis - GitHub ratelimit: Limit: 5000 Remaining: 4834 Reset hour: 19:25:47
+23:42:10.863 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+23:42:10.863 [main] INFO  f.i.s.r.p.i.ProjectInspector - PIPELINE EXECUTION SUMMARY
+23:42:10.863 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+23:42:10.863 [main] INFO  f.i.s.r.p.i.ProjectInspector - CloneRepository.......................................SUCCESS [ 30 s ]
+23:42:10.864 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildCandidate...........................SUCCESS [  0 s ]
+23:42:10.864 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeSourceDir......................................SUCCESS [  3 s ]
+23:42:10.864 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeTestDir........................................SUCCESS [  2 s ]
+23:42:10.864 [main] INFO  f.i.s.r.p.i.ProjectInspector - BuildProjectBuggyBuildCandidate.......................FAILURE [ 20 s ]
+23:42:10.864 [main] INFO  f.i.s.r.p.i.ProjectInspector - TestProjectBuggyBuildCandidate........................NOT RUN         
+23:42:10.864 [main] INFO  f.i.s.r.p.i.ProjectInspector - GatherTestInformationBuggyBuildCandidate..............NOT RUN         
+23:42:10.864 [main] INFO  f.i.s.r.p.i.ProjectInspector - InitRepoToPush........................................NOT RUN         
+23:42:10.865 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeClasspath......................................NOT RUN         
+23:42:10.865 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeModules........................................NOT RUN         
+23:42:10.865 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutPatchedBuildCandidate.........................NOT RUN         
+23:42:10.865 [main] INFO  f.i.s.r.p.i.ProjectInspector - BuildProjectPatchedBuildCandidate.....................NOT RUN         
+23:42:10.865 [main] INFO  f.i.s.r.p.i.ProjectInspector - TestProjectPatchedBuildCandidate......................NOT RUN         
+23:42:10.865 [main] INFO  f.i.s.r.p.i.ProjectInspector - GatherTestInformationPatchedBuildCandidate............NOT RUN         
+23:42:10.866 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitPatch...........................................NOT RUN         
+23:42:10.866 [main] INFO  f.i.s.r.p.i.ProjectInspector - WritePropertyFile.....................................NOT RUN         
+23:42:10.866 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitProcessEnd......................................NOT RUN         
+23:42:10.866 [main] INFO  f.i.s.r.p.i.ProjectInspector - PushProcessEnd........................................NOT RUN         
+23:42:10.866 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+23:42:10.866 [main] INFO  f.i.s.r.p.i.ProjectInspector - PIPELINE FINDING: NOTBUILDABLE
+23:42:10.866 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+23:42:10.866 [main] INFO  f.i.s.repairnator.pipeline.Launcher - Inspector is finished. The process will exit now.
