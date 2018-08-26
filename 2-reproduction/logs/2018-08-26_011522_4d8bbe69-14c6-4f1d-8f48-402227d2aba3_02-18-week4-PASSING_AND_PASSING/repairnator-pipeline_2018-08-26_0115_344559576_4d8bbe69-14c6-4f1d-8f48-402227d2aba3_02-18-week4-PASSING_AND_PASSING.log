@@ -1,0 +1,921 @@
+11:05:21.621 [main] INFO  f.i.s.repairnator.pipeline.Launcher - PIPELINE VERSION: 3.0-2018-08-09 19:04
+11:05:21.762 [main] INFO  f.i.s.repairnator.pipeline.Launcher - The pipeline will try to reproduce a bug from build 344559576 and its corresponding patch from build 344683559
+11:05:21.762 [main] INFO  f.i.s.repairnator.pipeline.Launcher - Initialize file serializer engines.
+11:05:21.764 [main] INFO  f.i.s.repairnator.pipeline.Launcher - MongoDB won't be used for serialization.
+11:05:21.764 [main] INFO  f.i.s.repairnator.pipeline.Launcher - The email notifier engine won't be used.
+11:05:21.767 [main] INFO  f.i.s.repairnator.pipeline.Launcher - Start by getting the build (buildId: 344559576) with the following config: RepairnatorConfig{runId='4d8bbe69-14c6-4f1d-8f48-402227d2aba3_02-18-week4-PASSING_AND_PASSING', launcherMode=BEARS, serializeJson=true, inputPath='null', outputPath='/var/log', mongodbHost='null', mongodbName='repairnator', smtpServer='null', notifyTo=[], notifyEndProcess=false, push=true, pushRemoteRepo='https://github.com/fermadeiral/bears-collection-pp', fork=false, lookFromDate=null, lookToDate=null, buildId=344559576, z3solverPath='./z3_for_linux', workspacePath='./workspace', githubToken='c8a341a903[...]', dockerImageName='null', skipDelete=false, createOutputDir=false, logDirectory='null', nbThreads=0, globalTimeout=0, whiteList=null, blackList=null, jobSleepTime=0, buildSleepTime=0, maxInspectedBuilds=0, duration=null, humanPatch=false, repository='null', clean=true, bearsMode=BOTH, bearsDelimiter = false, repairTools=NopolAllTests,NPEFix,AssertFixer,AstorJGenProg,AstorJKali,NopolSingleTest,AstorJMut,NopolTestExclusionStrategy, githubUserName= fermadeiral, githubUserEmail=fer.madeiral@gmail.com}
+11:05:23.220 [main] DEBUG fr.inria.jtravis.helpers.BuildHelper - Get request to :https://api.travis-ci.org/build/344559576 done after 805 ms
+11:05:23.479 [main] DEBUG fr.inria.jtravis.helpers.BuildHelper - Get request to :https://api.travis-ci.org/build/344683559 done after 132 ms
+11:05:23.511 [main] INFO  f.i.s.repairnator.pipeline.Launcher - The patched build (344683559) was successfully retrieved from Travis.
+11:05:24.652 [main] INFO  fr.inria.jtravis.JTravis - GitHub ratelimit: Limit: 5000 Remaining: 4993 Reset hour: 19:27:57
+11:05:24.911 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+11:05:24.911 [main] INFO  f.i.s.r.p.i.ProjectInspector - PIPELINE STEPS
+11:05:24.912 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+11:05:24.912 [main] INFO  f.i.s.r.p.i.ProjectInspector - CloneRepository
+11:05:24.912 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutPatchedBuildCandidate
+11:05:24.913 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeSourceDir
+11:05:24.913 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeTestDir
+11:05:24.913 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildCandidateSourceCode
+11:05:24.914 [main] INFO  f.i.s.r.p.i.ProjectInspector - BuildProjectBuggyBuildCandidateSourceCode
+11:05:24.914 [main] INFO  f.i.s.r.p.i.ProjectInspector - TestProjectBuggyBuildCandidateSourceCode
+11:05:24.914 [main] INFO  f.i.s.r.p.i.ProjectInspector - GatherTestInformationBuggyBuildCandidateSourceCode
+11:05:24.915 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildTestCode
+11:05:24.915 [main] INFO  f.i.s.r.p.i.ProjectInspector - InitRepoToPush
+11:05:24.915 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeClasspath
+11:05:24.915 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeModules
+11:05:24.915 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildCandidateSourceCode
+11:05:24.916 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitChangedTests
+11:05:24.916 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutPatchedBuildCandidate
+11:05:24.916 [main] INFO  f.i.s.r.p.i.ProjectInspector - BuildProjectPatchedBuildCandidate
+11:05:24.916 [main] INFO  f.i.s.r.p.i.ProjectInspector - TestProjectPatchedBuildCandidate
+11:05:24.916 [main] INFO  f.i.s.r.p.i.ProjectInspector - GatherTestInformationPatchedBuildCandidate
+11:05:24.917 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitPatch
+11:05:24.917 [main] INFO  f.i.s.r.p.i.ProjectInspector - WritePropertyFile
+11:05:24.917 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitProcessEnd
+11:05:24.917 [main] INFO  f.i.s.r.p.i.ProjectInspector - PushProcessEnd
+11:05:24.918 [main] DEBUG f.i.s.r.process.step.CloneRepository - ----------------------------------------------------------------------
+11:05:24.919 [main] DEBUG f.i.s.r.process.step.CloneRepository - STEP 1/22: CloneRepository
+11:05:24.919 [main] DEBUG f.i.s.r.process.step.CloneRepository - ----------------------------------------------------------------------
+11:05:24.920 [main] DEBUG f.i.s.r.process.step.CloneRepository - Cloning repository apache/jackrabbit-oak in the following directory: ./workspace/apache/jackrabbit-oak/344559576
+11:06:00.914 [main] DEBUG f.i.s.r.process.step.CloneRepository - STEP STATUS: [ CloneRepository : SUCCESS ]
+11:06:00.914 [main] DEBUG f.i.s.r.process.step.CloneRepository - STEP DURATION: 35s
+11:06:00.914 [main] DEBUG f.i.s.r.process.step.CloneRepository - EXECUTE NEXT STEP
+11:06:00.915 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - ----------------------------------------------------------------------
+11:06:00.915 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - STEP 2/22: CheckoutPatchedBuildCandidate
+11:06:00.915 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - ----------------------------------------------------------------------
+11:06:00.915 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - Checking out patched build candidate...
+11:06:01.276 [main] INFO  fr.inria.jtravis.JTravis - GitHub ratelimit: Limit: 5000 Remaining: 4992 Reset hour: 19:27:57
+11:06:03.218 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - Reproduce the PR for apache/jackrabbit-oak by fetching remote branch and merging.
+11:06:07.416 [main] DEBUG f.i.s.r.process.git.GitHelper - Step CheckoutPatchedBuildCandidate - Get the commit a7c6ccb04e8ba7b5149457d45ef3ec0d65e2298d for repo apache/jackrabbit-oak
+11:06:08.619 [main] DEBUG f.i.s.r.process.git.GitHelper - Step CheckoutPatchedBuildCandidate - Do the merge with the PR commit for repo apache/jackrabbit-oak
+11:06:09.285 [main] INFO  f.i.s.r.process.git.GitHelper - Init git submodules.
+11:06:09.427 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - STEP STATUS: [ CheckoutPatchedBuildCandidate : SUCCESS ]
+11:06:09.427 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - STEP DURATION: 8s
+11:06:09.428 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - EXECUTE NEXT STEP
+11:06:09.428 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - ----------------------------------------------------------------------
+11:06:09.428 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - STEP 3/22: ComputeSourceDir
+11:06:09.428 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - ----------------------------------------------------------------------
+11:06:09.428 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Computing the source directory ...
+11:06:09.429 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - The default source directory (/root/workspace/apache/jackrabbit-oak/344559576/src/main/java) does not exist. Try to read pom.xml to get information.
+11:06:09.557 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/apache/apache/18/apache-18.pom
+11:06:09.734 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:jackrabbit-oak:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:09.775 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Build section does not exist in the following pom.xml: /root/workspace/apache/jackrabbit-oak/344559576/pom.xml. Continue to try to get source dir from all modules.
+11:06:09.776 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - The default source directory (/root/workspace/apache/jackrabbit-oak/344559576/oak-parent/src/main/java) does not exist. Try to read pom.xml to get information.
+11:06:09.822 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ 
+
+11:06:09.836 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Build section does not exist in the following pom.xml: /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml. Continue to try to get source dir from all modules.
+11:06:09.837 [main] ERROR f.i.s.r.p.s.paths.ComputeSourceDir - The source directory is not at default location or specified in build section from pom.xml, and no parent can be found.
+11:06:09.857 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-commons:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:09.879 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-api:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:09.898 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-core-spi:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:09.915 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-store-spi:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:09.942 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-query-spi:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:09.957 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-security-spi:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:09.971 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-store-composite:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:09.994 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-store-document:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.009 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-blob-plugins:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.022 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-blob:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.035 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-blob-cloud:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.053 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-blob-cloud-azure:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.129 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/apache/jackrabbit/oak-parent/1.8-SNAPSHOT/oak-parent-1.8-SNAPSHOT.pom
+11:06:10.224 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/apache/jackrabbit/oak-parent/1.8-SNAPSHOT/oak-parent-1.8-SNAPSHOT.pom
+11:06:10.262 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/apache/jackrabbit/oak-parent/1.8-SNAPSHOT/oak-parent-1.8-SNAPSHOT.pom
+11:06:10.284 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-blob-composite:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/apache/jackrabbit-oak/344559576/.m2/org/apache/jackrabbit/oak-parent/1.8-SNAPSHOT/oak-parent-1.8-SNAPSHOT.pom: /root/./workspace/apache/jackrabbit-oak/344559576/.m2/org/apache/jackrabbit/oak-parent/1.8-SNAPSHOT/oak-parent-1.8-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/apache/jackrabbit-oak/344559576/.m2/org/apache/jackrabbit/oak-parent/1.8-SNAPSHOT/oak-parent-1.8-SNAPSHOT.pom
+
+11:06:10.300 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-core:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.331 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-jcr:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.369 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 2 problems were encountered while building the effective model for org.apache.jackrabbit:oak-upgrade:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java6 @ org.apache.jackrabbit:oak-upgrade:[unknown-version], /root/workspace/apache/jackrabbit-oak/344559576/oak-upgrade/pom.xml
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.381 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-http:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.394 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-lucene:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.406 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-solr-core:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.408 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - The default source directory (/root/workspace/apache/jackrabbit-oak/344559576/oak-solr-osgi/src/main/java) does not exist. Try to read pom.xml to get information.
+11:06:10.419 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-solr-osgi:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.420 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Build section does not exist in the following pom.xml: /root/workspace/apache/jackrabbit-oak/344559576/oak-solr-osgi/pom.xml. Continue to try to get source dir from all modules.
+11:06:10.421 [main] ERROR f.i.s.r.p.s.paths.ComputeSourceDir - The source directory is not at default location or specified in build section from pom.xml, and no parent can be found.
+11:06:10.433 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-search-mt:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.446 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-auth-external:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.458 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 2 problems were encountered while building the effective model for org.apache.jackrabbit:oak-auth-ldap:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile disable-ldap-integration @ org.apache.jackrabbit:oak-auth-ldap:[unknown-version], /root/workspace/apache/jackrabbit-oak/344559576/oak-auth-ldap/pom.xml
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.471 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-run-commons:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.490 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-run:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.492 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - The default source directory (/root/workspace/apache/jackrabbit-oak/344559576/oak-it-osgi/src/main/java) does not exist. Try to read pom.xml to get information.
+11:06:10.502 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-it-osgi:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.503 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Build section does not exist in the following pom.xml: /root/workspace/apache/jackrabbit-oak/344559576/oak-it-osgi/pom.xml. Continue to try to get source dir from all modules.
+11:06:10.504 [main] ERROR f.i.s.r.p.s.paths.ComputeSourceDir - The source directory is not at default location or specified in build section from pom.xml, and no parent can be found.
+11:06:10.516 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-pojosr:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.531 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-authorization-cug:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.542 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-exercise:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.543 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - The default source directory (/root/workspace/apache/jackrabbit-oak/344559576/oak-examples/src/main/java) does not exist. Try to read pom.xml to get information.
+11:06:10.552 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-examples:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.553 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Build section does not exist in the following pom.xml: /root/workspace/apache/jackrabbit-oak/344559576/oak-examples/pom.xml. Continue to try to get source dir from all modules.
+11:06:10.565 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-webapp:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:10.575 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/springframework/boot/spring-boot-dependencies/1.5.7.RELEASE/spring-boot-dependencies-1.5.7.RELEASE.pom
+11:06:10.706 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/com/fasterxml/jackson/jackson-bom/2.8.10/jackson-bom-2.8.10.pom
+11:06:10.802 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/com/fasterxml/jackson/jackson-parent/2.8/jackson-parent-2.8.pom
+11:06:10.892 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/com/fasterxml/oss-parent/27/oss-parent-27.pom
+11:06:10.993 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-bom/2.7/log4j-bom-2.7.pom
+11:06:11.080 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/apache/apache/9/apache-9.pom
+11:06:11.213 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/springframework/spring-framework-bom/4.3.11.RELEASE/spring-framework-bom-4.3.11.RELEASE.pom
+11:06:11.306 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/springframework/data/spring-data-releasetrain/Ingalls-SR7/spring-data-releasetrain-Ingalls-SR7.pom
+11:06:11.417 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/springframework/data/build/spring-data-build/1.9.7.RELEASE/spring-data-build-1.9.7.RELEASE.pom
+11:06:11.501 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/springframework/integration/spring-integration-bom/4.3.12.RELEASE/spring-integration-bom-4.3.12.RELEASE.pom
+11:06:11.602 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/springframework/security/spring-security-bom/4.2.3.RELEASE/spring-security-bom-4.2.3.RELEASE.pom
+11:06:11.760 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 2 problems were encountered while building the effective model for org.apache.jackrabbit:oak-standalone:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile disable-test-jdk6 @ org.apache.jackrabbit:oak-standalone:[unknown-version], /root/workspace/apache/jackrabbit-oak/344559576/oak-examples/standalone/pom.xml
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:11.762 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - The default source directory (/root/workspace/apache/jackrabbit-oak/344559576/oak-it/src/main/java) does not exist. Try to read pom.xml to get information.
+11:06:11.773 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-it:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:11.775 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Build section does not exist in the following pom.xml: /root/workspace/apache/jackrabbit-oak/344559576/oak-it/pom.xml. Continue to try to get source dir from all modules.
+11:06:11.775 [main] ERROR f.i.s.r.p.s.paths.ComputeSourceDir - The source directory is not at default location or specified in build section from pom.xml, and no parent can be found.
+11:06:11.796 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-segment-tar:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:11.806 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-benchmarks:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:11.807 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - The default source directory (/root/workspace/apache/jackrabbit-oak/344559576/oak-parent/src/main/java) does not exist. Try to read pom.xml to get information.
+11:06:11.807 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - It seems the step is entering in a loop while searching the source dir. The following file has already been visited: /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+11:06:11.807 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - 31 source dirs were found:
+11:06:11.807 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-api/src/main/java
+11:06:11.808 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-auth-external/src/main/java
+11:06:11.808 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-auth-ldap/src/main/java
+11:06:11.808 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-authorization-cug/src/main/java
+11:06:11.808 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-benchmarks/src/main/java
+11:06:11.808 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-blob-cloud-azure/src/main/java
+11:06:11.808 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-blob-cloud/src/main/java
+11:06:11.808 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-blob-composite/src/main/java
+11:06:11.808 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-blob-plugins/src/main/java
+11:06:11.808 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-blob/src/main/java
+11:06:11.808 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-commons/src/main/java
+11:06:11.808 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-core-spi/src/main/java
+11:06:11.808 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-core/src/main/java
+11:06:11.809 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-examples/standalone/src/main/java
+11:06:11.811 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-examples/webapp/src/main/java
+11:06:11.818 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-exercise/src/main/java
+11:06:11.818 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-http/src/main/java
+11:06:11.818 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-jcr/src/main/java
+11:06:11.818 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-lucene/src/main/java
+11:06:11.818 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-pojosr/src/main/java
+11:06:11.818 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-query-spi/src/main/java
+11:06:11.818 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-run-commons/src/main/java
+11:06:11.819 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-run/src/main/java
+11:06:11.819 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-search-mt/src/main/java
+11:06:11.819 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-security-spi/src/main/java
+11:06:11.819 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-segment-tar/src/main/java
+11:06:11.819 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-solr-core/src/main/java
+11:06:11.819 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-store-composite/src/main/java
+11:06:11.819 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-store-document/src/main/java
+11:06:11.819 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-store-spi/src/main/java
+11:06:11.819 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-upgrade/src/main/java
+11:06:11.894 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Compute the line of code of the project
+11:06:12.102 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Get result from cloc process...
+11:06:12.110 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - STEP STATUS: [ ComputeSourceDir : SUCCESS ]
+11:06:12.111 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - STEP DURATION: 2s
+11:06:12.111 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - EXECUTE NEXT STEP
+11:06:12.111 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - ----------------------------------------------------------------------
+11:06:12.111 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - STEP 4/22: ComputeTestDir
+11:06:12.111 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - ----------------------------------------------------------------------
+11:06:12.111 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - Computing the test directory ...
+11:06:12.111 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - The default test directory (/root/workspace/apache/jackrabbit-oak/344559576/src/test/java) does not exist. Try to read pom.xml to get information.
+11:06:12.118 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:jackrabbit-oak:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.119 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - Build section does not exist in the following pom.xml: /root/workspace/apache/jackrabbit-oak/344559576/pom.xml. Continue to try to get test dir from all modules.
+11:06:12.120 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - The default test directory (/root/workspace/apache/jackrabbit-oak/344559576/oak-parent/src/test/java) does not exist. Try to read pom.xml to get information.
+11:06:12.125 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ 
+
+11:06:12.127 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - Build section does not exist in the following pom.xml: /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml. Continue to try to get test dir from all modules.
+11:06:12.127 [main] ERROR f.i.s.r.p.step.paths.ComputeTestDir - The test directory is not at default location or specified in build section from pom.xml, and no parent can be found.
+11:06:12.133 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-commons:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.140 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-api:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.147 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-core-spi:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.154 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-store-spi:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.167 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-query-spi:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.181 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-security-spi:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.195 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-store-composite:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.202 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-store-document:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.208 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-blob-plugins:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.217 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-blob:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.224 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-blob-cloud:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.233 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-blob-cloud-azure:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.236 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/org/apache/jackrabbit/oak-parent/1.8-SNAPSHOT/oak-parent-1.8-SNAPSHOT.pom
+11:06:12.330 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://repo.maven.apache.org/maven2/org/apache/jackrabbit/oak-parent/1.8-SNAPSHOT/oak-parent-1.8-SNAPSHOT.pom
+11:06:12.346 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading http://uk.maven.org/maven2/org/apache/jackrabbit/oak-parent/1.8-SNAPSHOT/oak-parent-1.8-SNAPSHOT.pom
+11:06:12.361 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-blob-composite:[unknown-version]
+[FATAL] Non-readable POM /root/./workspace/apache/jackrabbit-oak/344559576/.m2/org/apache/jackrabbit/oak-parent/1.8-SNAPSHOT/oak-parent-1.8-SNAPSHOT.pom: /root/./workspace/apache/jackrabbit-oak/344559576/.m2/org/apache/jackrabbit/oak-parent/1.8-SNAPSHOT/oak-parent-1.8-SNAPSHOT.pom (No such file or directory) @ /root/./workspace/apache/jackrabbit-oak/344559576/.m2/org/apache/jackrabbit/oak-parent/1.8-SNAPSHOT/oak-parent-1.8-SNAPSHOT.pom
+
+11:06:12.369 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-core:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.376 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-jcr:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.383 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 2 problems were encountered while building the effective model for org.apache.jackrabbit:oak-upgrade:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java6 @ org.apache.jackrabbit:oak-upgrade:[unknown-version], /root/workspace/apache/jackrabbit-oak/344559576/oak-upgrade/pom.xml
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.390 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-http:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.399 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-lucene:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.408 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-solr-core:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.409 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - The default test directory (/root/workspace/apache/jackrabbit-oak/344559576/oak-solr-osgi/src/test/java) does not exist. Try to read pom.xml to get information.
+11:06:12.429 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-solr-osgi:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.430 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - Build section does not exist in the following pom.xml: /root/workspace/apache/jackrabbit-oak/344559576/oak-solr-osgi/pom.xml. Continue to try to get test dir from all modules.
+11:06:12.430 [main] ERROR f.i.s.r.p.step.paths.ComputeTestDir - The test directory is not at default location or specified in build section from pom.xml, and no parent can be found.
+11:06:12.443 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-search-mt:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.455 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-auth-external:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.468 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 2 problems were encountered while building the effective model for org.apache.jackrabbit:oak-auth-ldap:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile disable-ldap-integration @ org.apache.jackrabbit:oak-auth-ldap:[unknown-version], /root/workspace/apache/jackrabbit-oak/344559576/oak-auth-ldap/pom.xml
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.481 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-run-commons:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.511 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-run:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.520 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-it-osgi:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.532 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-pojosr:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.542 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-authorization-cug:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.552 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-exercise:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.553 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - The default test directory (/root/workspace/apache/jackrabbit-oak/344559576/oak-examples/src/test/java) does not exist. Try to read pom.xml to get information.
+11:06:12.562 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-examples:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.563 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - Build section does not exist in the following pom.xml: /root/workspace/apache/jackrabbit-oak/344559576/oak-examples/pom.xml. Continue to try to get test dir from all modules.
+11:06:12.572 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-webapp:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.670 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 2 problems were encountered while building the effective model for org.apache.jackrabbit:oak-standalone:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile disable-test-jdk6 @ org.apache.jackrabbit:oak-standalone:[unknown-version], /root/workspace/apache/jackrabbit-oak/344559576/oak-examples/standalone/pom.xml
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.686 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-it:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.699 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-segment-tar:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.700 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - The default test directory (/root/workspace/apache/jackrabbit-oak/344559576/oak-benchmarks/src/test/java) does not exist. Try to read pom.xml to get information.
+11:06:12.711 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for org.apache.jackrabbit:oak-benchmarks:1.10-SNAPSHOT
+[ERROR] Failed to determine Java version for profile findbugs-jdk6 @ org.apache.jackrabbit:oak-parent:1.10-SNAPSHOT, /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+
+11:06:12.712 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - Build section does not exist in the following pom.xml: /root/workspace/apache/jackrabbit-oak/344559576/oak-benchmarks/pom.xml. Continue to try to get test dir from all modules.
+11:06:12.712 [main] ERROR f.i.s.r.p.step.paths.ComputeTestDir - The test directory is not at default location or specified in build section from pom.xml, and no parent can be found.
+11:06:12.713 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - The default test directory (/root/workspace/apache/jackrabbit-oak/344559576/oak-parent/src/test/java) does not exist. Try to read pom.xml to get information.
+11:06:12.713 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - It seems the step is entering in a loop while searching the test dir. The following file has already been visited: /root/workspace/apache/jackrabbit-oak/344559576/oak-parent/pom.xml
+11:06:12.714 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - 32 test dirs were found:
+11:06:12.714 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-api/src/test/java
+11:06:12.714 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-auth-external/src/test/java
+11:06:12.714 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-auth-ldap/src/test/java
+11:06:12.715 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-authorization-cug/src/test/java
+11:06:12.715 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-blob-cloud-azure/src/test/java
+11:06:12.715 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-blob-cloud/src/test/java
+11:06:12.715 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-blob-composite/src/test/java
+11:06:12.715 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-blob-plugins/src/test/java
+11:06:12.715 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-blob/src/test/java
+11:06:12.715 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-commons/src/test/java
+11:06:12.715 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-core-spi/src/test/java
+11:06:12.715 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-core/src/test/java
+11:06:12.716 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-examples/standalone/src/test/java
+11:06:12.716 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-examples/webapp/src/test/java
+11:06:12.716 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-exercise/src/test/java
+11:06:12.716 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-http/src/test/java
+11:06:12.716 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-it-osgi/src/test/java
+11:06:12.716 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-it/src/test/java
+11:06:12.717 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-jcr/src/test/java
+11:06:12.717 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-lucene/src/test/java
+11:06:12.717 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-pojosr/src/test/java
+11:06:12.717 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-query-spi/src/test/java
+11:06:12.717 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-run-commons/src/test/java
+11:06:12.718 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-run/src/test/java
+11:06:12.718 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-search-mt/src/test/java
+11:06:12.718 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-security-spi/src/test/java
+11:06:12.718 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-segment-tar/src/test/java
+11:06:12.719 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-solr-core/src/test/java
+11:06:12.719 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-store-composite/src/test/java
+11:06:12.719 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-store-document/src/test/java
+11:06:12.719 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-store-spi/src/test/java
+11:06:12.720 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/apache/jackrabbit-oak/344559576/oak-upgrade/src/test/java
+11:06:12.777 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - STEP STATUS: [ ComputeTestDir : SUCCESS ]
+11:06:12.778 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - STEP DURATION: 0s
+11:06:12.778 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - EXECUTE NEXT STEP
+11:06:12.779 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - ----------------------------------------------------------------------
+11:06:12.779 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - STEP 5/22: CheckoutBuggyBuildCandidateSourceCode
+11:06:12.779 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - ----------------------------------------------------------------------
+11:06:12.779 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - Checking out the source code of the buggy build candidate...
+11:06:13.096 [main] INFO  fr.inria.jtravis.JTravis - GitHub ratelimit: Limit: 5000 Remaining: 4985 Reset hour: 19:27:57
+11:06:15.055 [main] DEBUG f.i.s.r.process.git.GitHelper - Commit repairnator files...
+11:06:15.056 [main] INFO  f.i.s.r.process.git.GitHelper - There is no repairnator file to commit.
+11:06:15.056 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - Reproduce the PR for apache/jackrabbit-oak by fetching remote branch and merging.
+11:06:15.515 [main] DEBUG f.i.s.r.process.git.GitHelper - Step CheckoutBuggyBuildCandidateSourceCode - Get the commit a7c6ccb04e8ba7b5149457d45ef3ec0d65e2298d for repo apache/jackrabbit-oak
+11:06:15.778 [main] DEBUG f.i.s.r.process.git.GitHelper - Step CheckoutBuggyBuildCandidateSourceCode - Do the merge with the PR commit for repo apache/jackrabbit-oak
+11:06:16.483 [main] INFO  f.i.s.r.process.git.GitHelper - Init git submodules.
+11:06:16.732 [main] INFO  fr.inria.jtravis.JTravis - GitHub ratelimit: Limit: 5000 Remaining: 4978 Reset hour: 19:27:57
+11:06:18.373 [main] DEBUG f.i.s.r.process.git.GitHelper - Commit repairnator files...
+11:06:18.373 [main] INFO  f.i.s.r.process.git.GitHelper - There is no repairnator file to commit.
+11:06:18.374 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - Reproduce the PR for apache/jackrabbit-oak by fetching remote branch and merging.
+11:06:18.828 [main] DEBUG f.i.s.r.process.git.GitHelper - Step CheckoutBuggyBuildCandidateSourceCode - Get the commit 39b33fe94a055ef588791f238eb85734c34062f3 for repo apache/jackrabbit-oak
+11:06:18.829 [main] DEBUG f.i.s.r.process.git.GitHelper - Executing git command: git reset 39b33fe94a055ef588791f238eb85734c34062f3 -- oak-api/src/main/java/ oak-auth-external/src/main/java/ oak-auth-ldap/src/main/java/ oak-authorization-cug/src/main/java/ oak-benchmarks/src/main/java/ oak-blob-cloud-azure/src/main/java/ oak-blob-cloud/src/main/java/ oak-blob-composite/src/main/java/ oak-blob-plugins/src/main/java/ oak-blob/src/main/java/ oak-commons/src/main/java/ oak-core-spi/src/main/java/ oak-core/src/main/java/ oak-examples/standalone/src/main/java/ oak-examples/webapp/src/main/java/ oak-exercise/src/main/java/ oak-http/src/main/java/ oak-jcr/src/main/java/ oak-lucene/src/main/java/ oak-pojosr/src/main/java/ oak-query-spi/src/main/java/ oak-run-commons/src/main/java/ oak-run/src/main/java/ oak-search-mt/src/main/java/ oak-security-spi/src/main/java/ oak-segment-tar/src/main/java/ oak-solr-core/src/main/java/ oak-store-composite/src/main/java/ oak-store-document/src/main/java/ oak-store-spi/src/main/java/ oak-upgrade/src/main/java/
+11:06:19.175 [main] DEBUG f.i.s.r.process.git.GitHelper - Executing git command: git clean -fd -- oak-api/src/main/java/ oak-auth-external/src/main/java/ oak-auth-ldap/src/main/java/ oak-authorization-cug/src/main/java/ oak-benchmarks/src/main/java/ oak-blob-cloud-azure/src/main/java/ oak-blob-cloud/src/main/java/ oak-blob-composite/src/main/java/ oak-blob-plugins/src/main/java/ oak-blob/src/main/java/ oak-commons/src/main/java/ oak-core-spi/src/main/java/ oak-core/src/main/java/ oak-examples/standalone/src/main/java/ oak-examples/webapp/src/main/java/ oak-exercise/src/main/java/ oak-http/src/main/java/ oak-jcr/src/main/java/ oak-lucene/src/main/java/ oak-pojosr/src/main/java/ oak-query-spi/src/main/java/ oak-run-commons/src/main/java/ oak-run/src/main/java/ oak-search-mt/src/main/java/ oak-security-spi/src/main/java/ oak-segment-tar/src/main/java/ oak-solr-core/src/main/java/ oak-store-composite/src/main/java/ oak-store-document/src/main/java/ oak-store-spi/src/main/java/ oak-upgrade/src/main/java/
+11:06:19.211 [main] DEBUG f.i.s.r.process.git.GitHelper - Executing git command: git checkout -- .
+11:06:19.296 [main] DEBUG f.i.s.r.process.git.GitHelper - Step CheckoutBuggyBuildCandidateSourceCode - Do the merge with the PR commit for repo apache/jackrabbit-oak
+11:06:19.311 [main] INFO  f.i.s.r.process.git.GitHelper - Init git submodules.
+11:06:19.413 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - STEP STATUS: [ CheckoutBuggyBuildCandidateSourceCode : SUCCESS ]
+11:06:19.413 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - STEP DURATION: 6s
+11:06:19.413 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - EXECUTE NEXT STEP
+11:06:19.414 [main] DEBUG f.i.s.r.process.step.BuildProject - ----------------------------------------------------------------------
+11:06:19.414 [main] DEBUG f.i.s.r.process.step.BuildProject - STEP 6/22: BuildProjectBuggyBuildCandidateSourceCode
+11:06:19.414 [main] DEBUG f.i.s.r.process.step.BuildProject - ----------------------------------------------------------------------
+11:06:19.414 [main] DEBUG f.i.s.r.process.step.BuildProject - Building project by installing artifacts with maven (skip test execution)...
+11:06:22.764 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Scanning for projects...
+11:06:24.205 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/felix/maven-bundle-plugin/3.3.0/maven-bundle-plugin-3.3.0.pom
+11:06:24.818 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/felix/maven-bundle-plugin/3.3.0/maven-bundle-plugin-3.3.0.pom (10 KB at 16.0 KB/sec)
+11:06:24.832 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/felix/felix-parent/4/felix-parent-4.pom
+11:06:24.864 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/felix/felix-parent/4/felix-parent-4.pom (24 KB at 755.1 KB/sec)
+11:06:24.872 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/apache/17/apache-17.pom
+11:06:24.896 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/apache/17/apache-17.pom (16 KB at 653.3 KB/sec)
+11:06:24.913 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/felix/org.apache.felix.scr.bnd/1.9.0/org.apache.felix.scr.bnd-1.9.0.pom
+11:06:24.935 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/felix/org.apache.felix.scr.bnd/1.9.0/org.apache.felix.scr.bnd-1.9.0.pom (4 KB at 165.6 KB/sec)
+11:06:24.945 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/biz/aQute/bnd/biz.aQute.bndlib/3.3.0/biz.aQute.bndlib-3.3.0.pom
+11:06:24.966 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/biz/aQute/bnd/biz.aQute.bndlib/3.3.0/biz.aQute.bndlib-3.3.0.pom (2 KB at 65.0 KB/sec)
+11:06:24.971 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.core/4.3.1/org.osgi.core-4.3.1.pom
+11:06:24.992 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.core/4.3.1/org.osgi.core-4.3.1.pom (2 KB at 65.7 KB/sec)
+11:06:24.997 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/felix/org.apache.felix.bundlerepository/1.6.6/org.apache.felix.bundlerepository-1.6.6.pom
+11:06:25.020 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/felix/org.apache.felix.bundlerepository/1.6.6/org.apache.felix.bundlerepository-1.6.6.pom (6 KB at 249.9 KB/sec)
+11:06:25.027 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/felix/felix-parent/2.1/felix-parent-2.1.pom
+11:06:25.054 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/felix/felix-parent/2.1/felix-parent-2.1.pom (10 KB at 336.9 KB/sec)
+11:06:25.065 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.core/4.1.0/org.osgi.core-4.1.0.pom
+11:06:25.098 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.core/4.1.0/org.osgi.core-4.1.0.pom (193 B at 5.7 KB/sec)
+11:06:25.107 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/easymock/easymock/3.4/easymock-3.4.pom
+11:06:25.129 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/easymock/easymock/3.4/easymock-3.4.pom (8 KB at 324.2 KB/sec)
+11:06:25.139 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/easymock/easymock-parent/3.4/easymock-parent-3.4.pom
+11:06:25.166 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/easymock/easymock-parent/3.4/easymock-parent-3.4.pom (17 KB at 641.9 KB/sec)
+11:06:25.175 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/objenesis/objenesis/2.2/objenesis-2.2.pom
+11:06:25.196 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/objenesis/objenesis/2.2/objenesis-2.2.pom (3 KB at 115.3 KB/sec)
+11:06:25.200 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/objenesis/objenesis-parent/2.2/objenesis-parent-2.2.pom
+11:06:25.230 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/objenesis/objenesis-parent/2.2/objenesis-parent-2.2.pom (17 KB at 556.5 KB/sec)
+11:06:25.237 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/felix/org.apache.felix.utils/1.6.0/org.apache.felix.utils-1.6.0.pom
+11:06:25.259 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/felix/org.apache.felix.utils/1.6.0/org.apache.felix.utils-1.6.0.pom (4 KB at 152.3 KB/sec)
+11:06:25.265 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.compendium/4.2.0/org.osgi.compendium-4.2.0.pom
+11:06:25.284 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.compendium/4.2.0/org.osgi.compendium-4.2.0.pom (463 B at 22.6 KB/sec)
+11:06:25.289 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.2.0/maven-core-2.2.0.pom
+11:06:25.311 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.2.0/maven-core-2.2.0.pom (11 KB at 497.8 KB/sec)
+11:06:25.315 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.2.0/maven-2.2.0.pom
+11:06:25.342 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.2.0/maven-2.2.0.pom (22 KB at 812.2 KB/sec)
+11:06:25.361 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/11/maven-parent-11.pom
+11:06:25.382 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/11/maven-parent-11.pom (32 KB at 1130.3 KB/sec)
+11:06:25.389 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/apache/5/apache-5.pom
+11:06:25.409 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/apache/5/apache-5.pom (5 KB at 200.0 KB/sec)
+11:06:25.416 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.2.0/maven-settings-2.2.0.pom
+11:06:25.441 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.2.0/maven-settings-2.2.0.pom (3 KB at 85.1 KB/sec)
+11:06:25.447 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.2.0/maven-model-2.2.0.pom
+11:06:25.477 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.2.0/maven-model-2.2.0.pom (4 KB at 105.5 KB/sec)
+11:06:25.485 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.15/plexus-utils-1.5.15.pom
+11:06:25.511 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.15/plexus-utils-1.5.15.pom (7 KB at 247.7 KB/sec)
+11:06:25.515 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.2/plexus-2.0.2.pom
+11:06:25.535 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.2/plexus-2.0.2.pom (12 KB at 539.9 KB/sec)
+11:06:25.541 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.11/plexus-interpolation-1.11.pom
+11:06:25.559 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.11/plexus-interpolation-1.11.pom (889 B at 48.2 KB/sec)
+11:06:25.562 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.14/plexus-components-1.1.14.pom
+11:06:25.580 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.14/plexus-components-1.1.14.pom (6 KB at 316.9 KB/sec)
+11:06:25.586 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.pom
+11:06:25.604 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.pom (4 KB at 214.2 KB/sec)
+11:06:25.617 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.0.3/plexus-containers-1.0.3.pom
+11:06:25.635 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.0.3/plexus-containers-1.0.3.pom (492 B at 28.3 KB/sec)
+11:06:25.638 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.4/plexus-1.0.4.pom
+11:06:25.656 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.4/plexus-1.0.4.pom (6 KB at 311.3 KB/sec)
+11:06:25.660 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/junit/junit/4.12/junit-4.12.pom
+11:06:25.681 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/junit/junit/4.12/junit-4.12.pom (24 KB at 1101.1 KB/sec)
+11:06:25.689 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.pom
+11:06:25.706 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.pom (766 B at 46.8 KB/sec)
+11:06:25.711 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-parent/1.3/hamcrest-parent-1.3.pom
+11:06:25.731 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-parent/1.3/hamcrest-parent-1.3.pom (2 KB at 87.5 KB/sec)
+11:06:25.735 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.0.4/plexus-utils-1.0.4.pom
+11:06:25.754 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.0.4/plexus-utils-1.0.4.pom (7 KB at 352.4 KB/sec)
+11:06:25.762 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.pom
+11:06:25.782 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.pom (4 KB at 152.7 KB/sec)
+11:06:25.786 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.2.0/maven-plugin-parameter-documenter-2.2.0.pom
+11:06:25.806 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.2.0/maven-plugin-parameter-documenter-2.2.0.pom (2 KB at 95.6 KB/sec)
+11:06:25.817 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-jdk14/1.5.6/slf4j-jdk14-1.5.6.pom
+11:06:25.843 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-jdk14/1.5.6/slf4j-jdk14-1.5.6.pom (2 KB at 74.1 KB/sec)
+11:06:25.850 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.5.6/slf4j-parent-1.5.6.pom
+11:06:25.870 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.5.6/slf4j-parent-1.5.6.pom (8 KB at 386.7 KB/sec)
+11:06:25.878 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.5.6/slf4j-api-1.5.6.pom
+11:06:25.897 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.5.6/slf4j-api-1.5.6.pom (3 KB at 145.7 KB/sec)
+11:06:25.902 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/slf4j/jcl-over-slf4j/1.5.6/jcl-over-slf4j-1.5.6.pom
+11:06:25.923 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/slf4j/jcl-over-slf4j/1.5.6/jcl-over-slf4j-1.5.6.pom (3 KB at 100.9 KB/sec)
+11:06:25.928 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.2.0/maven-reporting-api-2.2.0.pom
+11:06:25.948 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.2.0/maven-reporting-api-2.2.0.pom (2 KB at 90.4 KB/sec)
+11:06:25.952 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting/2.2.0/maven-reporting-2.2.0.pom
+11:06:25.971 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting/2.2.0/maven-reporting-2.2.0.pom (2 KB at 74.2 KB/sec)
+11:06:25.977 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.1/doxia-sink-api-1.1.pom
+11:06:25.996 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.1/doxia-sink-api-1.1.pom (2 KB at 104.8 KB/sec)
+11:06:26.000 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/1.1/doxia-1.1.pom
+11:06:26.020 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/1.1/doxia-1.1.pom (15 KB at 741.1 KB/sec)
+11:06:26.030 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-logging-api/1.1/doxia-logging-api-1.1.pom
+11:06:26.047 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-logging-api/1.1/doxia-logging-api-1.1.pom (2 KB at 90.5 KB/sec)
+11:06:26.052 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-30/plexus-container-default-1.0-alpha-30.pom
+11:06:26.083 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-30/plexus-container-default-1.0-alpha-30.pom (4 KB at 109.5 KB/sec)
+11:06:26.087 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.0-alpha-30/plexus-containers-1.0-alpha-30.pom
+11:06:26.105 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.0-alpha-30/plexus-containers-1.0-alpha-30.pom (2 KB at 102.8 KB/sec)
+11:06:26.108 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.11/plexus-1.0.11.pom
+11:06:26.129 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.11/plexus-1.0.11.pom (9 KB at 417.1 KB/sec)
+11:06:26.134 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.4.5/plexus-utils-1.4.5.pom
+11:06:26.151 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.4.5/plexus-utils-1.4.5.pom (3 KB at 130.1 KB/sec)
+11:06:26.155 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/1.2-alpha-9/plexus-classworlds-1.2-alpha-9.pom
+11:06:26.173 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/1.2-alpha-9/plexus-classworlds-1.2-alpha-9.pom (4 KB at 174.9 KB/sec)
+11:06:26.176 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.10/plexus-1.0.10.pom
+11:06:26.193 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.10/plexus-1.0.10.pom (9 KB at 473.9 KB/sec)
+11:06:26.198 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.2.0/maven-profile-2.2.0.pom
+11:06:26.214 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.2.0/maven-profile-2.2.0.pom (3 KB at 124.7 KB/sec)
+11:06:26.223 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.2.0/maven-artifact-2.2.0.pom
+11:06:26.242 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.2.0/maven-artifact-2.2.0.pom (2 KB at 96.5 KB/sec)
+11:06:26.247 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.2.0/maven-repository-metadata-2.2.0.pom
+11:06:26.269 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.2.0/maven-repository-metadata-2.2.0.pom (2 KB at 83.1 KB/sec)
+11:06:26.451 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.2.0/maven-error-diagnostics-2.2.0.pom
+11:06:26.470 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.2.0/maven-error-diagnostics-2.2.0.pom (2 KB at 83.4 KB/sec)
+11:06:26.477 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.2.0/maven-project-2.2.0.pom
+11:06:26.494 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.2.0/maven-project-2.2.0.pom (3 KB at 159.3 KB/sec)
+11:06:26.500 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.2.0/maven-artifact-manager-2.2.0.pom
+11:06:26.516 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.2.0/maven-artifact-manager-2.2.0.pom (4 KB at 189.4 KB/sec)
+11:06:26.522 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.pom
+11:06:26.539 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.pom (880 B at 53.7 KB/sec)
+11:06:26.542 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.2.0/maven-plugin-registry-2.2.0.pom
+11:06:26.560 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.2.0/maven-plugin-registry-2.2.0.pom (2 KB at 104.7 KB/sec)
+11:06:26.565 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-cli/commons-cli/1.2/commons-cli-1.2.pom
+11:06:26.592 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-cli/commons-cli/1.2/commons-cli-1.2.pom (8 KB at 288.6 KB/sec)
+11:06:26.595 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/11/commons-parent-11.pom
+11:06:26.614 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/11/commons-parent-11.pom (25 KB at 1203.6 KB/sec)
+11:06:26.619 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/apache/4/apache-4.pom
+11:06:26.642 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/apache/4/apache-4.pom (5 KB at 190.9 KB/sec)
+11:06:26.648 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.0/maven-plugin-api-2.2.0.pom
+11:06:26.673 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.0/maven-plugin-api-2.2.0.pom (2 KB at 57.0 KB/sec)
+11:06:26.687 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.2.0/maven-plugin-descriptor-2.2.0.pom
+11:06:26.704 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.2.0/maven-plugin-descriptor-2.2.0.pom (3 KB at 112.0 KB/sec)
+11:06:26.712 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.pom
+11:06:26.732 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.pom (7 KB at 346.2 KB/sec)
+11:06:26.738 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.2.0/maven-monitor-2.2.0.pom
+11:06:26.766 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.2.0/maven-monitor-2.2.0.pom (2 KB at 47.2 KB/sec)
+11:06:26.772 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1/classworlds-1.1.pom
+11:06:26.792 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1/classworlds-1.1.pom (4 KB at 162.3 KB/sec)
+11:06:26.796 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.pom
+11:06:26.816 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.pom (3 KB at 152.2 KB/sec)
+11:06:26.820 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/12/spice-parent-12.pom
+11:06:26.840 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/12/spice-parent-12.pom (7 KB at 331.9 KB/sec)
+11:06:26.844 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/4/forge-parent-4.pom
+11:06:26.868 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/4/forge-parent-4.pom (9 KB at 341.7 KB/sec)
+11:06:26.876 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.5/plexus-utils-1.5.5.pom
+11:06:26.896 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.5/plexus-utils-1.5.5.pom (6 KB at 264.5 KB/sec)
+11:06:26.901 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.pom
+11:06:26.921 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.pom (3 KB at 100.8 KB/sec)
+11:06:26.927 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-archiver/2.6/maven-archiver-2.6.pom
+11:06:26.947 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-archiver/2.6/maven-archiver-2.6.pom (5 KB at 222.1 KB/sec)
+11:06:26.951 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/20/maven-shared-components-20.pom
+11:06:26.971 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/20/maven-shared-components-20.pom (5 KB at 249.3 KB/sec)
+11:06:26.974 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/24/maven-parent-24.pom
+11:06:26.998 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/24/maven-parent-24.pom (37 KB at 1501.4 KB/sec)
+11:06:27.004 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/apache/14/apache-14.pom
+11:06:27.027 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/apache/14/apache-14.pom (15 KB at 597.5 KB/sec)
+11:06:27.034 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.2.1/maven-artifact-2.2.1.pom
+11:06:27.055 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.2.1/maven-artifact-2.2.1.pom (2 KB at 73.5 KB/sec)
+11:06:27.058 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.2.1/maven-2.2.1.pom
+11:06:27.082 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.2.1/maven-2.2.1.pom (22 KB at 911.8 KB/sec)
+11:06:27.096 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.2.1/maven-model-2.2.1.pom
+11:06:27.115 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.2.1/maven-model-2.2.1.pom (4 KB at 166.5 KB/sec)
+11:06:27.122 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.2.1/maven-core-2.2.1.pom
+11:06:27.142 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.2.1/maven-core-2.2.1.pom (12 KB at 541.0 KB/sec)
+11:06:27.157 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.2.1/maven-settings-2.2.1.pom
+11:06:27.175 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.2.1/maven-settings-2.2.1.pom (3 KB at 125.2 KB/sec)
+11:06:27.181 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.2.1/maven-plugin-parameter-documenter-2.2.1.pom
+11:06:27.198 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.2.1/maven-plugin-parameter-documenter-2.2.1.pom (2 KB at 106.2 KB/sec)
+11:06:27.206 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.2.1/maven-reporting-api-2.2.1.pom
+11:06:27.225 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.2.1/maven-reporting-api-2.2.1.pom (2 KB at 95.2 KB/sec)
+11:06:27.229 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting/2.2.1/maven-reporting-2.2.1.pom
+11:06:27.248 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting/2.2.1/maven-reporting-2.2.1.pom (2 KB at 74.2 KB/sec)
+11:06:27.260 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.2.1/maven-profile-2.2.1.pom
+11:06:27.280 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.2.1/maven-profile-2.2.1.pom (3 KB at 106.0 KB/sec)
+11:06:27.289 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.2.1/maven-repository-metadata-2.2.1.pom
+11:06:27.310 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.2.1/maven-repository-metadata-2.2.1.pom (2 KB at 87.0 KB/sec)
+11:06:27.321 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.2.1/maven-error-diagnostics-2.2.1.pom
+11:06:27.342 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.2.1/maven-error-diagnostics-2.2.1.pom (2 KB at 79.4 KB/sec)
+11:06:27.351 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.2.1/maven-project-2.2.1.pom
+11:06:27.374 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.2.1/maven-project-2.2.1.pom (3 KB at 123.1 KB/sec)
+11:06:27.386 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.2.1/maven-artifact-manager-2.2.1.pom
+11:06:27.403 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.2.1/maven-artifact-manager-2.2.1.pom (4 KB at 168.3 KB/sec)
+11:06:27.411 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.2.1/maven-plugin-registry-2.2.1.pom
+11:06:27.429 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.2.1/maven-plugin-registry-2.2.1.pom (2 KB at 104.7 KB/sec)
+11:06:27.443 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.pom
+11:06:27.464 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.pom (2 KB at 64.8 KB/sec)
+11:06:27.473 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.2.1/maven-plugin-descriptor-2.2.1.pom
+11:06:27.498 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.2.1/maven-plugin-descriptor-2.2.1.pom (3 KB at 91.6 KB/sec)
+11:06:27.517 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.2.1/maven-monitor-2.2.1.pom
+11:06:27.534 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.2.1/maven-monitor-2.2.1.pom (2 KB at 72.2 KB/sec)
+11:06:27.543 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/0.7/maven-shared-utils-0.7.pom
+11:06:27.563 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/0.7/maven-shared-utils-0.7.pom (5 KB at 272.0 KB/sec)
+11:06:27.573 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.pom
+11:06:27.596 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.pom (965 B at 42.8 KB/sec)
+11:06:27.602 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/2.8.1/plexus-archiver-2.8.1.pom
+11:06:27.624 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/2.8.1/plexus-archiver-2.8.1.pom (5 KB at 174.8 KB/sec)
+11:06:27.632 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.3/plexus-components-1.3.pom
+11:06:27.656 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.3/plexus-components-1.3.pom (3 KB at 129.8 KB/sec)
+11:06:27.668 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/3.3/plexus-3.3.pom
+11:06:27.710 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/3.3/plexus-3.3.pom (20 KB at 462.7 KB/sec)
+11:06:27.716 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/17/spice-parent-17.pom
+11:06:27.737 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/17/spice-parent-17.pom (7 KB at 330.0 KB/sec)
+11:06:27.740 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/10/forge-parent-10.pom
+11:06:27.760 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/10/forge-parent-10.pom (14 KB at 662.1 KB/sec)
+11:06:27.769 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.20/plexus-utils-3.0.20.pom
+11:06:27.787 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.20/plexus-utils-3.0.20.pom (4 KB at 206.7 KB/sec)
+11:06:27.792 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/3.3.1/plexus-3.3.1.pom
+11:06:27.813 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/3.3.1/plexus-3.3.1.pom (20 KB at 950.8 KB/sec)
+11:06:27.822 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/2.3.2/plexus-io-2.3.2.pom
+11:06:27.841 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/2.3.2/plexus-io-2.3.2.pom (3 KB at 136.3 KB/sec)
+11:06:27.846 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.2/plexus-components-1.2.pom
+11:06:27.864 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.2/plexus-components-1.2.pom (3 KB at 165.9 KB/sec)
+11:06:27.868 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/3.2/plexus-3.2.pom
+11:06:27.889 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/3.2/plexus-3.2.pom (19 KB at 871.7 KB/sec)
+11:06:27.898 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.9/commons-compress-1.9.pom
+11:06:27.917 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.9/commons-compress-1.9.pom (12 KB at 558.3 KB/sec)
+11:06:27.922 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/34/commons-parent-34.pom
+11:06:27.954 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/34/commons-parent-34.pom (55 KB at 1762.3 KB/sec)
+11:06:27.967 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/apache/13/apache-13.pom
+11:06:27.987 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/apache/13/apache-13.pom (14 KB at 649.8 KB/sec)
+11:06:27.999 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.21/plexus-interpolation-1.21.pom
+11:06:28.019 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.21/plexus-interpolation-1.21.pom (2 KB at 75.2 KB/sec)
+11:06:28.023 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.3.1/plexus-components-1.3.1.pom
+11:06:28.042 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.3.1/plexus-components-1.3.1.pom (3 KB at 166.2 KB/sec)
+11:06:28.050 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-dependency-tree/2.1/maven-dependency-tree-2.1.pom
+11:06:28.070 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-dependency-tree/2.1/maven-dependency-tree-2.1.pom (7 KB at 331.5 KB/sec)
+11:06:28.075 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/19/maven-shared-components-19.pom
+11:06:28.095 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/19/maven-shared-components-19.pom (7 KB at 326.8 KB/sec)
+11:06:28.099 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/23/maven-parent-23.pom
+11:06:28.122 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/23/maven-parent-23.pom (32 KB at 1383.6 KB/sec)
+11:06:28.132 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.pom
+11:06:28.152 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.pom (815 B at 41.9 KB/sec)
+11:06:28.156 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.5.5/plexus-containers-1.5.5.pom
+11:06:28.175 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.5.5/plexus-containers-1.5.5.pom (5 KB at 230.0 KB/sec)
+11:06:28.179 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.7/plexus-2.0.7.pom
+11:06:28.199 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.7/plexus-2.0.7.pom (17 KB at 844.5 KB/sec)
+11:06:28.205 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-util/0.9.0.M2/aether-util-0.9.0.M2.pom
+11:06:28.222 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-util/0.9.0.M2/aether-util-0.9.0.M2.pom (2 KB at 124.2 KB/sec)
+11:06:28.224 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether/0.9.0.M2/aether-0.9.0.M2.pom
+11:06:28.245 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether/0.9.0.M2/aether-0.9.0.M2.pom (28 KB at 1296.0 KB/sec)
+11:06:28.250 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.10/plexus-utils-3.0.10.pom
+11:06:28.268 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.10/plexus-utils-3.0.10.pom (4 KB at 180.6 KB/sec)
+11:06:28.273 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.7/plexus-build-api-0.0.7.pom
+11:06:28.289 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.7/plexus-build-api-0.0.7.pom (4 KB at 195.6 KB/sec)
+11:06:28.292 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/15/spice-parent-15.pom
+11:06:28.308 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/15/spice-parent-15.pom (9 KB at 510.1 KB/sec)
+11:06:28.311 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/5/forge-parent-5.pom
+11:06:28.327 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/5/forge-parent-5.pom (9 KB at 510.4 KB/sec)
+11:06:28.331 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.8/plexus-utils-1.5.8.pom
+11:06:28.349 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.8/plexus-utils-1.5.8.pom (8 KB at 437.4 KB/sec)
+11:06:28.354 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0/doxia-sink-api-1.0.pom
+11:06:28.371 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0/doxia-sink-api-1.0.pom (2 KB at 84.7 KB/sec)
+11:06:28.374 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/1.0/doxia-1.0.pom
+11:06:28.391 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/1.0/doxia-1.0.pom (10 KB at 588.6 KB/sec)
+11:06:28.394 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/10/maven-parent-10.pom
+11:06:28.419 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/10/maven-parent-10.pom (31 KB at 1235.7 KB/sec)
+11:06:28.425 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-site-renderer/1.0/doxia-site-renderer-1.0.pom
+11:06:28.441 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-site-renderer/1.0/doxia-site-renderer-1.0.pom (5 KB at 270.2 KB/sec)
+11:06:28.444 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sitetools/1.0/doxia-sitetools-1.0.pom
+11:06:28.461 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sitetools/1.0/doxia-sitetools-1.0.pom (10 KB at 550.7 KB/sec)
+11:06:28.466 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-core/1.0/doxia-core-1.0.pom
+11:06:28.483 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-core/1.0/doxia-core-1.0.pom (3 KB at 146.2 KB/sec)
+11:06:28.488 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.7/plexus-utils-1.5.7.pom
+11:06:28.509 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.7/plexus-utils-1.5.7.pom (8 KB at 375.0 KB/sec)
+11:06:28.514 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-i18n/1.0-beta-7/plexus-i18n-1.0-beta-7.pom
+11:06:28.534 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-i18n/1.0-beta-7/plexus-i18n-1.0-beta-7.pom (2 KB at 51.7 KB/sec)
+11:06:28.537 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.12/plexus-components-1.1.12.pom
+11:06:28.557 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.12/plexus-components-1.1.12.pom (3 KB at 146.6 KB/sec)
+11:06:28.562 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.4.1/plexus-utils-1.4.1.pom
+11:06:28.583 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.4.1/plexus-utils-1.4.1.pom (2 KB at 93.2 KB/sec)
+11:06:28.587 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-velocity/1.1.7/plexus-velocity-1.1.7.pom
+11:06:28.605 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-velocity/1.1.7/plexus-velocity-1.1.7.pom (2 KB at 106.2 KB/sec)
+11:06:28.610 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-20/plexus-container-default-1.0-alpha-20.pom
+11:06:28.628 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-20/plexus-container-default-1.0-alpha-20.pom (3 KB at 162.3 KB/sec)
+11:06:28.631 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.0-alpha-20/plexus-containers-1.0-alpha-20.pom
+11:06:28.649 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.0-alpha-20/plexus-containers-1.0-alpha-20.pom (2 KB at 102.3 KB/sec)
+11:06:28.653 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.3/plexus-utils-1.3.pom
+11:06:28.672 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.3/plexus-utils-1.3.pom (2 KB at 56.1 KB/sec)
+11:06:28.675 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.8/plexus-1.0.8.pom
+11:06:28.697 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.8/plexus-1.0.8.pom (8 KB at 320.9 KB/sec)
+11:06:28.702 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/1.2-alpha-7/plexus-classworlds-1.2-alpha-7.pom
+11:06:28.724 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/1.2-alpha-7/plexus-classworlds-1.2-alpha-7.pom (3 KB at 105.3 KB/sec)
+11:06:28.729 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.9/plexus-1.0.9.pom
+11:06:28.752 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.9/plexus-1.0.9.pom (8 KB at 312.5 KB/sec)
+11:06:28.759 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/velocity/velocity/1.5/velocity-1.5.pom
+11:06:28.780 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/velocity/velocity/1.5/velocity-1.5.pom (8 KB at 361.1 KB/sec)
+11:06:28.787 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-collections/commons-collections/3.1/commons-collections-3.1.pom
+11:06:28.812 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-collections/commons-collections/3.1/commons-collections-3.1.pom (6 KB at 237.7 KB/sec)
+11:06:28.818 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.1/commons-lang-2.1.pom
+11:06:28.841 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.1/commons-lang-2.1.pom (10 KB at 440.7 KB/sec)
+11:06:28.853 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/oro/oro/2.0.8/oro-2.0.8.pom
+11:06:28.877 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/oro/oro/2.0.8/oro-2.0.8.pom (140 B at 6.5 KB/sec)
+11:06:28.880 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-decoration-model/1.0/doxia-decoration-model-1.0.pom
+11:06:28.899 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-decoration-model/1.0/doxia-decoration-model-1.0.pom (4 KB at 154.0 KB/sec)
+11:06:28.907 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-collections/commons-collections/3.2/commons-collections-3.2.pom
+11:06:28.927 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-collections/commons-collections/3.2/commons-collections-3.2.pom (11 KB at 538.8 KB/sec)
+11:06:28.933 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-apt/1.0/doxia-module-apt-1.0.pom
+11:06:28.952 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-apt/1.0/doxia-module-apt-1.0.pom (3 KB at 122.2 KB/sec)
+11:06:28.956 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-modules/1.0/doxia-modules-1.0.pom
+11:06:28.976 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-modules/1.0/doxia-modules-1.0.pom (3 KB at 123.0 KB/sec)
+11:06:28.984 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-fml/1.0/doxia-module-fml-1.0.pom
+11:06:29.006 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-fml/1.0/doxia-module-fml-1.0.pom (3 KB at 138.4 KB/sec)
+11:06:29.010 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-xdoc/1.0/doxia-module-xdoc-1.0.pom
+11:06:29.027 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-xdoc/1.0/doxia-module-xdoc-1.0.pom (3 KB at 128.8 KB/sec)
+11:06:29.032 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-xhtml/1.0/doxia-module-xhtml-1.0.pom
+11:06:29.050 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-xhtml/1.0/doxia-module-xhtml-1.0.pom (2 KB at 86.8 KB/sec)
+11:06:29.056 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/jdom/jdom/1.1/jdom-1.1.pom
+11:06:29.072 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/jdom/jdom/1.1/jdom-1.1.pom (3 KB at 133.5 KB/sec)
+11:06:29.124 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/felix/maven-bundle-plugin/3.3.0/maven-bundle-plugin-3.3.0.jar
+11:06:29.125 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/felix/org.apache.felix.scr.bnd/1.9.0/org.apache.felix.scr.bnd-1.9.0.jar
+11:06:29.126 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/biz/aQute/bnd/biz.aQute.bndlib/3.3.0/biz.aQute.bndlib-3.3.0.jar
+11:06:29.134 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/felix/org.apache.felix.bundlerepository/1.6.6/org.apache.felix.bundlerepository-1.6.6.jar
+11:06:29.142 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.core/4.3.1/org.osgi.core-4.3.1.jar
+11:06:29.256 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/felix/maven-bundle-plugin/3.3.0/maven-bundle-plugin-3.3.0.jar (219 KB at 1656.7 KB/sec)
+11:06:29.257 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/easymock/easymock/3.4/easymock-3.4.jar
+11:06:29.273 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/felix/org.apache.felix.bundlerepository/1.6.6/org.apache.felix.bundlerepository-1.6.6.jar (165 KB at 1117.9 KB/sec)
+11:06:29.273 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/objenesis/objenesis/2.2/objenesis-2.2.jar
+11:06:29.306 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/objenesis/objenesis/2.2/objenesis-2.2.jar (52 KB at 307.4 KB/sec)
+11:06:29.306 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/felix/org.apache.felix.utils/1.6.0/org.apache.felix.utils-1.6.0.jar
+11:06:29.325 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.core/4.3.1/org.osgi.core-4.3.1.jar (342 KB at 1717.5 KB/sec)
+11:06:29.325 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.compendium/4.2.0/org.osgi.compendium-4.2.0.jar
+11:06:29.342 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/easymock/easymock/3.4/easymock-3.4.jar (464 KB at 2174.6 KB/sec)
+11:06:29.342 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.2.0/maven-core-2.2.0.jar
+11:06:29.358 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/felix/org.apache.felix.utils/1.6.0/org.apache.felix.utils-1.6.0.jar (67 KB at 294.8 KB/sec)
+11:06:29.358 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.2.0/maven-settings-2.2.0.jar
+11:06:29.370 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.2.0/maven-core-2.2.0.jar (172 KB at 724.6 KB/sec)
+11:06:29.370 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.2.0/maven-plugin-parameter-documenter-2.2.0.jar
+11:06:29.382 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.2.0/maven-settings-2.2.0.jar (48 KB at 192.9 KB/sec)
+11:06:29.382 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-jdk14/1.5.6/slf4j-jdk14-1.5.6.jar
+11:06:29.393 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/felix/org.apache.felix.scr.bnd/1.9.0/org.apache.felix.scr.bnd-1.9.0.jar (1221 KB at 4539.0 KB/sec)
+11:06:29.394 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.5.6/slf4j-api-1.5.6.jar
+11:06:29.413 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-jdk14/1.5.6/slf4j-jdk14-1.5.6.jar (9 KB at 31.8 KB/sec)
+11:06:29.414 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/slf4j/jcl-over-slf4j/1.5.6/jcl-over-slf4j-1.5.6.jar
+11:06:29.415 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.2.0/maven-plugin-parameter-documenter-2.2.0.jar (22 KB at 77.1 KB/sec)
+11:06:29.416 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.2.0/maven-reporting-api-2.2.0.jar
+11:06:29.423 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/osgi/org.osgi.compendium/4.2.0/org.osgi.compendium-4.2.0.jar (600 KB at 2068.1 KB/sec)
+11:06:29.423 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-logging-api/1.1/doxia-logging-api-1.1.jar
+11:06:29.435 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.2.0/maven-reporting-api-2.2.0.jar (10 KB at 32.8 KB/sec)
+11:06:29.435 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.2.0/maven-profile-2.2.0.jar
+11:06:29.435 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.5.6/slf4j-api-1.5.6.jar (22 KB at 74.5 KB/sec)
+11:06:29.435 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.2.0/maven-model-2.2.0.jar
+11:06:29.440 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-logging-api/1.1/doxia-logging-api-1.1.jar (12 KB at 37.1 KB/sec)
+11:06:29.440 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.2.0/maven-artifact-2.2.0.jar
+11:06:29.444 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/slf4j/jcl-over-slf4j/1.5.6/jcl-over-slf4j-1.5.6.jar (17 KB at 54.1 KB/sec)
+11:06:29.444 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.jar
+11:06:29.465 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.2.0/maven-artifact-2.2.0.jar (79 KB at 243.6 KB/sec)
+11:06:29.465 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/junit/junit/4.12/junit-4.12.jar
+11:06:29.478 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.2.0/maven-profile-2.2.0.jar (35 KB at 102.8 KB/sec)
+11:06:29.479 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+11:06:29.481 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.2.0/maven-model-2.2.0.jar (86 KB at 252.0 KB/sec)
+11:06:29.481 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.2.0/maven-repository-metadata-2.2.0.jar
+11:06:29.503 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar (44 KB at 122.1 KB/sec)
+11:06:29.503 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.2.0/maven-error-diagnostics-2.2.0.jar
+11:06:29.516 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.2.0/maven-repository-metadata-2.2.0.jar (26 KB at 67.2 KB/sec)
+11:06:29.516 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.2.0/maven-project-2.2.0.jar
+11:06:29.523 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.jar (190 KB at 499.0 KB/sec)
+11:06:29.523 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.2.0/maven-plugin-registry-2.2.0.jar
+11:06:29.533 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/junit/junit/4.12/junit-4.12.jar (308 KB at 786.6 KB/sec)
+11:06:29.533 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-cli/commons-cli/1.2/commons-cli-1.2.jar
+11:06:29.535 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.2.0/maven-error-diagnostics-2.2.0.jar (13 KB at 32.4 KB/sec)
+11:06:29.535 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.0/maven-plugin-api-2.2.0.jar
+11:06:29.570 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.2.0/maven-plugin-registry-2.2.0.jar (30 KB at 67.8 KB/sec)
+11:06:29.570 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.2.0/maven-plugin-descriptor-2.2.0.jar
+11:06:29.572 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/biz/aQute/bnd/biz.aQute.bndlib/3.3.0/biz.aQute.bndlib-3.3.0.jar (2428 KB at 5419.5 KB/sec)
+11:06:29.572 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.jar
+11:06:29.574 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.0/maven-plugin-api-2.2.0.jar (13 KB at 28.0 KB/sec)
+11:06:29.575 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.2.0/maven-artifact-manager-2.2.0.jar
+11:06:29.578 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.2.0/maven-project-2.2.0.jar (153 KB at 349.7 KB/sec)
+11:06:29.578 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar
+11:06:29.583 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-cli/commons-cli/1.2/commons-cli-1.2.jar (41 KB at 91.9 KB/sec)
+11:06:29.583 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.2.0/maven-monitor-2.2.0.jar
+11:06:29.593 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.jar (14 KB at 29.1 KB/sec)
+11:06:29.593 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1/classworlds-1.1.jar
+11:06:29.595 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.2.0/maven-plugin-descriptor-2.2.0.jar (39 KB at 84.7 KB/sec)
+11:06:29.595 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.jar
+11:06:29.601 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.2.0/maven-monitor-2.2.0.jar (11 KB at 22.3 KB/sec)
+11:06:29.601 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar
+11:06:29.612 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.2.0/maven-artifact-manager-2.2.0.jar (64 KB at 136.1 KB/sec)
+11:06:29.612 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-archiver/2.6/maven-archiver-2.6.jar
+11:06:29.621 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.jar (28 KB at 58.2 KB/sec)
+11:06:29.621 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/0.7/maven-shared-utils-0.7.jar
+11:06:29.625 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1/classworlds-1.1.jar (37 KB at 76.5 KB/sec)
+11:06:29.625 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.jar
+11:06:29.647 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar (14 KB at 26.2 KB/sec)
+11:06:29.647 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/2.8.1/plexus-archiver-2.8.1.jar
+11:06:29.657 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar (324 KB at 632.7 KB/sec)
+11:06:29.658 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/2.3.2/plexus-io-2.3.2.jar
+11:06:29.658 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.jar (32 KB at 60.8 KB/sec)
+11:06:29.658 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.9/commons-compress-1.9.jar
+11:06:29.665 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-archiver/2.6/maven-archiver-2.6.jar (23 KB at 42.2 KB/sec)
+11:06:29.665 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.21/plexus-interpolation-1.21.jar
+11:06:29.681 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/0.7/maven-shared-utils-0.7.jar (167 KB at 308.7 KB/sec)
+11:06:29.682 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-dependency-tree/2.1/maven-dependency-tree-2.1.jar
+11:06:29.699 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/2.3.2/plexus-io-2.3.2.jar (73 KB at 130.5 KB/sec)
+11:06:29.699 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar
+11:06:29.707 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-dependency-tree/2.1/maven-dependency-tree-2.1.jar (59 KB at 103.8 KB/sec)
+11:06:29.707 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-util/0.9.0.M2/aether-util-0.9.0.M2.jar
+11:06:29.710 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.21/plexus-interpolation-1.21.jar (61 KB at 107.6 KB/sec)
+11:06:29.711 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.10/plexus-utils-3.0.10.jar
+11:06:29.712 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/2.8.1/plexus-archiver-2.8.1.jar (140 KB at 248.3 KB/sec)
+11:06:29.713 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.7/plexus-build-api-0.0.7.jar
+11:06:29.719 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar (5 KB at 7.1 KB/sec)
+11:06:29.720 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0/doxia-sink-api-1.0.jar
+11:06:29.720 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.9/commons-compress-1.9.jar (370 KB at 640.1 KB/sec)
+11:06:29.720 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-site-renderer/1.0/doxia-site-renderer-1.0.jar
+11:06:29.737 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/eclipse/aether/aether-util/0.9.0.M2/aether-util-0.9.0.M2.jar (131 KB at 220.0 KB/sec)
+11:06:29.737 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-core/1.0/doxia-core-1.0.jar
+11:06:29.747 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-site-renderer/1.0/doxia-site-renderer-1.0.jar (46 KB at 75.2 KB/sec)
+11:06:29.747 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-i18n/1.0-beta-7/plexus-i18n-1.0-beta-7.jar
+11:06:29.749 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0/doxia-sink-api-1.0.jar (10 KB at 16.2 KB/sec)
+11:06:29.749 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-velocity/1.1.7/plexus-velocity-1.1.7.jar
+11:06:29.754 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.7/plexus-build-api-0.0.7.jar (9 KB at 13.6 KB/sec)
+11:06:29.754 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/velocity/velocity/1.5/velocity-1.5.jar
+11:06:29.760 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-core/1.0/doxia-core-1.0.jar (54 KB at 87.1 KB/sec)
+11:06:29.760 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.1/commons-lang-2.1.jar
+11:06:29.764 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-i18n/1.0-beta-7/plexus-i18n-1.0-beta-7.jar (11 KB at 16.6 KB/sec)
+11:06:29.764 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/oro/oro/2.0.8/oro-2.0.8.jar
+11:06:29.765 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-velocity/1.1.7/plexus-velocity-1.1.7.jar (8 KB at 12.1 KB/sec)
+11:06:29.765 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-decoration-model/1.0/doxia-decoration-model-1.0.jar
+11:06:29.774 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.10/plexus-utils-3.0.10.jar (226 KB at 357.9 KB/sec)
+11:06:29.774 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-collections/commons-collections/3.2/commons-collections-3.2.jar
+11:06:29.785 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-decoration-model/1.0/doxia-decoration-model-1.0.jar (48 KB at 74.6 KB/sec)
+11:06:29.786 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-apt/1.0/doxia-module-apt-1.0.jar
+11:06:29.790 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/oro/oro/2.0.8/oro-2.0.8.jar (64 KB at 99.4 KB/sec)
+11:06:29.790 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-fml/1.0/doxia-module-fml-1.0.jar
+11:06:29.798 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/velocity/velocity/1.5/velocity-1.5.jar (383 KB at 585.5 KB/sec)
+11:06:29.798 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-xdoc/1.0/doxia-module-xdoc-1.0.jar
+11:06:29.806 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.1/commons-lang-2.1.jar (203 KB at 306.9 KB/sec)
+11:06:29.806 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-xhtml/1.0/doxia-module-xhtml-1.0.jar
+11:06:29.809 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-apt/1.0/doxia-module-apt-1.0.jar (46 KB at 69.2 KB/sec)
+11:06:29.809 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/jdom/jdom/1.1/jdom-1.1.jar
+11:06:29.812 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-fml/1.0/doxia-module-fml-1.0.jar (19 KB at 27.1 KB/sec)
+11:06:29.819 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-xdoc/1.0/doxia-module-xdoc-1.0.jar (28 KB at 40.2 KB/sec)
+11:06:29.828 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-xhtml/1.0/doxia-module-xhtml-1.0.jar (22 KB at 31.1 KB/sec)
+11:06:29.834 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/jdom/jdom/1.1/jdom-1.1.jar (150 KB at 216.7 KB/sec)
+11:06:29.854 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-collections/commons-collections/3.2/commons-collections-3.2.jar (558 KB at 786.8 KB/sec)
+11:06:30.796 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] [ERROR] Some problems were encountered while processing the POMs:
+11:06:30.796 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [FATAL] Non-resolvable parent POM for org.apache.jackrabbit:oak-blob-composite:[unknown-version]: Could not find artifact org.apache.jackrabbit:oak-parent:pom:1.8-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 21, column 11
+11:06:30.797 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler -  @ 
+11:06:30.797 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] The build could not read 1 project -> [Help 1]
+11:06:30.797 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR]   
+11:06:30.797 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR]   The project org.apache.jackrabbit:oak-blob-composite:[unknown-version] (/root/workspace/apache/jackrabbit-oak/344559576/oak-blob-composite/pom.xml) has 1 error
+11:06:30.798 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR]     Non-resolvable parent POM for org.apache.jackrabbit:oak-blob-composite:[unknown-version]: Could not find artifact org.apache.jackrabbit:oak-parent:pom:1.8-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 21, column 11 -> [Help 2]
+11:06:30.798 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] 
+11:06:30.798 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+11:06:30.798 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+11:06:30.798 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] 
+11:06:30.798 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] For more information about the errors and possible solutions, please read the following articles:
+11:06:30.798 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException
+11:06:30.798 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] [Help 2] http://cwiki.apache.org/confluence/display/MAVEN/UnresolvableModelException
+11:06:31.427 [main] ERROR f.i.s.r.process.step.BuildProject - Repository apache/jackrabbit-oak cannot be built.
+11:06:31.428 [main] DEBUG f.i.s.r.process.step.BuildProject - STEP STATUS: [ BuildProjectBuggyBuildCandidateSourceCode : FAILURE ( NOTBUILDABLE ) ]
+11:06:31.428 [main] DEBUG f.i.s.r.process.step.BuildProject - STEP DURATION: 12s
+11:06:31.429 [main] DEBUG f.i.s.r.process.step.BuildProject - TERMINATE PIPELINE
+11:06:31.429 [main] DEBUG f.i.s.r.process.step.BuildProject - FINAL STEPS SKIPPED: The reproduction of the bug and/or the patch failed.
+11:06:31.429 [main] INFO  f.i.s.r.process.step.BuildProject - Serialize all data for the pair of builds 344559576, 344683559
+11:06:31.784 [main] INFO  fr.inria.jtravis.JTravis - GitHub ratelimit: Limit: 5000 Remaining: 4971 Reset hour: 19:27:57
+11:06:33.536 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+11:06:33.537 [main] INFO  f.i.s.r.p.i.ProjectInspector - PIPELINE EXECUTION SUMMARY
+11:06:33.537 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+11:06:33.537 [main] INFO  f.i.s.r.p.i.ProjectInspector - CloneRepository.......................................SUCCESS [ 35 s ]
+11:06:33.538 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutPatchedBuildCandidate.........................SUCCESS [  8 s ]
+11:06:33.538 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeSourceDir......................................SUCCESS [  2 s ]
+11:06:33.538 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeTestDir........................................SUCCESS [  0 s ]
+11:06:33.538 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildCandidateSourceCode.................SUCCESS [  6 s ]
+11:06:33.538 [main] INFO  f.i.s.r.p.i.ProjectInspector - BuildProjectBuggyBuildCandidateSourceCode.............FAILURE [ 12 s ]
+11:06:33.538 [main] INFO  f.i.s.r.p.i.ProjectInspector - TestProjectBuggyBuildCandidateSourceCode..............NOT RUN         
+11:06:33.538 [main] INFO  f.i.s.r.p.i.ProjectInspector - GatherTestInformationBuggyBuildCandidateSourceCode....NOT RUN         
+11:06:33.539 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildTestCode............................NOT RUN         
+11:06:33.539 [main] INFO  f.i.s.r.p.i.ProjectInspector - InitRepoToPush........................................NOT RUN         
+11:06:33.539 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeClasspath......................................NOT RUN         
+11:06:33.539 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeModules........................................NOT RUN         
+11:06:33.539 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildCandidateSourceCode.................NOT RUN         
+11:06:33.539 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitChangedTests....................................NOT RUN         
+11:06:33.540 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutPatchedBuildCandidate.........................NOT RUN         
+11:06:33.540 [main] INFO  f.i.s.r.p.i.ProjectInspector - BuildProjectPatchedBuildCandidate.....................NOT RUN         
+11:06:33.540 [main] INFO  f.i.s.r.p.i.ProjectInspector - TestProjectPatchedBuildCandidate......................NOT RUN         
+11:06:33.541 [main] INFO  f.i.s.r.p.i.ProjectInspector - GatherTestInformationPatchedBuildCandidate............NOT RUN         
+11:06:33.541 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitPatch...........................................NOT RUN         
+11:06:33.541 [main] INFO  f.i.s.r.p.i.ProjectInspector - WritePropertyFile.....................................NOT RUN         
+11:06:33.541 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitProcessEnd......................................NOT RUN         
+11:06:33.541 [main] INFO  f.i.s.r.p.i.ProjectInspector - PushProcessEnd........................................NOT RUN         
+11:06:33.542 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+11:06:33.542 [main] INFO  f.i.s.r.p.i.ProjectInspector - PIPELINE FINDING: NOTBUILDABLE
+11:06:33.542 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+11:06:33.542 [main] INFO  f.i.s.repairnator.pipeline.Launcher - Inspector is finished. The process will exit now.
