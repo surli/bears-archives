@@ -1,0 +1,578 @@
+05:32:36.065 [main] INFO  f.i.s.repairnator.pipeline.Launcher - PIPELINE VERSION: 3.0-2018-08-09 19:04
+05:32:36.175 [main] INFO  f.i.s.repairnator.pipeline.Launcher - The pipeline will try to reproduce a bug from build 354538007 and its corresponding patch from build 354564156
+05:32:36.175 [main] INFO  f.i.s.repairnator.pipeline.Launcher - Initialize file serializer engines.
+05:32:36.177 [main] INFO  f.i.s.repairnator.pipeline.Launcher - MongoDB won't be used for serialization.
+05:32:36.177 [main] INFO  f.i.s.repairnator.pipeline.Launcher - The email notifier engine won't be used.
+05:32:36.180 [main] INFO  f.i.s.repairnator.pipeline.Launcher - Start by getting the build (buildId: 354538007) with the following config: RepairnatorConfig{runId='e853272b-bf8e-41a0-b5a0-9d347947f4f6_03-18-week3-PASSING_AND_PASSING', launcherMode=BEARS, serializeJson=true, inputPath='null', outputPath='/var/log', mongodbHost='null', mongodbName='repairnator', smtpServer='null', notifyTo=[], notifyEndProcess=false, push=true, pushRemoteRepo='https://github.com/fermadeiral/bears-collection-pp', fork=false, lookFromDate=null, lookToDate=null, buildId=354538007, z3solverPath='./z3_for_linux', workspacePath='./workspace', githubToken='c8a341a903[...]', dockerImageName='null', skipDelete=false, createOutputDir=false, logDirectory='null', nbThreads=0, globalTimeout=0, whiteList=null, blackList=null, jobSleepTime=0, buildSleepTime=0, maxInspectedBuilds=0, duration=null, humanPatch=false, repository='null', clean=true, bearsMode=BOTH, bearsDelimiter = false, repairTools=NopolAllTests,NPEFix,AssertFixer,AstorJGenProg,AstorJKali,NopolSingleTest,AstorJMut,NopolTestExclusionStrategy, githubUserName= fermadeiral, githubUserEmail=fer.madeiral@gmail.com}
+05:32:37.399 [main] DEBUG fr.inria.jtravis.helpers.BuildHelper - Get request to :https://api.travis-ci.org/build/354538007 done after 806 ms
+05:32:37.648 [main] DEBUG fr.inria.jtravis.helpers.BuildHelper - Get request to :https://api.travis-ci.org/build/354564156 done after 135 ms
+05:32:37.680 [main] INFO  f.i.s.repairnator.pipeline.Launcher - The patched build (354564156) was successfully retrieved from Travis.
+05:32:38.991 [main] INFO  fr.inria.jtravis.JTravis - GitHub ratelimit: Limit: 5000 Remaining: 4971 Reset hour: 19:33:23
+05:32:39.346 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+05:32:39.346 [main] INFO  f.i.s.r.p.i.ProjectInspector - PIPELINE STEPS
+05:32:39.347 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+05:32:39.347 [main] INFO  f.i.s.r.p.i.ProjectInspector - CloneRepository
+05:32:39.347 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutPatchedBuildCandidate
+05:32:39.348 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeSourceDir
+05:32:39.348 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeTestDir
+05:32:39.348 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildCandidateSourceCode
+05:32:39.348 [main] INFO  f.i.s.r.p.i.ProjectInspector - BuildProjectBuggyBuildCandidateSourceCode
+05:32:39.349 [main] INFO  f.i.s.r.p.i.ProjectInspector - TestProjectBuggyBuildCandidateSourceCode
+05:32:39.349 [main] INFO  f.i.s.r.p.i.ProjectInspector - GatherTestInformationBuggyBuildCandidateSourceCode
+05:32:39.349 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildTestCode
+05:32:39.350 [main] INFO  f.i.s.r.p.i.ProjectInspector - InitRepoToPush
+05:32:39.350 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeClasspath
+05:32:39.350 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeModules
+05:32:39.350 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildCandidateSourceCode
+05:32:39.351 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitChangedTests
+05:32:39.351 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutPatchedBuildCandidate
+05:32:39.352 [main] INFO  f.i.s.r.p.i.ProjectInspector - BuildProjectPatchedBuildCandidate
+05:32:39.352 [main] INFO  f.i.s.r.p.i.ProjectInspector - TestProjectPatchedBuildCandidate
+05:32:39.352 [main] INFO  f.i.s.r.p.i.ProjectInspector - GatherTestInformationPatchedBuildCandidate
+05:32:39.353 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitPatch
+05:32:39.354 [main] INFO  f.i.s.r.p.i.ProjectInspector - WritePropertyFile
+05:32:39.354 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitProcessEnd
+05:32:39.354 [main] INFO  f.i.s.r.p.i.ProjectInspector - PushProcessEnd
+05:32:39.355 [main] DEBUG f.i.s.r.process.step.CloneRepository - ----------------------------------------------------------------------
+05:32:39.356 [main] DEBUG f.i.s.r.process.step.CloneRepository - STEP 1/22: CloneRepository
+05:32:39.356 [main] DEBUG f.i.s.r.process.step.CloneRepository - ----------------------------------------------------------------------
+05:32:39.357 [main] DEBUG f.i.s.r.process.step.CloneRepository - Cloning repository prestodb/presto in the following directory: ./workspace/prestodb/presto/354538007
+05:33:21.272 [main] DEBUG f.i.s.r.process.step.CloneRepository - STEP STATUS: [ CloneRepository : SUCCESS ]
+05:33:21.273 [main] DEBUG f.i.s.r.process.step.CloneRepository - STEP DURATION: 41s
+05:33:21.273 [main] DEBUG f.i.s.r.process.step.CloneRepository - EXECUTE NEXT STEP
+05:33:21.273 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - ----------------------------------------------------------------------
+05:33:21.274 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - STEP 2/22: CheckoutPatchedBuildCandidate
+05:33:21.274 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - ----------------------------------------------------------------------
+05:33:21.274 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - Checking out patched build candidate...
+05:33:21.626 [main] INFO  fr.inria.jtravis.JTravis - GitHub ratelimit: Limit: 5000 Remaining: 4959 Reset hour: 19:33:23
+05:33:23.516 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - Reproduce the PR for prestodb/presto by fetching remote branch and merging.
+05:33:25.420 [main] DEBUG f.i.s.r.process.git.GitHelper - Step CheckoutPatchedBuildCandidate - Get the commit d5c53e3b9aab5c90304a592a62e2f45a78fd5d0b for repo prestodb/presto
+05:33:26.900 [main] DEBUG f.i.s.r.process.git.GitHelper - Step CheckoutPatchedBuildCandidate - Do the merge with the PR commit for repo prestodb/presto
+05:33:27.595 [main] INFO  f.i.s.r.process.git.GitHelper - Init git submodules.
+05:33:27.722 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - STEP STATUS: [ CheckoutPatchedBuildCandidate : SUCCESS ]
+05:33:27.723 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - STEP DURATION: 6s
+05:33:27.723 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - EXECUTE NEXT STEP
+05:33:27.724 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - ----------------------------------------------------------------------
+05:33:27.724 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - STEP 3/22: ComputeSourceDir
+05:33:27.724 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - ----------------------------------------------------------------------
+05:33:27.725 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Computing the source directory ...
+05:33:27.726 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - The default source directory (/root/workspace/prestodb/presto/354538007/src/main/java) does not exist. Try to read pom.xml to get information.
+05:33:27.854 [main] DEBUG f.i.s.r.p.m.RepositoryModelResolver - Downloading https://repo1.maven.org/maven2/io/airlift/airbase/79/airbase-79.pom
+05:33:28.099 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-root:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.182 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Build section does not exist in the following pom.xml: /root/workspace/prestodb/presto/354538007/pom.xml. Continue to try to get source dir from all modules.
+05:33:28.224 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-atop:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.273 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-spi:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.328 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-array:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.351 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-jmx:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.375 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-record-decoder:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.404 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-kafka:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.420 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-redis:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.451 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-accumulo:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.486 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-cassandra:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.515 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-blackhole:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.548 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-memory:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.560 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-orc:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.572 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-rcfile:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.585 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-hive:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.597 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-hive-hadoop2:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.612 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-teradata-functions:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.623 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-example-http:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.649 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-local-file:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.660 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-tpch:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.672 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-tpcds:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.684 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-raptor:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.695 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-base-jdbc:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.707 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-mysql:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.717 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-postgresql:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.728 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-redshift:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.739 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-sqlserver:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.750 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-mongodb:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.760 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-client:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.770 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-parser:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.781 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-main:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.807 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-ml:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.819 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-geospatial:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.829 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-geospatial-toolkit:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.839 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-benchmark:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.849 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-tests:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.859 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-product-tests:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.870 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-jdbc:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.879 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-cli:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.889 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-benchmark-driver:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.890 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - The default source directory (/root/workspace/prestodb/presto/354538007/presto-server/src/main/java) does not exist. Try to read pom.xml to get information.
+05:33:28.900 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-server:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.900 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Build section does not exist in the following pom.xml: /root/workspace/prestodb/presto/354538007/presto-server/pom.xml. Continue to try to get source dir from all modules.
+05:33:28.901 [main] ERROR f.i.s.r.p.s.paths.ComputeSourceDir - The source directory is not at default location or specified in build section from pom.xml, and no parent can be found.
+05:33:28.901 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - The default source directory (/root/workspace/prestodb/presto/354538007/presto-server-rpm/src/main/java) does not exist. Try to read pom.xml to get information.
+05:33:28.914 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-server-rpm:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.916 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Build section does not exist in the following pom.xml: /root/workspace/prestodb/presto/354538007/presto-server-rpm/pom.xml. Continue to try to get source dir from all modules.
+05:33:28.916 [main] ERROR f.i.s.r.p.s.paths.ComputeSourceDir - The source directory is not at default location or specified in build section from pom.xml, and no parent can be found.
+05:33:28.916 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - The default source directory (/root/workspace/prestodb/presto/354538007/presto-docs/src/main/java) does not exist. Try to read pom.xml to get information.
+05:33:28.926 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-docs:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.928 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Build section does not exist in the following pom.xml: /root/workspace/prestodb/presto/354538007/presto-docs/pom.xml. Continue to try to get source dir from all modules.
+05:33:28.928 [main] ERROR f.i.s.r.p.s.paths.ComputeSourceDir - The source directory is not at default location or specified in build section from pom.xml, and no parent can be found.
+05:33:28.939 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-verifier:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.949 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-testing-server-launcher:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.959 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-plugin-toolkit:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.968 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-resource-group-managers:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.978 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-password-authenticators:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.979 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - The default source directory (/root/workspace/prestodb/presto/354538007/presto-benchto-benchmarks/src/main/java) does not exist. Try to read pom.xml to get information.
+05:33:28.987 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-benchto-benchmarks:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:28.988 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Build section does not exist in the following pom.xml: /root/workspace/prestodb/presto/354538007/presto-benchto-benchmarks/pom.xml. Continue to try to get source dir from all modules.
+05:33:28.988 [main] ERROR f.i.s.r.p.s.paths.ComputeSourceDir - The source directory is not at default location or specified in build section from pom.xml, and no parent can be found.
+05:33:28.997 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-thrift-connector-api:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:29.008 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-thrift-testing-server:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:29.022 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-thrift-connector:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:29.033 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-matching:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:29.044 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-memory-context:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:29.045 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - 49 source dirs were found:
+05:33:29.045 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-accumulo/src/main/java
+05:33:29.045 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-array/src/main/java
+05:33:29.046 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-atop/src/main/java
+05:33:29.046 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-base-jdbc/src/main/java
+05:33:29.046 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-benchmark-driver/src/main/java
+05:33:29.046 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-benchmark/src/main/java
+05:33:29.047 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-blackhole/src/main/java
+05:33:29.047 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-cassandra/src/main/java
+05:33:29.047 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-cli/src/main/java
+05:33:29.047 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-client/src/main/java
+05:33:29.047 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-example-http/src/main/java
+05:33:29.048 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-geospatial-toolkit/src/main/java
+05:33:29.048 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-geospatial/src/main/java
+05:33:29.048 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-hive-hadoop2/src/main/java
+05:33:29.048 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-hive/src/main/java
+05:33:29.048 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-jdbc/src/main/java
+05:33:29.049 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-jmx/src/main/java
+05:33:29.049 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-kafka/src/main/java
+05:33:29.049 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-local-file/src/main/java
+05:33:29.049 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-main/src/main/java
+05:33:29.050 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-matching/src/main/java
+05:33:29.050 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-memory-context/src/main/java
+05:33:29.050 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-memory/src/main/java
+05:33:29.050 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-ml/src/main/java
+05:33:29.050 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-mongodb/src/main/java
+05:33:29.051 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-mysql/src/main/java
+05:33:29.051 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-orc/src/main/java
+05:33:29.051 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-parser/src/main/java
+05:33:29.051 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-password-authenticators/src/main/java
+05:33:29.051 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-plugin-toolkit/src/main/java
+05:33:29.052 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-postgresql/src/main/java
+05:33:29.052 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-product-tests/src/main/java
+05:33:29.052 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-raptor/src/main/java
+05:33:29.052 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-rcfile/src/main/java
+05:33:29.053 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-record-decoder/src/main/java
+05:33:29.053 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-redis/src/main/java
+05:33:29.053 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-redshift/src/main/java
+05:33:29.053 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-resource-group-managers/src/main/java
+05:33:29.054 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-spi/src/main/java
+05:33:29.054 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-sqlserver/src/main/java
+05:33:29.054 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-teradata-functions/src/main/java
+05:33:29.054 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-testing-server-launcher/src/main/java
+05:33:29.054 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-tests/src/main/java
+05:33:29.055 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-thrift-connector-api/src/main/java
+05:33:29.055 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-thrift-connector/src/main/java
+05:33:29.055 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-thrift-testing-server/src/main/java
+05:33:29.055 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-tpcds/src/main/java
+05:33:29.056 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-tpch/src/main/java
+05:33:29.056 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/prestodb/presto/354538007/presto-verifier/src/main/java
+05:33:29.709 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Compute the line of code of the project
+05:33:29.902 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Get result from cloc process...
+05:33:29.904 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - STEP STATUS: [ ComputeSourceDir : SUCCESS ]
+05:33:29.904 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - STEP DURATION: 2s
+05:33:29.904 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - EXECUTE NEXT STEP
+05:33:29.904 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - ----------------------------------------------------------------------
+05:33:29.904 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - STEP 4/22: ComputeTestDir
+05:33:29.904 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - ----------------------------------------------------------------------
+05:33:29.904 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - Computing the test directory ...
+05:33:29.904 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - The default test directory (/root/workspace/prestodb/presto/354538007/src/test/java) does not exist. Try to read pom.xml to get information.
+05:33:29.913 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-root:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:29.915 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - Build section does not exist in the following pom.xml: /root/workspace/prestodb/presto/354538007/pom.xml. Continue to try to get test dir from all modules.
+05:33:29.923 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-atop:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:29.931 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-spi:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:29.941 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-array:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:29.964 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-jmx:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:29.976 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-record-decoder:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:29.989 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-kafka:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.021 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-redis:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.030 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-accumulo:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.039 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-cassandra:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.049 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-blackhole:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.057 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-memory:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.065 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-orc:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.073 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-rcfile:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.081 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-hive:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.089 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-hive-hadoop2:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.096 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-teradata-functions:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.104 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-example-http:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.112 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-local-file:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.120 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-tpch:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.128 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-tpcds:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.136 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-raptor:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.144 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-base-jdbc:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.153 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-mysql:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.161 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-postgresql:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.169 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-redshift:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.177 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-sqlserver:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.222 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-mongodb:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.251 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-client:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.264 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-parser:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.273 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-main:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.280 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-ml:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.288 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-geospatial:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.296 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-geospatial-toolkit:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.304 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-benchmark:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.311 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-tests:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.319 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-product-tests:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.327 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-jdbc:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.334 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-cli:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.341 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-benchmark-driver:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.341 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - The default test directory (/root/workspace/prestodb/presto/354538007/presto-server/src/test/java) does not exist. Try to read pom.xml to get information.
+05:33:30.348 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-server:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.348 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - Build section does not exist in the following pom.xml: /root/workspace/prestodb/presto/354538007/presto-server/pom.xml. Continue to try to get test dir from all modules.
+05:33:30.349 [main] ERROR f.i.s.r.p.step.paths.ComputeTestDir - The test directory is not at default location or specified in build section from pom.xml, and no parent can be found.
+05:33:30.349 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - The default test directory (/root/workspace/prestodb/presto/354538007/presto-server-rpm/src/test/java) does not exist. Try to read pom.xml to get information.
+05:33:30.358 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-server-rpm:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.359 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - Build section does not exist in the following pom.xml: /root/workspace/prestodb/presto/354538007/presto-server-rpm/pom.xml. Continue to try to get test dir from all modules.
+05:33:30.359 [main] ERROR f.i.s.r.p.step.paths.ComputeTestDir - The test directory is not at default location or specified in build section from pom.xml, and no parent can be found.
+05:33:30.359 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - The default test directory (/root/workspace/prestodb/presto/354538007/presto-docs/src/test/java) does not exist. Try to read pom.xml to get information.
+05:33:30.366 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-docs:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.367 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - Build section does not exist in the following pom.xml: /root/workspace/prestodb/presto/354538007/presto-docs/pom.xml. Continue to try to get test dir from all modules.
+05:33:30.368 [main] ERROR f.i.s.r.p.step.paths.ComputeTestDir - The test directory is not at default location or specified in build section from pom.xml, and no parent can be found.
+05:33:30.375 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-verifier:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.375 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - The default test directory (/root/workspace/prestodb/presto/354538007/presto-testing-server-launcher/src/test/java) does not exist. Try to read pom.xml to get information.
+05:33:30.382 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-testing-server-launcher:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.382 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - Build section does not exist in the following pom.xml: /root/workspace/prestodb/presto/354538007/presto-testing-server-launcher/pom.xml. Continue to try to get test dir from all modules.
+05:33:30.382 [main] ERROR f.i.s.r.p.step.paths.ComputeTestDir - The test directory is not at default location or specified in build section from pom.xml, and no parent can be found.
+05:33:30.393 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-plugin-toolkit:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.410 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-resource-group-managers:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.417 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-password-authenticators:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.418 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - The default test directory (/root/workspace/prestodb/presto/354538007/presto-benchto-benchmarks/src/test/java) does not exist. Try to read pom.xml to get information.
+05:33:30.425 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-benchto-benchmarks:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.425 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - Build section does not exist in the following pom.xml: /root/workspace/prestodb/presto/354538007/presto-benchto-benchmarks/pom.xml. Continue to try to get test dir from all modules.
+05:33:30.425 [main] ERROR f.i.s.r.p.step.paths.ComputeTestDir - The test directory is not at default location or specified in build section from pom.xml, and no parent can be found.
+05:33:30.432 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-thrift-connector-api:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.439 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-thrift-testing-server:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.446 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-thrift-connector:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.453 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-matching:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.459 [main] ERROR f.i.s.r.process.maven.MavenHelper - Error while building complete model. The raw model will be used. Error message: 1 problem was encountered while building the effective model for com.facebook.presto:presto-memory-context:0.197-SNAPSHOT
+[ERROR] Failed to determine Java version for profile java9-surefire @ io.airlift:airbase:79
+
+05:33:30.460 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - 48 test dirs were found:
+05:33:30.460 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-accumulo/src/test/java
+05:33:30.461 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-array/src/test/java
+05:33:30.461 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-atop/src/test/java
+05:33:30.461 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-base-jdbc/src/test/java
+05:33:30.461 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-benchmark-driver/src/test/java
+05:33:30.461 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-benchmark/src/test/java
+05:33:30.461 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-blackhole/src/test/java
+05:33:30.461 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-cassandra/src/test/java
+05:33:30.462 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-cli/src/test/java
+05:33:30.462 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-client/src/test/java
+05:33:30.462 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-example-http/src/test/java
+05:33:30.462 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-geospatial-toolkit/src/test/java
+05:33:30.462 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-geospatial/src/test/java
+05:33:30.462 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-hive-hadoop2/src/test/java
+05:33:30.462 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-hive/src/test/java
+05:33:30.463 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-jdbc/src/test/java
+05:33:30.463 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-jmx/src/test/java
+05:33:30.463 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-kafka/src/test/java
+05:33:30.463 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-local-file/src/test/java
+05:33:30.463 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-main/src/test/java
+05:33:30.463 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-matching/src/test/java
+05:33:30.463 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-memory-context/src/test/java
+05:33:30.464 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-memory/src/test/java
+05:33:30.464 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-ml/src/test/java
+05:33:30.464 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-mongodb/src/test/java
+05:33:30.464 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-mysql/src/test/java
+05:33:30.464 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-orc/src/test/java
+05:33:30.464 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-parser/src/test/java
+05:33:30.465 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-password-authenticators/src/test/java
+05:33:30.465 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-plugin-toolkit/src/test/java
+05:33:30.465 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-postgresql/src/test/java
+05:33:30.465 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-product-tests/src/test/java
+05:33:30.465 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-raptor/src/test/java
+05:33:30.465 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-rcfile/src/test/java
+05:33:30.466 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-record-decoder/src/test/java
+05:33:30.466 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-redis/src/test/java
+05:33:30.466 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-redshift/src/test/java
+05:33:30.466 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-resource-group-managers/src/test/java
+05:33:30.466 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-spi/src/test/java
+05:33:30.466 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-sqlserver/src/test/java
+05:33:30.466 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-teradata-functions/src/test/java
+05:33:30.467 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-tests/src/test/java
+05:33:30.467 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-thrift-connector-api/src/test/java
+05:33:30.467 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-thrift-connector/src/test/java
+05:33:30.467 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-thrift-testing-server/src/test/java
+05:33:30.467 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-tpcds/src/test/java
+05:33:30.467 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-tpch/src/test/java
+05:33:30.468 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/prestodb/presto/354538007/presto-verifier/src/test/java
+05:33:30.493 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - STEP STATUS: [ ComputeTestDir : SUCCESS ]
+05:33:30.494 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - STEP DURATION: 0s
+05:33:30.494 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - EXECUTE NEXT STEP
+05:33:30.494 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - ----------------------------------------------------------------------
+05:33:30.494 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - STEP 5/22: CheckoutBuggyBuildCandidateSourceCode
+05:33:30.494 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - ----------------------------------------------------------------------
+05:33:30.495 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - Checking out the source code of the buggy build candidate...
+05:33:30.836 [main] INFO  fr.inria.jtravis.JTravis - GitHub ratelimit: Limit: 5000 Remaining: 4952 Reset hour: 19:33:23
+05:33:32.259 [main] DEBUG f.i.s.r.process.git.GitHelper - Commit repairnator files...
+05:33:32.259 [main] INFO  f.i.s.r.process.git.GitHelper - There is no repairnator file to commit.
+05:33:32.259 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - Reproduce the PR for prestodb/presto by fetching remote branch and merging.
+05:33:32.764 [main] DEBUG f.i.s.r.process.git.GitHelper - Step CheckoutBuggyBuildCandidateSourceCode - Get the commit d5c53e3b9aab5c90304a592a62e2f45a78fd5d0b for repo prestodb/presto
+05:33:32.981 [main] DEBUG f.i.s.r.process.git.GitHelper - Step CheckoutBuggyBuildCandidateSourceCode - Do the merge with the PR commit for repo prestodb/presto
+05:33:33.472 [main] INFO  f.i.s.r.process.git.GitHelper - Init git submodules.
+05:33:33.697 [main] INFO  fr.inria.jtravis.JTravis - GitHub ratelimit: Limit: 5000 Remaining: 4945 Reset hour: 19:33:23
+05:33:35.298 [main] DEBUG f.i.s.r.process.git.GitHelper - Commit repairnator files...
+05:33:35.299 [main] INFO  f.i.s.r.process.git.GitHelper - There is no repairnator file to commit.
+05:33:35.299 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - Reproduce the PR for prestodb/presto by fetching remote branch and merging.
+05:33:35.750 [main] ERROR f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - Error while testing commit: org.eclipse.jgit.errors.MissingObjectException: Missing unknown 54fa4a2c3127ac179c5f14d2bdec46a0cae695d4
+05:33:35.751 [main] ERROR f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - Commit head ref cannot be retrieved from the repository: 54fa4a2c3127ac179c5f14d2bdec46a0cae695d4. Operation aborted.
+05:33:35.751 [main] ERROR f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - Error while merging two commits to reproduce the PR.
+05:33:35.752 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - STEP STATUS: [ CheckoutBuggyBuildCandidateSourceCode : FAILURE ( BUILDNOTCHECKEDOUT ) ]
+05:33:35.752 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - STEP DURATION: 5s
+05:33:35.752 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - TERMINATE PIPELINE
+05:33:35.753 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - FINAL STEPS SKIPPED: The reproduction of the bug and/or the patch failed.
+05:33:35.753 [main] INFO  f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - Serialize all data for the pair of builds 354538007, 354564156
+05:33:35.881 [main] INFO  fr.inria.jtravis.JTravis - GitHub ratelimit: Limit: 5000 Remaining: 4938 Reset hour: 19:33:23
+05:33:37.436 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+05:33:37.437 [main] INFO  f.i.s.r.p.i.ProjectInspector - PIPELINE EXECUTION SUMMARY
+05:33:37.437 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+05:33:37.437 [main] INFO  f.i.s.r.p.i.ProjectInspector - CloneRepository.......................................SUCCESS [ 41 s ]
+05:33:37.437 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutPatchedBuildCandidate.........................SUCCESS [  6 s ]
+05:33:37.438 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeSourceDir......................................SUCCESS [  2 s ]
+05:33:37.438 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeTestDir........................................SUCCESS [  0 s ]
+05:33:37.438 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildCandidateSourceCode.................FAILURE [  5 s ]
+05:33:37.438 [main] INFO  f.i.s.r.p.i.ProjectInspector - BuildProjectBuggyBuildCandidateSourceCode.............NOT RUN         
+05:33:37.438 [main] INFO  f.i.s.r.p.i.ProjectInspector - TestProjectBuggyBuildCandidateSourceCode..............NOT RUN         
+05:33:37.438 [main] INFO  f.i.s.r.p.i.ProjectInspector - GatherTestInformationBuggyBuildCandidateSourceCode....NOT RUN         
+05:33:37.438 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildTestCode............................NOT RUN         
+05:33:37.438 [main] INFO  f.i.s.r.p.i.ProjectInspector - InitRepoToPush........................................NOT RUN         
+05:33:37.439 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeClasspath......................................NOT RUN         
+05:33:37.439 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeModules........................................NOT RUN         
+05:33:37.439 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildCandidateSourceCode.................NOT RUN         
+05:33:37.439 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitChangedTests....................................NOT RUN         
+05:33:37.439 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutPatchedBuildCandidate.........................NOT RUN         
+05:33:37.439 [main] INFO  f.i.s.r.p.i.ProjectInspector - BuildProjectPatchedBuildCandidate.....................NOT RUN         
+05:33:37.439 [main] INFO  f.i.s.r.p.i.ProjectInspector - TestProjectPatchedBuildCandidate......................NOT RUN         
+05:33:37.439 [main] INFO  f.i.s.r.p.i.ProjectInspector - GatherTestInformationPatchedBuildCandidate............NOT RUN         
+05:33:37.440 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitPatch...........................................NOT RUN         
+05:33:37.440 [main] INFO  f.i.s.r.p.i.ProjectInspector - WritePropertyFile.....................................NOT RUN         
+05:33:37.440 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitProcessEnd......................................NOT RUN         
+05:33:37.440 [main] INFO  f.i.s.r.p.i.ProjectInspector - PushProcessEnd........................................NOT RUN         
+05:33:37.440 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+05:33:37.440 [main] INFO  f.i.s.r.p.i.ProjectInspector - PIPELINE FINDING: BUILDNOTCHECKEDOUT
+05:33:37.440 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+05:33:37.441 [main] INFO  f.i.s.repairnator.pipeline.Launcher - Inspector is finished. The process will exit now.

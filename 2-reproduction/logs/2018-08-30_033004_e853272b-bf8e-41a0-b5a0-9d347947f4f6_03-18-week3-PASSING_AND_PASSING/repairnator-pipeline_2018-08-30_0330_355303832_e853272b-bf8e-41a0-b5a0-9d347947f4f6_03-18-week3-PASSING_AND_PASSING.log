@@ -1,0 +1,923 @@
+16:40:22.999 [main] INFO  f.i.s.repairnator.pipeline.Launcher - PIPELINE VERSION: 3.0-2018-08-09 19:04
+16:40:23.161 [main] INFO  f.i.s.repairnator.pipeline.Launcher - The pipeline will try to reproduce a bug from build 355303832 and its corresponding patch from build 355791813
+16:40:23.162 [main] INFO  f.i.s.repairnator.pipeline.Launcher - Initialize file serializer engines.
+16:40:23.164 [main] INFO  f.i.s.repairnator.pipeline.Launcher - MongoDB won't be used for serialization.
+16:40:23.164 [main] INFO  f.i.s.repairnator.pipeline.Launcher - The email notifier engine won't be used.
+16:40:23.168 [main] INFO  f.i.s.repairnator.pipeline.Launcher - Start by getting the build (buildId: 355303832) with the following config: RepairnatorConfig{runId='e853272b-bf8e-41a0-b5a0-9d347947f4f6_03-18-week3-PASSING_AND_PASSING', launcherMode=BEARS, serializeJson=true, inputPath='null', outputPath='/var/log', mongodbHost='null', mongodbName='repairnator', smtpServer='null', notifyTo=[], notifyEndProcess=false, push=true, pushRemoteRepo='https://github.com/fermadeiral/bears-collection-pp', fork=false, lookFromDate=null, lookToDate=null, buildId=355303832, z3solverPath='./z3_for_linux', workspacePath='./workspace', githubToken='c8a341a903[...]', dockerImageName='null', skipDelete=false, createOutputDir=false, logDirectory='null', nbThreads=0, globalTimeout=0, whiteList=null, blackList=null, jobSleepTime=0, buildSleepTime=0, maxInspectedBuilds=0, duration=null, humanPatch=false, repository='null', clean=true, bearsMode=BOTH, bearsDelimiter = false, repairTools=NopolAllTests,NPEFix,AssertFixer,AstorJGenProg,AstorJKali,NopolSingleTest,AstorJMut,NopolTestExclusionStrategy, githubUserName= fermadeiral, githubUserEmail=fer.madeiral@gmail.com}
+16:40:24.446 [main] DEBUG fr.inria.jtravis.helpers.BuildHelper - Get request to :https://api.travis-ci.org/build/355303832 done after 778 ms
+16:40:24.684 [main] DEBUG fr.inria.jtravis.helpers.BuildHelper - Get request to :https://api.travis-ci.org/build/355791813 done after 132 ms
+16:40:24.705 [main] INFO  f.i.s.repairnator.pipeline.Launcher - The patched build (355791813) was successfully retrieved from Travis.
+16:40:25.802 [main] INFO  fr.inria.jtravis.JTravis - GitHub ratelimit: Limit: 5000 Remaining: 4497 Reset hour: 19:34:01
+16:40:26.067 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+16:40:26.067 [main] INFO  f.i.s.r.p.i.ProjectInspector - PIPELINE STEPS
+16:40:26.068 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+16:40:26.068 [main] INFO  f.i.s.r.p.i.ProjectInspector - CloneRepository
+16:40:26.068 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutPatchedBuildCandidate
+16:40:26.068 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeSourceDir
+16:40:26.068 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeTestDir
+16:40:26.068 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildCandidateSourceCode
+16:40:26.068 [main] INFO  f.i.s.r.p.i.ProjectInspector - BuildProjectBuggyBuildCandidateSourceCode
+16:40:26.069 [main] INFO  f.i.s.r.p.i.ProjectInspector - TestProjectBuggyBuildCandidateSourceCode
+16:40:26.069 [main] INFO  f.i.s.r.p.i.ProjectInspector - GatherTestInformationBuggyBuildCandidateSourceCode
+16:40:26.069 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildTestCode
+16:40:26.069 [main] INFO  f.i.s.r.p.i.ProjectInspector - InitRepoToPush
+16:40:26.069 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeClasspath
+16:40:26.069 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeModules
+16:40:26.069 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildCandidateSourceCode
+16:40:26.069 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitChangedTests
+16:40:26.069 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutPatchedBuildCandidate
+16:40:26.070 [main] INFO  f.i.s.r.p.i.ProjectInspector - BuildProjectPatchedBuildCandidate
+16:40:26.070 [main] INFO  f.i.s.r.p.i.ProjectInspector - TestProjectPatchedBuildCandidate
+16:40:26.070 [main] INFO  f.i.s.r.p.i.ProjectInspector - GatherTestInformationPatchedBuildCandidate
+16:40:26.070 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitPatch
+16:40:26.070 [main] INFO  f.i.s.r.p.i.ProjectInspector - WritePropertyFile
+16:40:26.070 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitProcessEnd
+16:40:26.070 [main] INFO  f.i.s.r.p.i.ProjectInspector - PushProcessEnd
+16:40:26.071 [main] DEBUG f.i.s.r.process.step.CloneRepository - ----------------------------------------------------------------------
+16:40:26.071 [main] DEBUG f.i.s.r.process.step.CloneRepository - STEP 1/22: CloneRepository
+16:40:26.071 [main] DEBUG f.i.s.r.process.step.CloneRepository - ----------------------------------------------------------------------
+16:40:26.071 [main] DEBUG f.i.s.r.process.step.CloneRepository - Cloning repository SzFMV2018-Tavasz/AutomatedCar in the following directory: ./workspace/SzFMV2018-Tavasz/AutomatedCar/355303832
+16:40:35.068 [main] DEBUG f.i.s.r.process.step.CloneRepository - STEP STATUS: [ CloneRepository : SUCCESS ]
+16:40:35.069 [main] DEBUG f.i.s.r.process.step.CloneRepository - STEP DURATION: 8s
+16:40:35.070 [main] DEBUG f.i.s.r.process.step.CloneRepository - EXECUTE NEXT STEP
+16:40:35.070 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - ----------------------------------------------------------------------
+16:40:35.071 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - STEP 2/22: CheckoutPatchedBuildCandidate
+16:40:35.071 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - ----------------------------------------------------------------------
+16:40:35.072 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - Checking out patched build candidate...
+16:40:35.083 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - Get commit d7f967159f2caadb52cf4dc24e0ced310686d6ec for repo SzFMV2018-Tavasz/AutomatedCar
+16:40:35.241 [main] INFO  f.i.s.r.process.git.GitHelper - Init git submodules.
+16:40:35.288 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - STEP STATUS: [ CheckoutPatchedBuildCandidate : SUCCESS ]
+16:40:35.289 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - STEP DURATION: 0s
+16:40:35.289 [main] DEBUG f.i.s.r.p.s.c.CheckoutPatchedBuild - EXECUTE NEXT STEP
+16:40:35.289 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - ----------------------------------------------------------------------
+16:40:35.289 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - STEP 3/22: ComputeSourceDir
+16:40:35.289 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - ----------------------------------------------------------------------
+16:40:35.289 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Computing the source directory ...
+16:40:35.428 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - 1 source dir was found:
+16:40:35.428 [main] INFO  f.i.s.r.p.s.paths.ComputeSourceDir - /root/workspace/SzFMV2018-Tavasz/AutomatedCar/355303832/src/main/java
+16:40:35.443 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Compute the line of code of the project
+16:40:35.648 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - Get result from cloc process...
+16:40:35.649 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - STEP STATUS: [ ComputeSourceDir : SUCCESS ]
+16:40:35.649 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - STEP DURATION: 0s
+16:40:35.649 [main] DEBUG f.i.s.r.p.s.paths.ComputeSourceDir - EXECUTE NEXT STEP
+16:40:35.650 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - ----------------------------------------------------------------------
+16:40:35.650 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - STEP 4/22: ComputeTestDir
+16:40:35.650 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - ----------------------------------------------------------------------
+16:40:35.650 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - Computing the test directory ...
+16:40:35.656 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - 1 test dir was found:
+16:40:35.657 [main] INFO  f.i.s.r.p.step.paths.ComputeTestDir - /root/workspace/SzFMV2018-Tavasz/AutomatedCar/355303832/src/test/java
+16:40:35.658 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - STEP STATUS: [ ComputeTestDir : SUCCESS ]
+16:40:35.659 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - STEP DURATION: 0s
+16:40:35.659 [main] DEBUG f.i.s.r.p.step.paths.ComputeTestDir - EXECUTE NEXT STEP
+16:40:35.659 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - ----------------------------------------------------------------------
+16:40:35.659 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - STEP 5/22: CheckoutBuggyBuildCandidateSourceCode
+16:40:35.659 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - ----------------------------------------------------------------------
+16:40:35.659 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - Checking out the source code of the buggy build candidate...
+16:40:35.665 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - Get commit d7f967159f2caadb52cf4dc24e0ced310686d6ec for repo SzFMV2018-Tavasz/AutomatedCar
+16:40:35.697 [main] INFO  f.i.s.r.process.git.GitHelper - Init git submodules.
+16:40:35.751 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - Get commit bda564de708d6ecd9b0e243b4f4e636f87509e28 for repo SzFMV2018-Tavasz/AutomatedCar
+16:40:35.752 [main] DEBUG f.i.s.r.process.git.GitHelper - Executing git command: git reset bda564de708d6ecd9b0e243b4f4e636f87509e28 -- src/main/java/
+16:40:35.764 [main] DEBUG f.i.s.r.process.git.GitHelper - Executing git command: git clean -fd -- src/main/java/
+16:40:35.770 [main] DEBUG f.i.s.r.process.git.GitHelper - Executing git command: git checkout -- .
+16:40:35.814 [main] INFO  f.i.s.r.process.git.GitHelper - Init git submodules.
+16:40:35.871 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - STEP STATUS: [ CheckoutBuggyBuildCandidateSourceCode : SUCCESS ]
+16:40:35.871 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - STEP DURATION: 0s
+16:40:35.871 [main] DEBUG f.i.s.r.p.s.c.CheckoutBuggyBuildSourceCode - EXECUTE NEXT STEP
+16:40:35.871 [main] DEBUG f.i.s.r.process.step.BuildProject - ----------------------------------------------------------------------
+16:40:35.872 [main] DEBUG f.i.s.r.process.step.BuildProject - STEP 6/22: BuildProjectBuggyBuildCandidateSourceCode
+16:40:35.872 [main] DEBUG f.i.s.r.process.step.BuildProject - ----------------------------------------------------------------------
+16:40:35.872 [main] DEBUG f.i.s.r.process.step.BuildProject - Building project by installing artifacts with maven (skip test execution)...
+16:40:38.621 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Scanning for projects...
+16:40:38.808 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO]                                                                         
+16:40:38.809 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] ------------------------------------------------------------------------
+16:40:38.809 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Building AutomatedCar 1.0
+16:40:38.810 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] ------------------------------------------------------------------------
+16:40:39.452 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/jacoco/jacoco-maven-plugin/0.7.8/jacoco-maven-plugin-0.7.8.pom
+16:40:40.131 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/jacoco/jacoco-maven-plugin/0.7.8/jacoco-maven-plugin-0.7.8.pom (5 KB at 6.3 KB/sec)
+16:40:40.164 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/jacoco/org.jacoco.build/0.7.8/org.jacoco.build-0.7.8.pom
+16:40:40.217 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/jacoco/org.jacoco.build/0.7.8/org.jacoco.build-0.7.8.pom (35 KB at 643.9 KB/sec)
+16:40:40.306 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/jacoco/jacoco-maven-plugin/0.7.8/jacoco-maven-plugin-0.7.8.jar
+16:40:40.345 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/jacoco/jacoco-maven-plugin/0.7.8/jacoco-maven-plugin-0.7.8.jar (52 KB at 1330.1 KB/sec)
+16:40:40.499 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/2.6/maven-resources-plugin-2.6.pom
+16:40:40.554 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/2.6/maven-resources-plugin-2.6.pom (8 KB at 161.7 KB/sec)
+16:40:40.556 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/23/maven-plugins-23.pom
+16:40:40.585 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/23/maven-plugins-23.pom (9 KB at 320.8 KB/sec)
+16:40:40.630 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/22/maven-parent-22.pom
+16:40:40.657 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/22/maven-parent-22.pom (30 KB at 1037.4 KB/sec)
+16:40:40.675 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/apache/11/apache-11.pom
+16:40:40.700 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/apache/11/apache-11.pom (15 KB at 578.6 KB/sec)
+16:40:40.740 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/2.6/maven-resources-plugin-2.6.jar
+16:40:40.769 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/2.6/maven-resources-plugin-2.6.jar (29 KB at 1029.5 KB/sec)
+16:40:40.783 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.1/maven-compiler-plugin-3.1.pom
+16:40:40.822 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.1/maven-compiler-plugin-3.1.pom (10 KB at 398.8 KB/sec)
+16:40:40.823 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/24/maven-plugins-24.pom
+16:40:40.849 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/24/maven-plugins-24.pom (11 KB at 340.4 KB/sec)
+16:40:40.861 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/23/maven-parent-23.pom
+16:40:40.898 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/23/maven-parent-23.pom (32 KB at 837.4 KB/sec)
+16:40:40.914 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/apache/13/apache-13.pom
+16:40:40.940 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/apache/13/apache-13.pom (14 KB at 505.4 KB/sec)
+16:40:40.975 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.1/maven-compiler-plugin-3.1.jar
+16:40:41.026 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.1/maven-compiler-plugin-3.1.jar (42 KB at 932.1 KB/sec)
+16:40:41.045 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/2.12.4/maven-surefire-plugin-2.12.4.pom
+16:40:41.071 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/2.12.4/maven-surefire-plugin-2.12.4.pom (11 KB at 393.4 KB/sec)
+16:40:41.077 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire/2.12.4/surefire-2.12.4.pom
+16:40:41.111 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire/2.12.4/surefire-2.12.4.pom (14 KB at 396.1 KB/sec)
+16:40:41.235 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/2.12.4/maven-surefire-plugin-2.12.4.jar
+16:40:41.278 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/2.12.4/maven-surefire-plugin-2.12.4.jar (30 KB at 708.3 KB/sec)
+16:40:41.301 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/2.4/maven-jar-plugin-2.4.pom
+16:40:41.332 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/2.4/maven-jar-plugin-2.4.pom (6 KB at 183.8 KB/sec)
+16:40:41.339 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/22/maven-plugins-22.pom
+16:40:41.365 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/22/maven-plugins-22.pom (13 KB at 454.8 KB/sec)
+16:40:41.372 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/21/maven-parent-21.pom
+16:40:41.408 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/21/maven-parent-21.pom (26 KB at 715.0 KB/sec)
+16:40:41.415 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/apache/10/apache-10.pom
+16:40:41.442 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/apache/10/apache-10.pom (15 KB at 535.3 KB/sec)
+16:40:41.458 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/2.4/maven-jar-plugin-2.4.jar
+16:40:41.481 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/2.4/maven-jar-plugin-2.4.jar (34 KB at 1277.9 KB/sec)
+16:40:41.498 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/2.4/maven-install-plugin-2.4.pom
+16:40:41.524 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/2.4/maven-install-plugin-2.4.pom (7 KB at 239.7 KB/sec)
+16:40:41.539 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/2.4/maven-install-plugin-2.4.jar
+16:40:41.563 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/2.4/maven-install-plugin-2.4.jar (27 KB at 1096.7 KB/sec)
+16:40:41.618 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/projectlombok/lombok/1.16.20/lombok-1.16.20.pom
+16:40:41.651 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/projectlombok/lombok/1.16.20/lombok-1.16.20.pom (2 KB at 46.4 KB/sec)
+16:40:41.661 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/junit/junit/4.11/junit-4.11.pom
+16:40:41.694 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/junit/junit/4.11/junit-4.11.pom (3 KB at 67.3 KB/sec)
+16:40:41.702 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.pom
+16:40:41.723 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.pom (766 B at 35.6 KB/sec)
+16:40:41.744 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-parent/1.3/hamcrest-parent-1.3.pom
+16:40:41.764 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-parent/1.3/hamcrest-parent-1.3.pom (2 KB at 91.7 KB/sec)
+16:40:41.774 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.8/log4j-api-2.8.pom
+16:40:41.806 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.8/log4j-api-2.8.pom (9 KB at 264.6 KB/sec)
+16:40:41.824 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j/2.8/log4j-2.8.pom
+16:40:41.863 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j/2.8/log4j-2.8.pom (56 KB at 1351.3 KB/sec)
+16:40:41.876 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/apache/9/apache-9.pom
+16:40:41.912 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/apache/9/apache-9.pom (15 KB at 423.0 KB/sec)
+16:40:41.937 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-core/2.8/log4j-core-2.8.pom
+16:40:41.968 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-core/2.8/log4j-core-2.8.pom (19 KB at 568.0 KB/sec)
+16:40:42.006 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/com/moandjiezana/toml/toml4j/0.7.2/toml4j-0.7.2.pom
+16:40:42.031 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/moandjiezana/toml/toml4j/0.7.2/toml4j-0.7.2.pom (6 KB at 181.1 KB/sec)
+16:40:42.060 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.8.1/gson-2.8.1.pom
+16:40:42.085 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.8.1/gson-2.8.1.pom (2 KB at 77.0 KB/sec)
+16:40:42.090 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/code/gson/gson-parent/2.8.1/gson-parent-2.8.1.pom
+16:40:42.305 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/code/gson/gson-parent/2.8.1/gson-parent-2.8.1.pom (4 KB at 16.6 KB/sec)
+16:40:42.316 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
+16:40:44.980 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom (5 KB at 1.8 KB/sec)
+16:40:45.027 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/projectlombok/lombok/1.16.20/lombok-1.16.20.jar
+16:40:45.027 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/junit/junit/4.11/junit-4.11.jar
+16:40:45.028 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+16:40:45.029 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.8/log4j-api-2.8.jar
+16:40:45.032 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-core/2.8/log4j-core-2.8.jar
+16:40:45.124 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar (44 KB at 453.3 KB/sec)
+16:40:45.125 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/com/moandjiezana/toml/toml4j/0.7.2/toml4j-0.7.2.jar
+16:40:45.142 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.8/log4j-api-2.8.jar (221 KB at 1920.6 KB/sec)
+16:40:45.143 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.8.1/gson-2.8.1.jar
+16:40:45.151 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/moandjiezana/toml/toml4j/0.7.2/toml4j-0.7.2.jar (62 KB at 509.6 KB/sec)
+16:40:45.190 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/junit/junit/4.11/junit-4.11.jar (240 KB at 1468.1 KB/sec)
+16:40:45.220 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.8.1/gson-2.8.1.jar (228 KB at 1214.8 KB/sec)
+16:40:45.250 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-core/2.8/log4j-core-2.8.jar (1350 KB at 6188.8 KB/sec)
+16:40:45.300 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/projectlombok/lombok/1.16.20/lombok-1.16.20.jar (1494 KB at 5471.7 KB/sec)
+16:40:45.322 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] 
+16:40:45.323 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] --- jacoco-maven-plugin:0.7.8:prepare-agent (prepare-agent) @ AutomatedCar ---
+16:40:45.570 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.pom
+16:40:45.628 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.pom (2 KB at 24.1 KB/sec)
+16:40:45.634 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.2.1/maven-2.2.1.pom
+16:40:45.662 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.2.1/maven-2.2.1.pom (22 KB at 781.6 KB/sec)
+16:40:45.670 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/11/maven-parent-11.pom
+16:40:45.706 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/11/maven-parent-11.pom (32 KB at 771.9 KB/sec)
+16:40:45.712 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/apache/5/apache-5.pom
+16:40:45.731 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/apache/5/apache-5.pom (5 KB at 210.6 KB/sec)
+16:40:45.739 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.2.1/maven-project-2.2.1.pom
+16:40:45.765 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.2.1/maven-project-2.2.1.pom (3 KB at 117.7 KB/sec)
+16:40:45.778 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.2.1/maven-settings-2.2.1.pom
+16:40:45.791 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.2.1/maven-settings-2.2.1.pom (3 KB at 112.0 KB/sec)
+16:40:45.802 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.2.1/maven-model-2.2.1.pom
+16:40:45.824 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.2.1/maven-model-2.2.1.pom (4 KB at 143.8 KB/sec)
+16:40:45.836 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.15/plexus-utils-1.5.15.pom
+16:40:45.854 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.15/plexus-utils-1.5.15.pom (7 KB at 352.0 KB/sec)
+16:40:45.859 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.2/plexus-2.0.2.pom
+16:40:45.880 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.2/plexus-2.0.2.pom (12 KB at 566.9 KB/sec)
+16:40:45.885 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.11/plexus-interpolation-1.11.pom
+16:40:45.909 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.11/plexus-interpolation-1.11.pom (889 B at 36.2 KB/sec)
+16:40:45.913 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.14/plexus-components-1.1.14.pom
+16:40:45.932 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.14/plexus-components-1.1.14.pom (6 KB at 316.9 KB/sec)
+16:40:45.938 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.pom
+16:40:45.957 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.pom (4 KB at 203.0 KB/sec)
+16:40:45.966 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.0.3/plexus-containers-1.0.3.pom
+16:40:45.985 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.0.3/plexus-containers-1.0.3.pom (492 B at 25.3 KB/sec)
+16:40:45.988 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.4/plexus-1.0.4.pom
+16:40:46.008 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.4/plexus-1.0.4.pom (6 KB at 266.8 KB/sec)
+16:40:46.015 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/junit/junit/4.8.2/junit-4.8.2.pom
+16:40:46.047 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/junit/junit/4.8.2/junit-4.8.2.pom (2 KB at 45.2 KB/sec)
+16:40:46.051 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.0.4/plexus-utils-1.0.4.pom
+16:40:46.070 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.0.4/plexus-utils-1.0.4.pom (7 KB at 352.4 KB/sec)
+16:40:46.075 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.pom
+16:40:46.094 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.pom (4 KB at 160.8 KB/sec)
+16:40:46.098 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.2.1/maven-profile-2.2.1.pom
+16:40:46.117 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.2.1/maven-profile-2.2.1.pom (3 KB at 111.6 KB/sec)
+16:40:46.124 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.2.1/maven-artifact-manager-2.2.1.pom
+16:40:46.161 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.2.1/maven-artifact-manager-2.2.1.pom (4 KB at 81.9 KB/sec)
+16:40:46.168 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.2.1/maven-repository-metadata-2.2.1.pom
+16:40:46.189 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.2.1/maven-repository-metadata-2.2.1.pom (2 KB at 83.1 KB/sec)
+16:40:46.201 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.2.1/maven-artifact-2.2.1.pom
+16:40:46.219 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.2.1/maven-artifact-2.2.1.pom (2 KB at 85.8 KB/sec)
+16:40:46.229 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.pom
+16:40:46.254 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.pom (880 B at 29.6 KB/sec)
+16:40:46.260 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.2.1/maven-plugin-registry-2.2.1.pom
+16:40:46.282 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.2.1/maven-plugin-registry-2.2.1.pom (2 KB at 85.6 KB/sec)
+16:40:46.295 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.22/plexus-utils-3.0.22.pom
+16:40:46.317 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.22/plexus-utils-3.0.22.pom (4 KB at 170.1 KB/sec)
+16:40:46.321 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/3.3.1/plexus-3.3.1.pom
+16:40:46.345 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/3.3.1/plexus-3.3.1.pom (20 KB at 831.9 KB/sec)
+16:40:46.349 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/17/spice-parent-17.pom
+16:40:46.370 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/17/spice-parent-17.pom (7 KB at 330.0 KB/sec)
+16:40:46.373 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/10/forge-parent-10.pom
+16:40:46.396 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/10/forge-parent-10.pom (14 KB at 575.7 KB/sec)
+16:40:46.402 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/file-management/1.2.1/file-management-1.2.1.pom
+16:40:46.420 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/file-management/1.2.1/file-management-1.2.1.pom (4 KB at 210.6 KB/sec)
+16:40:46.430 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/10/maven-shared-components-10.pom
+16:40:46.449 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/10/maven-shared-components-10.pom (9 KB at 411.8 KB/sec)
+16:40:46.452 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/9/maven-parent-9.pom
+16:40:46.474 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/9/maven-parent-9.pom (33 KB at 1457.6 KB/sec)
+16:40:46.481 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/apache/4/apache-4.pom
+16:40:46.498 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/apache/4/apache-4.pom (5 KB at 258.2 KB/sec)
+16:40:46.503 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.0.6/maven-plugin-api-2.0.6.pom
+16:40:46.522 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.0.6/maven-plugin-api-2.0.6.pom (2 KB at 74.8 KB/sec)
+16:40:46.526 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.0.6/maven-2.0.6.pom
+16:40:46.551 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.0.6/maven-2.0.6.pom (9 KB at 339.8 KB/sec)
+16:40:46.559 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/5/maven-parent-5.pom
+16:40:46.581 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/5/maven-parent-5.pom (15 KB at 551.1 KB/sec)
+16:40:46.585 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/apache/3/apache-3.pom
+16:40:46.604 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/apache/3/apache-3.pom (4 KB at 167.5 KB/sec)
+16:40:46.609 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-io/1.1/maven-shared-io-1.1.pom
+16:40:46.629 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-io/1.1/maven-shared-io-1.1.pom (4 KB at 208.7 KB/sec)
+16:40:46.632 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/8/maven-shared-components-8.pom
+16:40:46.649 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/8/maven-shared-components-8.pom (3 KB at 153.6 KB/sec)
+16:40:46.652 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/7/maven-parent-7.pom
+16:40:46.673 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/7/maven-parent-7.pom (21 KB at 987.9 KB/sec)
+16:40:46.678 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.2/maven-artifact-2.0.2.pom
+16:40:46.695 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.2/maven-artifact-2.0.2.pom (765 B at 43.9 KB/sec)
+16:40:46.702 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.0.2/maven-2.0.2.pom
+16:40:46.722 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.0.2/maven-2.0.2.pom (13 KB at 677.0 KB/sec)
+16:40:46.727 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.1/plexus-utils-1.1.pom
+16:40:46.744 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.1/plexus-utils-1.1.pom (767 B at 44.1 KB/sec)
+16:40:46.748 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.2/maven-artifact-manager-2.0.2.pom
+16:40:46.766 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.2/maven-artifact-manager-2.0.2.pom (2 KB at 75.7 KB/sec)
+16:40:46.771 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.2/maven-repository-metadata-2.0.2.pom
+16:40:46.790 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.2/maven-repository-metadata-2.0.2.pom (2 KB at 67.2 KB/sec)
+16:40:46.802 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9/plexus-container-default-1.0-alpha-9.pom
+16:40:46.820 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9/plexus-container-default-1.0-alpha-9.pom (2 KB at 63.5 KB/sec)
+16:40:46.825 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/wagon/wagon-provider-api/1.0-alpha-6/wagon-provider-api-1.0-alpha-6.pom
+16:40:46.843 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/wagon/wagon-provider-api/1.0-alpha-6/wagon-provider-api-1.0-alpha-6.pom (588 B at 33.8 KB/sec)
+16:40:46.846 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/wagon/wagon/1.0-alpha-6/wagon-1.0-alpha-6.pom
+16:40:46.863 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/wagon/wagon/1.0-alpha-6/wagon-1.0-alpha-6.pom (7 KB at 347.4 KB/sec)
+16:40:46.867 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.4.6/plexus-utils-1.4.6.pom
+16:40:46.884 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.4.6/plexus-utils-1.4.6.pom (3 KB at 138.2 KB/sec)
+16:40:46.887 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.11/plexus-1.0.11.pom
+16:40:46.904 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.11/plexus-1.0.11.pom (9 KB at 547.4 KB/sec)
+16:40:46.908 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.6/plexus-utils-1.5.6.pom
+16:40:46.925 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.6/plexus-utils-1.5.6.pom (6 KB at 304.6 KB/sec)
+16:40:46.929 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.12/plexus-1.0.12.pom
+16:40:46.945 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.12/plexus-1.0.12.pom (10 KB at 563.0 KB/sec)
+16:40:46.950 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.2.1/maven-reporting-api-2.2.1.pom
+16:40:46.974 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.2.1/maven-reporting-api-2.2.1.pom (2 KB at 86.1 KB/sec)
+16:40:46.975 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting/2.2.1/maven-reporting-2.2.1.pom
+16:40:46.992 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting/2.2.1/maven-reporting-2.2.1.pom (2 KB at 82.9 KB/sec)
+16:40:46.998 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.1/doxia-sink-api-1.1.pom
+16:40:47.019 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.1/doxia-sink-api-1.1.pom (2 KB at 99.6 KB/sec)
+16:40:47.022 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/1.1/doxia-1.1.pom
+16:40:47.046 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/1.1/doxia-1.1.pom (15 KB at 592.9 KB/sec)
+16:40:47.058 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-logging-api/1.1/doxia-logging-api-1.1.pom
+16:40:50.330 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-logging-api/1.1/doxia-logging-api-1.1.pom (2 KB at 0.5 KB/sec)
+16:40:50.342 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-30/plexus-container-default-1.0-alpha-30.pom
+16:40:50.376 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-30/plexus-container-default-1.0-alpha-30.pom (4 KB at 102.9 KB/sec)
+16:40:50.385 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.0-alpha-30/plexus-containers-1.0-alpha-30.pom
+16:40:50.403 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.0-alpha-30/plexus-containers-1.0-alpha-30.pom (2 KB at 97.3 KB/sec)
+16:40:50.408 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.4.5/plexus-utils-1.4.5.pom
+16:40:50.427 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.4.5/plexus-utils-1.4.5.pom (3 KB at 110.6 KB/sec)
+16:40:50.434 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/1.2-alpha-9/plexus-classworlds-1.2-alpha-9.pom
+16:40:50.460 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/1.2-alpha-9/plexus-classworlds-1.2-alpha-9.pom (4 KB at 121.1 KB/sec)
+16:40:50.465 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.10/plexus-1.0.10.pom
+16:40:50.485 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.10/plexus-1.0.10.pom (9 KB at 383.6 KB/sec)
+16:40:50.498 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-impl/2.1/maven-reporting-impl-2.1.pom
+16:40:50.520 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-impl/2.1/maven-reporting-impl-2.1.pom (5 KB at 200.8 KB/sec)
+16:40:50.525 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/15/maven-shared-components-15.pom
+16:40:50.547 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/15/maven-shared-components-15.pom (10 KB at 434.2 KB/sec)
+16:40:50.553 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/16/maven-parent-16.pom
+16:40:50.578 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/16/maven-parent-16.pom (23 KB at 874.1 KB/sec)
+16:40:50.585 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/apache/7/apache-7.pom
+16:40:50.608 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/apache/7/apache-7.pom (15 KB at 640.5 KB/sec)
+16:40:50.616 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/3.0/maven-reporting-api-3.0.pom
+16:40:50.635 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/3.0/maven-reporting-api-3.0.pom (3 KB at 122.0 KB/sec)
+16:40:50.642 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0/doxia-sink-api-1.0.pom
+16:40:50.676 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0/doxia-sink-api-1.0.pom (2 KB at 39.8 KB/sec)
+16:40:50.681 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/1.0/doxia-1.0.pom
+16:40:50.701 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/1.0/doxia-1.0.pom (10 KB at 470.9 KB/sec)
+16:40:50.707 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/10/maven-parent-10.pom
+16:40:50.731 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/10/maven-parent-10.pom (31 KB at 1287.2 KB/sec)
+16:40:50.740 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.10/maven-project-2.0.10.pom
+16:40:50.765 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.10/maven-project-2.0.10.pom (3 KB at 139.0 KB/sec)
+16:40:50.765 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.0.10/maven-2.0.10.pom
+16:40:50.787 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.0.10/maven-2.0.10.pom (24 KB at 1031.0 KB/sec)
+16:40:50.800 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.10/maven-settings-2.0.10.pom
+16:40:50.819 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.10/maven-settings-2.0.10.pom (3 KB at 115.0 KB/sec)
+16:40:50.828 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.0.10/maven-model-2.0.10.pom
+16:40:50.847 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.0.10/maven-model-2.0.10.pom (4 KB at 171.5 KB/sec)
+16:40:50.855 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.5/plexus-utils-1.5.5.pom
+16:40:50.881 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.5/plexus-utils-1.5.5.pom (6 KB at 201.1 KB/sec)
+16:40:50.892 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.1/plexus-interpolation-1.1.pom
+16:40:50.910 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.1/plexus-interpolation-1.1.pom (2 KB at 70.2 KB/sec)
+16:40:50.918 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.10/maven-profile-2.0.10.pom
+16:40:50.939 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.10/maven-profile-2.0.10.pom (3 KB at 102.2 KB/sec)
+16:40:50.948 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.10/maven-artifact-manager-2.0.10.pom
+16:40:50.968 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.10/maven-artifact-manager-2.0.10.pom (3 KB at 138.8 KB/sec)
+16:40:50.976 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.10/maven-repository-metadata-2.0.10.pom
+16:40:50.996 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.10/maven-repository-metadata-2.0.10.pom (3 KB at 113.0 KB/sec)
+16:40:51.009 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.10/maven-artifact-2.0.10.pom
+16:40:51.031 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.10/maven-artifact-2.0.10.pom (2 KB at 71.9 KB/sec)
+16:40:51.040 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.0.10/maven-plugin-registry-2.0.10.pom
+16:40:51.065 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.0.10/maven-plugin-registry-2.0.10.pom (2 KB at 78.7 KB/sec)
+16:40:51.079 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.0.10/maven-plugin-api-2.0.10.pom
+16:40:51.103 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.0.10/maven-plugin-api-2.0.10.pom (2 KB at 58.4 KB/sec)
+16:40:51.110 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.1.2/doxia-sink-api-1.1.2.pom
+16:40:51.129 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.1.2/doxia-sink-api-1.1.2.pom (2 KB at 76.9 KB/sec)
+16:40:51.135 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/1.1.2/doxia-1.1.2.pom
+16:40:51.168 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/1.1.2/doxia-1.1.2.pom (18 KB at 554.1 KB/sec)
+16:40:51.174 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/15/maven-parent-15.pom
+16:40:51.198 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/15/maven-parent-15.pom (24 KB at 937.6 KB/sec)
+16:40:51.206 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/apache/6/apache-6.pom
+16:40:51.230 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/apache/6/apache-6.pom (13 KB at 520.7 KB/sec)
+16:40:51.239 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-logging-api/1.1.2/doxia-logging-api-1.1.2.pom
+16:40:51.258 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-logging-api/1.1.2/doxia-logging-api-1.1.2.pom (2 KB at 81.2 KB/sec)
+16:40:51.272 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-core/1.1.2/doxia-core-1.1.2.pom
+16:40:51.298 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-core/1.1.2/doxia-core-1.1.2.pom (4 KB at 151.4 KB/sec)
+16:40:51.306 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.12/plexus-utils-1.5.12.pom
+16:40:51.336 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.12/plexus-utils-1.5.12.pom (6 KB at 189.7 KB/sec)
+16:40:51.344 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/xerces/xercesImpl/2.8.1/xercesImpl-2.8.1.pom
+16:40:51.367 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/xerces/xercesImpl/2.8.1/xercesImpl-2.8.1.pom (3 KB at 86.2 KB/sec)
+16:40:51.382 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/xml-apis/xml-apis/1.3.03/xml-apis-1.3.03.pom
+16:40:51.401 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/xml-apis/xml-apis/1.3.03/xml-apis-1.3.03.pom (738 B at 31.3 KB/sec)
+16:40:51.406 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/apache/1/apache-1.pom
+16:40:51.432 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/apache/1/apache-1.pom (4 KB at 123.3 KB/sec)
+16:40:51.439 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.4/commons-lang-2.4.pom
+16:40:51.460 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.4/commons-lang-2.4.pom (14 KB at 649.9 KB/sec)
+16:40:51.465 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/9/commons-parent-9.pom
+16:40:51.487 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/9/commons-parent-9.pom (22 KB at 1019.8 KB/sec)
+16:40:51.495 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.pom
+16:40:51.516 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.pom (8 KB at 379.1 KB/sec)
+16:40:51.522 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4.pom
+16:40:51.547 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4.pom (6 KB at 205.6 KB/sec)
+16:40:51.552 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.2/commons-codec-1.2.pom
+16:40:51.573 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.2/commons-codec-1.2.pom (4 KB at 186.8 KB/sec)
+16:40:51.578 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-site-renderer/1.1.2/doxia-site-renderer-1.1.2.pom
+16:40:51.597 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-site-renderer/1.1.2/doxia-site-renderer-1.1.2.pom (6 KB at 314.6 KB/sec)
+16:40:51.602 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sitetools/1.1.2/doxia-sitetools-1.1.2.pom
+16:40:51.625 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sitetools/1.1.2/doxia-sitetools-1.1.2.pom (15 KB at 678.4 KB/sec)
+16:40:51.634 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-decoration-model/1.1.2/doxia-decoration-model-1.1.2.pom
+16:40:51.654 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-decoration-model/1.1.2/doxia-decoration-model-1.1.2.pom (3 KB at 145.3 KB/sec)
+16:40:51.665 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-xhtml/1.1.2/doxia-module-xhtml-1.1.2.pom
+16:40:51.687 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-xhtml/1.1.2/doxia-module-xhtml-1.1.2.pom (2 KB at 68.0 KB/sec)
+16:40:51.691 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-modules/1.1.2/doxia-modules-1.1.2.pom
+16:40:51.712 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-modules/1.1.2/doxia-modules-1.1.2.pom (3 KB at 119.0 KB/sec)
+16:40:51.720 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-fml/1.1.2/doxia-module-fml-1.1.2.pom
+16:40:51.739 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-fml/1.1.2/doxia-module-fml-1.1.2.pom (6 KB at 282.4 KB/sec)
+16:40:51.749 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-i18n/1.0-beta-7/plexus-i18n-1.0-beta-7.pom
+16:40:51.769 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-i18n/1.0-beta-7/plexus-i18n-1.0-beta-7.pom (2 KB at 51.7 KB/sec)
+16:40:51.773 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.12/plexus-components-1.1.12.pom
+16:40:51.797 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.12/plexus-components-1.1.12.pom (3 KB at 122.2 KB/sec)
+16:40:51.805 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.4.1/plexus-utils-1.4.1.pom
+16:40:51.824 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.4.1/plexus-utils-1.4.1.pom (2 KB at 98.1 KB/sec)
+16:40:51.831 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-velocity/1.1.7/plexus-velocity-1.1.7.pom
+16:40:51.852 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-velocity/1.1.7/plexus-velocity-1.1.7.pom (2 KB at 91.0 KB/sec)
+16:40:51.859 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-20/plexus-container-default-1.0-alpha-20.pom
+16:40:51.877 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-20/plexus-container-default-1.0-alpha-20.pom (3 KB at 146.0 KB/sec)
+16:40:51.881 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.0-alpha-20/plexus-containers-1.0-alpha-20.pom
+16:40:51.898 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.0-alpha-20/plexus-containers-1.0-alpha-20.pom (2 KB at 108.3 KB/sec)
+16:40:51.903 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.3/plexus-utils-1.3.pom
+16:40:51.921 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.3/plexus-utils-1.3.pom (2 KB at 56.1 KB/sec)
+16:40:51.925 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.8/plexus-1.0.8.pom
+16:40:51.943 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.8/plexus-1.0.8.pom (8 KB at 371.6 KB/sec)
+16:40:51.949 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/1.2-alpha-7/plexus-classworlds-1.2-alpha-7.pom
+16:40:51.966 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/1.2-alpha-7/plexus-classworlds-1.2-alpha-7.pom (3 KB at 128.7 KB/sec)
+16:40:51.970 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.9/plexus-1.0.9.pom
+16:40:51.987 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.9/plexus-1.0.9.pom (8 KB at 441.2 KB/sec)
+16:40:51.994 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/velocity/velocity/1.5/velocity-1.5.pom
+16:40:52.018 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/velocity/velocity/1.5/velocity-1.5.pom (8 KB at 379.2 KB/sec)
+16:40:52.018 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-collections/commons-collections/3.1/commons-collections-3.1.pom
+16:40:52.035 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-collections/commons-collections/3.1/commons-collections-3.1.pom (6 KB at 349.5 KB/sec)
+16:40:52.039 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.1/commons-lang-2.1.pom
+16:40:52.070 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.1/commons-lang-2.1.pom (10 KB at 346.3 KB/sec)
+16:40:52.075 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/oro/oro/2.0.8/oro-2.0.8.pom
+16:40:52.094 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/oro/oro/2.0.8/oro-2.0.8.pom (140 B at 8.0 KB/sec)
+16:40:52.098 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-collections/commons-collections/3.2/commons-collections-3.2.pom
+16:40:52.128 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-collections/commons-collections/3.2/commons-collections-3.2.pom (11 KB at 371.6 KB/sec)
+16:40:52.132 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-validator/commons-validator/1.2.0/commons-validator-1.2.0.pom
+16:40:52.160 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-validator/commons-validator/1.2.0/commons-validator-1.2.0.pom (9 KB at 328.6 KB/sec)
+16:40:52.166 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.pom
+16:40:52.185 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.pom (357 B at 17.4 KB/sec)
+16:40:52.191 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-logging/commons-logging/1.0.3/commons-logging-1.0.3.pom
+16:40:52.208 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-logging/commons-logging/1.0.3/commons-logging-1.0.3.pom (866 B at 47.0 KB/sec)
+16:40:52.213 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-digester/commons-digester/1.6/commons-digester-1.6.pom
+16:40:52.233 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-digester/commons-digester/1.6/commons-digester-1.6.pom (974 B at 47.6 KB/sec)
+16:40:52.238 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-beanutils/commons-beanutils/1.6/commons-beanutils-1.6.pom
+16:40:52.262 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-beanutils/commons-beanutils/1.6/commons-beanutils-1.6.pom (3 KB at 90.2 KB/sec)
+16:40:52.269 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-logging/commons-logging/1.0/commons-logging-1.0.pom
+16:40:52.288 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-logging/commons-logging/1.0/commons-logging-1.0.pom (163 B at 8.8 KB/sec)
+16:40:52.293 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-collections/commons-collections/2.0/commons-collections-2.0.pom
+16:40:52.311 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-collections/commons-collections/2.0/commons-collections-2.0.pom (171 B at 9.3 KB/sec)
+16:40:52.317 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-collections/commons-collections/2.1/commons-collections-2.1.pom
+16:40:52.335 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-collections/commons-collections/2.1/commons-collections-2.1.pom (4 KB at 181.0 KB/sec)
+16:40:52.339 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.pom
+16:40:52.357 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.pom (3 KB at 122.0 KB/sec)
+16:40:52.361 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/xml-apis/xml-apis/2.0.2/xml-apis-2.0.2.pom
+16:40:52.387 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/xml-apis/xml-apis/2.0.2/xml-apis-2.0.2.pom (346 B at 15.4 KB/sec)
+16:40:52.400 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.8/plexus-utils-1.5.8.pom
+16:40:52.419 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.8/plexus-utils-1.5.8.pom (8 KB at 437.4 KB/sec)
+16:40:52.424 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/jacoco/org.jacoco.agent/0.7.8/org.jacoco.agent-0.7.8.pom
+16:40:52.444 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/jacoco/org.jacoco.agent/0.7.8/org.jacoco.agent-0.7.8.pom (3 KB at 140.4 KB/sec)
+16:40:52.452 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/jacoco/org.jacoco.core/0.7.8/org.jacoco.core-0.7.8.pom
+16:40:52.472 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/jacoco/org.jacoco.core/0.7.8/org.jacoco.core-0.7.8.pom (2 KB at 59.1 KB/sec)
+16:40:52.479 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-debug-all/5.1/asm-debug-all-5.1.pom
+16:40:52.496 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-debug-all/5.1/asm-debug-all-5.1.pom (2 KB at 107.5 KB/sec)
+16:40:52.499 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-parent/5.1/asm-parent-5.1.pom
+16:40:52.519 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-parent/5.1/asm-parent-5.1.pom (6 KB at 268.2 KB/sec)
+16:40:52.522 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/ow2/ow2/1.3/ow2-1.3.pom
+16:40:52.542 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/ow2/1.3/ow2-1.3.pom (10 KB at 464.3 KB/sec)
+16:40:52.547 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/jacoco/org.jacoco.report/0.7.8/org.jacoco.report-0.7.8.pom
+16:40:52.570 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/jacoco/org.jacoco.report/0.7.8/org.jacoco.report-0.7.8.pom (2 KB at 69.2 KB/sec)
+16:40:52.618 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.jar
+16:40:52.623 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.2.1/maven-project-2.2.1.jar
+16:40:52.624 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.2.1/maven-settings-2.2.1.jar
+16:40:52.625 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.2.1/maven-profile-2.2.1.jar
+16:40:52.625 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.2.1/maven-model-2.2.1.jar
+16:40:52.664 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.jar (13 KB at 232.4 KB/sec)
+16:40:52.664 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.2.1/maven-artifact-manager-2.2.1.jar
+16:40:52.673 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.2.1/maven-model-2.2.1.jar (86 KB at 1782.0 KB/sec)
+16:40:52.673 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.2.1/maven-repository-metadata-2.2.1.jar
+16:40:52.674 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.2.1/maven-settings-2.2.1.jar (48 KB at 957.9 KB/sec)
+16:40:52.674 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar
+16:40:52.675 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.2.1/maven-profile-2.2.1.jar (35 KB at 677.1 KB/sec)
+16:40:52.675 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.2.1/maven-plugin-registry-2.2.1.jar
+16:40:52.694 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.2.1/maven-project-2.2.1.jar (153 KB at 2008.2 KB/sec)
+16:40:52.695 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.11/plexus-interpolation-1.11.jar
+16:40:52.696 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.2.1/maven-artifact-manager-2.2.1.jar (66 KB at 929.4 KB/sec)
+16:40:52.696 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.2.1/maven-artifact-2.2.1.jar
+16:40:52.700 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.2.1/maven-plugin-registry-2.2.1.jar (30 KB at 392.1 KB/sec)
+16:40:52.700 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.jar
+16:40:52.702 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.2.1/maven-repository-metadata-2.2.1.jar (26 KB at 325.4 KB/sec)
+16:40:52.702 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/junit/junit/4.8.2/junit-4.8.2.jar
+16:40:52.724 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.11/plexus-interpolation-1.11.jar (50 KB at 529.2 KB/sec)
+16:40:52.725 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar
+16:40:52.725 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar (324 KB at 3272.1 KB/sec)
+16:40:52.725 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.22/plexus-utils-3.0.22.jar
+16:40:52.728 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.2.1/maven-artifact-2.2.1.jar (79 KB at 769.0 KB/sec)
+16:40:52.728 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/file-management/1.2.1/file-management-1.2.1.jar
+16:40:52.739 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.jar (190 KB at 1693.2 KB/sec)
+16:40:52.739 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-io/1.1/maven-shared-io-1.1.jar
+16:40:52.746 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar (37 KB at 307.9 KB/sec)
+16:40:52.746 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/wagon/wagon-provider-api/1.0-alpha-6/wagon-provider-api-1.0-alpha-6.jar
+16:40:52.749 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/file-management/1.2.1/file-management-1.2.1.jar (37 KB at 303.3 KB/sec)
+16:40:52.749 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.2.1/maven-reporting-api-2.2.1.jar
+16:40:52.753 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/junit/junit/4.8.2/junit-4.8.2.jar (232 KB at 1839.5 KB/sec)
+16:40:52.753 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.1/doxia-sink-api-1.1.jar
+16:40:52.761 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.22/plexus-utils-3.0.22.jar (240 KB at 1784.8 KB/sec)
+16:40:52.761 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-logging-api/1.1/doxia-logging-api-1.1.jar
+16:40:52.761 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-io/1.1/maven-shared-io-1.1.jar (39 KB at 287.7 KB/sec)
+16:40:52.761 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-impl/2.1/maven-reporting-impl-2.1.jar
+16:40:52.768 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/wagon/wagon-provider-api/1.0-alpha-6/wagon-provider-api-1.0-alpha-6.jar (42 KB at 295.9 KB/sec)
+16:40:52.768 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-core/1.1.2/doxia-core-1.1.2.jar
+16:40:52.768 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.2.1/maven-reporting-api-2.2.1.jar (10 KB at 67.8 KB/sec)
+16:40:52.769 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/xerces/xercesImpl/2.8.1/xercesImpl-2.8.1.jar
+16:40:52.773 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.1/doxia-sink-api-1.1.jar (13 KB at 85.7 KB/sec)
+16:40:52.773 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.4/commons-lang-2.4.jar
+16:40:52.780 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-logging-api/1.1/doxia-logging-api-1.1.jar (12 KB at 72.8 KB/sec)
+16:40:52.780 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar
+16:40:52.787 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-impl/2.1/maven-reporting-impl-2.1.jar (17 KB at 101.2 KB/sec)
+16:40:52.788 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.2/commons-codec-1.2.jar
+16:40:52.813 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.2/commons-codec-1.2.jar (30 KB at 158.0 KB/sec)
+16:40:52.813 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-site-renderer/1.1.2/doxia-site-renderer-1.1.2.jar
+16:40:52.818 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-lang/commons-lang/2.4/commons-lang-2.4.jar (256 KB at 1338.6 KB/sec)
+16:40:52.818 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-decoration-model/1.1.2/doxia-decoration-model-1.1.2.jar
+16:40:52.821 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-core/1.1.2/doxia-core-1.1.2.jar (155 KB at 796.8 KB/sec)
+16:40:52.821 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-xhtml/1.1.2/doxia-module-xhtml-1.1.2.jar
+16:40:52.836 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-site-renderer/1.1.2/doxia-site-renderer-1.1.2.jar (50 KB at 236.8 KB/sec)
+16:40:52.836 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-fml/1.1.2/doxia-module-fml-1.1.2.jar
+16:40:52.846 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-xhtml/1.1.2/doxia-module-xhtml-1.1.2.jar (15 KB at 67.2 KB/sec)
+16:40:52.847 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-i18n/1.0-beta-7/plexus-i18n-1.0-beta-7.jar
+16:40:52.848 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar (298 KB at 1353.9 KB/sec)
+16:40:52.848 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-decoration-model/1.1.2/doxia-decoration-model-1.1.2.jar (52 KB at 233.2 KB/sec)
+16:40:52.848 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-velocity/1.1.7/plexus-velocity-1.1.7.jar
+16:40:52.848 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/velocity/velocity/1.5/velocity-1.5.jar
+16:40:52.860 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-module-fml/1.1.2/doxia-module-fml-1.1.2.jar (37 KB at 158.8 KB/sec)
+16:40:52.860 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-collections/commons-collections/3.2/commons-collections-3.2.jar
+16:40:52.866 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-i18n/1.0-beta-7/plexus-i18n-1.0-beta-7.jar (11 KB at 43.5 KB/sec)
+16:40:52.866 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-validator/commons-validator/1.2.0/commons-validator-1.2.0.jar
+16:40:52.868 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-velocity/1.1.7/plexus-velocity-1.1.7.jar (8 KB at 31.3 KB/sec)
+16:40:52.868 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar
+16:40:52.881 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/xerces/xercesImpl/2.8.1/xercesImpl-2.8.1.jar (1185 KB at 4719.3 KB/sec)
+16:40:52.881 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-digester/commons-digester/1.6/commons-digester-1.6.jar
+16:40:52.892 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-validator/commons-validator/1.2.0/commons-validator-1.2.0.jar (89 KB at 337.0 KB/sec)
+16:40:52.893 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4.jar
+16:40:52.906 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar (185 KB at 662.8 KB/sec)
+16:40:52.906 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/oro/oro/2.0.8/oro-2.0.8.jar
+16:40:52.908 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-digester/commons-digester/1.6/commons-digester-1.6.jar (165 KB at 589.6 KB/sec)
+16:40:52.908 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar
+16:40:52.912 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-logging/commons-logging/1.0.4/commons-logging-1.0.4.jar (38 KB at 131.2 KB/sec)
+16:40:52.912 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/jacoco/org.jacoco.agent/0.7.8/org.jacoco.agent-0.7.8-runtime.jar
+16:40:52.916 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/velocity/velocity/1.5/velocity-1.5.jar (383 KB at 1329.6 KB/sec)
+16:40:52.916 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/jacoco/org.jacoco.core/0.7.8/org.jacoco.core-0.7.8.jar
+16:40:52.927 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/oro/oro/2.0.8/oro-2.0.8.jar (64 KB at 213.9 KB/sec)
+16:40:52.927 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-debug-all/5.1/asm-debug-all-5.1.jar
+16:40:52.940 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-collections/commons-collections/3.2/commons-collections-3.2.jar (558 KB at 1788.0 KB/sec)
+16:40:52.940 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/jacoco/org.jacoco.report/0.7.8/org.jacoco.report-0.7.8.jar
+16:40:52.948 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar (107 KB at 334.7 KB/sec)
+16:40:52.949 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/jacoco/org.jacoco.agent/0.7.8/org.jacoco.agent-0.7.8-runtime.jar (252 KB at 785.3 KB/sec)
+16:40:52.978 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/jacoco/org.jacoco.core/0.7.8/org.jacoco.core-0.7.8.jar (122 KB at 348.1 KB/sec)
+16:40:52.980 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-debug-all/5.1/asm-debug-all-5.1.jar (379 KB at 1078.8 KB/sec)
+16:40:52.982 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/jacoco/org.jacoco.report/0.7.8/org.jacoco.report-0.7.8.jar (125 KB at 353.4 KB/sec)
+16:40:53.356 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] argLine set to -javaagent:/root/./workspace/SzFMV2018-Tavasz/AutomatedCar/355303832/.m2/org/jacoco/org.jacoco.agent/0.7.8/org.jacoco.agent-0.7.8-runtime.jar=destfile=/root/workspace/SzFMV2018-Tavasz/AutomatedCar/355303832/target/jacoco.exec
+16:40:53.357 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] 
+16:40:53.357 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ AutomatedCar ---
+16:40:53.366 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.6/maven-project-2.0.6.pom
+16:40:53.387 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.6/maven-project-2.0.6.pom (3 KB at 128.8 KB/sec)
+16:40:53.393 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.6/maven-settings-2.0.6.pom
+16:40:53.412 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.6/maven-settings-2.0.6.pom (2 KB at 102.8 KB/sec)
+16:40:53.418 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.0.6/maven-model-2.0.6.pom
+16:40:53.449 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.0.6/maven-model-2.0.6.pom (3 KB at 96.0 KB/sec)
+16:40:53.457 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1.pom
+16:40:53.480 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1.pom (998 B at 44.3 KB/sec)
+16:40:53.485 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.6/maven-profile-2.0.6.pom
+16:40:53.515 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.6/maven-profile-2.0.6.pom (2 KB at 66.7 KB/sec)
+16:40:53.522 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.6/maven-artifact-manager-2.0.6.pom
+16:40:53.539 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.6/maven-artifact-manager-2.0.6.pom (3 KB at 142.3 KB/sec)
+16:40:53.547 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.6/maven-repository-metadata-2.0.6.pom
+16:40:53.564 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.6/maven-repository-metadata-2.0.6.pom (2 KB at 106.3 KB/sec)
+16:40:53.570 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.6/maven-artifact-2.0.6.pom
+16:40:53.589 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.6/maven-artifact-2.0.6.pom (2 KB at 81.1 KB/sec)
+16:40:53.597 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.0.6/maven-plugin-registry-2.0.6.pom
+16:40:53.621 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.0.6/maven-plugin-registry-2.0.6.pom (2 KB at 79.2 KB/sec)
+16:40:53.631 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.0.6/maven-core-2.0.6.pom
+16:40:53.649 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.0.6/maven-core-2.0.6.pom (7 KB at 344.9 KB/sec)
+16:40:53.658 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.0.6/maven-plugin-parameter-documenter-2.0.6.pom
+16:40:53.682 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.0.6/maven-plugin-parameter-documenter-2.0.6.pom (2 KB at 77.8 KB/sec)
+16:40:53.690 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.0.6/maven-reporting-api-2.0.6.pom
+16:40:53.709 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.0.6/maven-reporting-api-2.0.6.pom (2 KB at 85.5 KB/sec)
+16:40:53.714 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting/2.0.6/maven-reporting-2.0.6.pom
+16:40:53.732 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting/2.0.6/maven-reporting-2.0.6.pom (2 KB at 78.1 KB/sec)
+16:40:53.742 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-7/doxia-sink-api-1.0-alpha-7.pom
+16:40:53.757 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-7/doxia-sink-api-1.0-alpha-7.pom (424 B at 23.0 KB/sec)
+16:40:53.761 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/1.0-alpha-7/doxia-1.0-alpha-7.pom
+16:40:53.781 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/1.0-alpha-7/doxia-1.0-alpha-7.pom (4 KB at 201.1 KB/sec)
+16:40:53.787 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.0.6/maven-error-diagnostics-2.0.6.pom
+16:40:53.804 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.0.6/maven-error-diagnostics-2.0.6.pom (2 KB at 97.9 KB/sec)
+16:40:53.810 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-cli/commons-cli/1.0/commons-cli-1.0.pom
+16:40:53.828 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-cli/commons-cli/1.0/commons-cli-1.0.pom (3 KB at 114.2 KB/sec)
+16:40:53.833 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.0.6/maven-plugin-descriptor-2.0.6.pom
+16:40:53.851 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.0.6/maven-plugin-descriptor-2.0.6.pom (2 KB at 109.5 KB/sec)
+16:40:53.858 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.pom
+16:40:53.881 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.pom (7 KB at 314.8 KB/sec)
+16:40:53.887 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.0.6/maven-monitor-2.0.6.pom
+16:40:53.908 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.0.6/maven-monitor-2.0.6.pom (2 KB at 58.3 KB/sec)
+16:40:53.915 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1/classworlds-1.1.pom
+16:40:53.936 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1/classworlds-1.1.pom (4 KB at 154.6 KB/sec)
+16:40:53.942 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/2.0.5/plexus-utils-2.0.5.pom
+16:40:53.960 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/2.0.5/plexus-utils-2.0.5.pom (4 KB at 180.9 KB/sec)
+16:40:53.965 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.6/plexus-2.0.6.pom
+16:40:53.988 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.6/plexus-2.0.6.pom (17 KB at 744.1 KB/sec)
+16:40:53.995 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/1.1/maven-filtering-1.1.pom
+16:40:54.020 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/1.1/maven-filtering-1.1.pom (6 KB at 245.8 KB/sec)
+16:40:54.024 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/17/maven-shared-components-17.pom
+16:40:54.043 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/17/maven-shared-components-17.pom (9 KB at 472.1 KB/sec)
+16:40:54.051 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.12/plexus-interpolation-1.12.pom
+16:40:54.068 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.12/plexus-interpolation-1.12.pom (889 B at 51.1 KB/sec)
+16:40:54.076 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.4/plexus-build-api-0.0.4.pom
+16:40:54.094 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.4/plexus-build-api-0.0.4.pom (3 KB at 164.5 KB/sec)
+16:40:54.097 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/10/spice-parent-10.pom
+16:40:54.116 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/10/spice-parent-10.pom (3 KB at 155.0 KB/sec)
+16:40:54.119 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/3/forge-parent-3.pom
+16:40:54.138 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/3/forge-parent-3.pom (5 KB at 258.7 KB/sec)
+16:40:54.144 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.13/plexus-interpolation-1.13.pom
+16:40:54.161 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.13/plexus-interpolation-1.13.pom (890 B at 51.1 KB/sec)
+16:40:54.164 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.15/plexus-components-1.1.15.pom
+16:40:54.181 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.15/plexus-components-1.1.15.pom (3 KB at 173.8 KB/sec)
+16:40:54.184 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.3/plexus-2.0.3.pom
+16:40:54.202 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.3/plexus-2.0.3.pom (16 KB at 838.8 KB/sec)
+16:40:54.220 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.0.6/maven-plugin-api-2.0.6.jar
+16:40:54.220 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.6/maven-project-2.0.6.jar
+16:40:54.226 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.6/maven-profile-2.0.6.jar
+16:40:54.232 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.6/maven-artifact-manager-2.0.6.jar
+16:40:54.235 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.0.6/maven-plugin-registry-2.0.6.jar
+16:40:54.252 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.6/maven-profile-2.0.6.jar (35 KB at 1110.2 KB/sec)
+16:40:54.252 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.0.6/maven-core-2.0.6.jar
+16:40:54.255 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.0.6/maven-plugin-api-2.0.6.jar (13 KB at 348.8 KB/sec)
+16:40:54.256 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.0.6/maven-plugin-parameter-documenter-2.0.6.jar
+16:40:54.272 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.6/maven-project-2.0.6.jar (114 KB at 2181.9 KB/sec)
+16:40:54.272 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.0.6/maven-reporting-api-2.0.6.jar
+16:40:54.278 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.0.6/maven-plugin-registry-2.0.6.jar (29 KB at 504.4 KB/sec)
+16:40:54.278 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-7/doxia-sink-api-1.0-alpha-7.jar
+16:40:54.288 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.0.6/maven-plugin-parameter-documenter-2.0.6.jar (21 KB at 397.4 KB/sec)
+16:40:54.289 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.6/maven-repository-metadata-2.0.6.jar
+16:40:54.289 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.6/maven-artifact-manager-2.0.6.jar (56 KB at 935.3 KB/sec)
+16:40:54.289 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.0.6/maven-error-diagnostics-2.0.6.jar
+16:40:54.292 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.0.6/maven-reporting-api-2.0.6.jar (10 KB at 164.5 KB/sec)
+16:40:54.292 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-cli/commons-cli/1.0/commons-cli-1.0.jar
+16:40:54.296 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.0.6/maven-core-2.0.6.jar (149 KB at 2350.2 KB/sec)
+16:40:54.297 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.0.6/maven-plugin-descriptor-2.0.6.jar
+16:40:54.302 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-7/doxia-sink-api-1.0-alpha-7.jar (6 KB at 85.2 KB/sec)
+16:40:54.302 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.jar
+16:40:54.310 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.0.6/maven-error-diagnostics-2.0.6.jar (14 KB at 172.6 KB/sec)
+16:40:54.311 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1/classworlds-1.1.jar
+16:40:54.313 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.6/maven-repository-metadata-2.0.6.jar (24 KB at 302.5 KB/sec)
+16:40:54.313 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.6/maven-artifact-2.0.6.jar
+16:40:54.318 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.0.6/maven-plugin-descriptor-2.0.6.jar (37 KB at 428.7 KB/sec)
+16:40:54.318 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.6/maven-settings-2.0.6.jar
+16:40:54.319 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-cli/commons-cli/1.0/commons-cli-1.0.jar (30 KB at 342.0 KB/sec)
+16:40:54.320 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.0.6/maven-model-2.0.6.jar
+16:40:54.323 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.jar (14 KB at 147.1 KB/sec)
+16:40:54.324 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.0.6/maven-monitor-2.0.6.jar
+16:40:54.332 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/classworlds/classworlds/1.1/classworlds-1.1.jar (37 KB at 377.2 KB/sec)
+16:40:54.333 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1.jar
+16:40:54.342 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.6/maven-settings-2.0.6.jar (48 KB at 448.1 KB/sec)
+16:40:54.342 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/2.0.5/plexus-utils-2.0.5.jar
+16:40:54.342 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.6/maven-artifact-2.0.6.jar (86 KB at 789.9 KB/sec)
+16:40:54.343 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/1.1/maven-filtering-1.1.jar
+16:40:54.343 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.0.6/maven-monitor-2.0.6.jar (11 KB at 93.5 KB/sec)
+16:40:54.343 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.4/plexus-build-api-0.0.4.jar
+16:40:54.352 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.0.6/maven-model-2.0.6.jar (85 KB at 715.0 KB/sec)
+16:40:54.352 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.13/plexus-interpolation-1.13.jar
+16:40:54.360 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-build-api/0.0.4/plexus-build-api-0.0.4.jar (7 KB at 53.6 KB/sec)
+16:40:54.364 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1.jar (119 KB at 916.5 KB/sec)
+16:40:54.367 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/1.1/maven-filtering-1.1.jar (43 KB at 321.3 KB/sec)
+16:40:54.377 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.13/plexus-interpolation-1.13.jar (60 KB at 419.9 KB/sec)
+16:40:54.392 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/2.0.5/plexus-utils-2.0.5.jar (218 KB at 1397.1 KB/sec)
+16:40:54.542 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Using 'UTF-8' encoding to copy filtered resources.
+16:40:54.562 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Copying 44 resources
+16:40:54.594 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] 
+16:40:54.594 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ AutomatedCar ---
+16:40:54.605 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.0.9/maven-plugin-api-2.0.9.pom
+16:40:54.624 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.0.9/maven-plugin-api-2.0.9.pom (2 KB at 76.8 KB/sec)
+16:40:54.628 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.0.9/maven-2.0.9.pom
+16:40:54.658 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.0.9/maven-2.0.9.pom (19 KB at 595.6 KB/sec)
+16:40:54.664 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/8/maven-parent-8.pom
+16:40:54.686 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/8/maven-parent-8.pom (24 KB at 1071.2 KB/sec)
+16:40:54.695 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.9/maven-artifact-2.0.9.pom
+16:40:54.713 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.9/maven-artifact-2.0.9.pom (2 KB at 87.8 KB/sec)
+16:40:54.721 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.1/plexus-utils-1.5.1.pom
+16:40:54.739 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.1/plexus-utils-1.5.1.pom (3 KB at 124.6 KB/sec)
+16:40:54.746 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.0.9/maven-core-2.0.9.pom
+16:40:54.766 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.0.9/maven-core-2.0.9.pom (8 KB at 362.0 KB/sec)
+16:40:54.775 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.9/maven-settings-2.0.9.pom
+16:40:54.796 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.9/maven-settings-2.0.9.pom (3 KB at 105.8 KB/sec)
+16:40:54.803 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.0.9/maven-model-2.0.9.pom
+16:40:54.822 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.0.9/maven-model-2.0.9.pom (4 KB at 161.4 KB/sec)
+16:40:54.831 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.0.9/maven-plugin-parameter-documenter-2.0.9.pom
+16:40:54.855 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.0.9/maven-plugin-parameter-documenter-2.0.9.pom (2 KB at 83.4 KB/sec)
+16:40:54.863 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.9/maven-profile-2.0.9.pom
+16:40:54.880 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.9/maven-profile-2.0.9.pom (3 KB at 117.8 KB/sec)
+16:40:54.887 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.9/maven-repository-metadata-2.0.9.pom
+16:40:54.908 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.9/maven-repository-metadata-2.0.9.pom (2 KB at 109.2 KB/sec)
+16:40:54.911 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.0.9/maven-error-diagnostics-2.0.9.pom
+16:40:54.928 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.0.9/maven-error-diagnostics-2.0.9.pom (2 KB at 106.4 KB/sec)
+16:40:54.934 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.9/maven-project-2.0.9.pom
+16:40:54.951 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.9/maven-project-2.0.9.pom (3 KB at 155.7 KB/sec)
+16:40:54.957 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.9/maven-artifact-manager-2.0.9.pom
+16:40:54.974 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.9/maven-artifact-manager-2.0.9.pom (3 KB at 155.1 KB/sec)
+16:40:54.984 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.0.9/maven-plugin-registry-2.0.9.pom
+16:40:55.007 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.0.9/maven-plugin-registry-2.0.9.pom (2 KB at 83.7 KB/sec)
+16:40:55.015 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.0.9/maven-plugin-descriptor-2.0.9.pom
+16:40:55.033 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.0.9/maven-plugin-descriptor-2.0.9.pom (3 KB at 112.6 KB/sec)
+16:40:55.041 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.0.9/maven-monitor-2.0.9.pom
+16:40:55.059 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.0.9/maven-monitor-2.0.9.pom (2 KB at 69.7 KB/sec)
+16:40:55.069 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-toolchain/1.0/maven-toolchain-1.0.pom
+16:40:55.087 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-toolchain/1.0/maven-toolchain-1.0.pom (4 KB at 185.2 KB/sec)
+16:40:55.104 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/0.1/maven-shared-utils-0.1.pom
+16:40:55.122 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/0.1/maven-shared-utils-0.1.pom (4 KB at 219.6 KB/sec)
+16:40:55.126 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/18/maven-shared-components-18.pom
+16:40:55.144 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/18/maven-shared-components-18.pom (5 KB at 267.7 KB/sec)
+16:40:55.152 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.pom
+16:40:55.175 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.pom (965 B at 41.0 KB/sec)
+16:40:55.185 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.pom
+16:40:55.203 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.pom (5 KB at 243.7 KB/sec)
+16:40:55.210 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/19/maven-shared-components-19.pom
+16:40:55.230 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/19/maven-shared-components-19.pom (7 KB at 310.5 KB/sec)
+16:40:55.239 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.2.1/maven-core-2.2.1.pom
+16:40:55.262 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.2.1/maven-core-2.2.1.pom (12 KB at 473.3 KB/sec)
+16:40:55.273 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.2.1/maven-plugin-parameter-documenter-2.2.1.pom
+16:40:55.296 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.2.1/maven-plugin-parameter-documenter-2.2.1.pom (2 KB at 83.1 KB/sec)
+16:40:55.305 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-jdk14/1.5.6/slf4j-jdk14-1.5.6.pom
+16:40:55.329 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-jdk14/1.5.6/slf4j-jdk14-1.5.6.pom (2 KB at 77.2 KB/sec)
+16:40:55.334 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.5.6/slf4j-parent-1.5.6.pom
+16:40:55.358 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-parent/1.5.6/slf4j-parent-1.5.6.pom (8 KB at 336.3 KB/sec)
+16:40:55.364 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.5.6/slf4j-api-1.5.6.pom
+16:40:55.383 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.5.6/slf4j-api-1.5.6.pom (3 KB at 153.4 KB/sec)
+16:40:55.389 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/slf4j/jcl-over-slf4j/1.5.6/jcl-over-slf4j-1.5.6.pom
+16:40:55.408 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/slf4j/jcl-over-slf4j/1.5.6/jcl-over-slf4j-1.5.6.pom (3 KB at 111.5 KB/sec)
+16:40:55.415 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.2.1/maven-error-diagnostics-2.2.1.pom
+16:40:55.435 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.2.1/maven-error-diagnostics-2.2.1.pom (2 KB at 87.8 KB/sec)
+16:40:55.444 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.2.1/maven-plugin-descriptor-2.2.1.pom
+16:40:55.466 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.2.1/maven-plugin-descriptor-2.2.1.pom (3 KB at 87.6 KB/sec)
+16:40:55.489 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.2.1/maven-monitor-2.2.1.pom
+16:40:55.504 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.2.1/maven-monitor-2.2.1.pom (2 KB at 72.2 KB/sec)
+16:40:55.510 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.pom
+16:40:55.529 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.pom (3 KB at 152.2 KB/sec)
+16:40:55.534 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/12/spice-parent-12.pom
+16:40:55.551 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/spice/spice-parent/12/spice-parent-12.pom (7 KB at 390.5 KB/sec)
+16:40:55.554 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/4/forge-parent-4.pom
+16:40:55.571 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/forge/forge-parent/4/forge-parent-4.pom (9 KB at 482.4 KB/sec)
+16:40:55.577 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.pom
+16:40:55.593 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.pom (3 KB at 126.0 KB/sec)
+16:40:55.599 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.pom
+16:40:55.623 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.pom (815 B at 34.6 KB/sec)
+16:40:55.627 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.5.5/plexus-containers-1.5.5.pom
+16:40:55.645 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.5.5/plexus-containers-1.5.5.pom (5 KB at 230.0 KB/sec)
+16:40:55.653 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.7/plexus-2.0.7.pom
+16:40:55.669 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.7/plexus-2.0.7.pom (17 KB at 844.5 KB/sec)
+16:40:55.678 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/2.2/plexus-compiler-api-2.2.pom
+16:40:55.696 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/2.2/plexus-compiler-api-2.2.pom (865 B at 46.9 KB/sec)
+16:40:55.703 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler/2.2/plexus-compiler-2.2.pom
+16:40:55.722 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler/2.2/plexus-compiler-2.2.pom (4 KB at 176.5 KB/sec)
+16:40:55.728 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.3.1/plexus-components-1.3.1.pom
+16:40:55.747 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.3.1/plexus-components-1.3.1.pom (3 KB at 157.5 KB/sec)
+16:40:55.767 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.8/plexus-utils-3.0.8.pom
+16:40:55.784 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/3.0.8/plexus-utils-3.0.8.pom (4 KB at 146.1 KB/sec)
+16:40:55.789 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/3.2/plexus-3.2.pom
+16:40:55.811 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/3.2/plexus-3.2.pom (19 KB at 871.7 KB/sec)
+16:40:55.817 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.2/plexus-compiler-manager-2.2.pom
+16:40:55.838 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.2/plexus-compiler-manager-2.2.pom (690 B at 32.1 KB/sec)
+16:40:55.847 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/2.2/plexus-compiler-javac-2.2.pom
+16:40:55.872 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/2.2/plexus-compiler-javac-2.2.pom (769 B at 28.9 KB/sec)
+16:40:55.881 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compilers/2.2/plexus-compilers-2.2.pom
+16:40:55.934 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compilers/2.2/plexus-compilers-2.2.pom (2 KB at 24.2 KB/sec)
+16:40:55.946 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.5.5/plexus-container-default-1.5.5.pom
+16:40:55.982 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.5.5/plexus-container-default-1.5.5.pom (3 KB at 76.9 KB/sec)
+16:40:55.990 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.2.2/plexus-classworlds-2.2.2.pom
+16:40:56.014 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.2.2/plexus-classworlds-2.2.2.pom (4 KB at 157.5 KB/sec)
+16:40:56.021 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/xbean/xbean-reflect/3.4/xbean-reflect-3.4.pom
+16:40:56.039 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/xbean/xbean-reflect/3.4/xbean-reflect-3.4.pom (3 KB at 144.4 KB/sec)
+16:40:56.043 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/xbean/xbean/3.4/xbean-3.4.pom
+16:40:56.062 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/xbean/xbean/3.4/xbean-3.4.pom (19 KB at 952.5 KB/sec)
+16:40:56.070 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/log4j/log4j/1.2.12/log4j-1.2.12.pom
+16:40:56.088 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/log4j/log4j/1.2.12/log4j-1.2.12.pom (145 B at 8.3 KB/sec)
+16:40:56.093 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-logging/commons-logging-api/1.1/commons-logging-api-1.1.pom
+16:40:56.111 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-logging/commons-logging-api/1.1/commons-logging-api-1.1.pom (6 KB at 290.1 KB/sec)
+16:40:56.117 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/collections/google-collections/1.0/google-collections-1.0.pom
+16:40:56.143 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/collections/google-collections/1.0/google-collections-1.0.pom (3 KB at 93.1 KB/sec)
+16:40:56.149 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/google/1/google-1.pom
+16:40:56.166 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/google/1/google-1.pom (2 KB at 89.3 KB/sec)
+16:40:56.172 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/junit/junit/3.8.2/junit-3.8.2.pom
+16:40:56.192 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/junit/junit/3.8.2/junit-3.8.2.pom (747 B at 34.7 KB/sec)
+16:40:56.214 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.0.9/maven-plugin-api-2.0.9.jar
+16:40:56.217 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.1/plexus-utils-1.5.1.jar
+16:40:56.230 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.9/maven-artifact-2.0.9.jar
+16:40:56.230 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.0.9/maven-core-2.0.9.jar
+16:40:56.230 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.9/maven-settings-2.0.9.jar
+16:40:56.247 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.0.9/maven-plugin-api-2.0.9.jar (13 KB at 359.7 KB/sec)
+16:40:56.248 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.0.9/maven-plugin-parameter-documenter-2.0.9.jar
+16:40:56.261 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.9/maven-artifact-2.0.9.jar (87 KB at 1808.9 KB/sec)
+16:40:56.263 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.9/maven-profile-2.0.9.jar
+16:40:56.281 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.0.9/maven-plugin-parameter-documenter-2.0.9.jar (21 KB at 334.2 KB/sec)
+16:40:56.282 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.0.9/maven-model-2.0.9.jar
+16:40:56.283 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.9/maven-settings-2.0.9.jar (48 KB at 715.8 KB/sec)
+16:40:56.284 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.0.9/maven-core-2.0.9.jar (156 KB at 2326.7 KB/sec)
+16:40:56.284 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.9/maven-repository-metadata-2.0.9.jar
+16:40:56.284 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.0.9/maven-error-diagnostics-2.0.9.jar
+16:40:56.286 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.1/plexus-utils-1.5.1.jar (206 KB at 2857.5 KB/sec)
+16:40:56.287 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.9/maven-project-2.0.9.jar
+16:40:56.290 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.9/maven-profile-2.0.9.jar (35 KB at 493.3 KB/sec)
+16:40:56.290 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.0.9/maven-plugin-registry-2.0.9.jar
+16:40:56.347 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.9/maven-repository-metadata-2.0.9.jar (24 KB at 187.4 KB/sec)
+16:40:56.347 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.0.9/maven-plugin-descriptor-2.0.9.jar
+16:40:56.354 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.0.9/maven-plugin-registry-2.0.9.jar (29 KB at 210.3 KB/sec)
+16:40:56.354 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.9/maven-artifact-manager-2.0.9.jar
+16:40:56.356 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.9/maven-project-2.0.9.jar (119 KB at 868.1 KB/sec)
+16:40:56.356 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.0.9/maven-monitor-2.0.9.jar
+16:40:56.358 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.0.9/maven-error-diagnostics-2.0.9.jar (14 KB at 96.2 KB/sec)
+16:40:56.358 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/maven-toolchain/1.0/maven-toolchain-1.0.jar
+16:40:56.370 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.0.9/maven-model-2.0.9.jar (86 KB at 572.3 KB/sec)
+16:40:56.371 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/0.1/maven-shared-utils-0.1.jar
+16:40:56.378 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.0.9/maven-plugin-descriptor-2.0.9.jar (37 KB at 234.9 KB/sec)
+16:40:56.378 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.jar
+16:40:56.382 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-toolchain/1.0/maven-toolchain-1.0.jar (33 KB at 199.6 KB/sec)
+16:40:56.382 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.jar
+16:40:56.382 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.0.9/maven-monitor-2.0.9.jar (11 KB at 62.0 KB/sec)
+16:40:56.382 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar
+16:40:56.386 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.9/maven-artifact-manager-2.0.9.jar (57 KB at 338.2 KB/sec)
+16:40:56.386 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/2.2/plexus-compiler-api-2.2.jar
+16:40:56.396 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-incremental/1.1/maven-shared-incremental-1.1.jar (14 KB at 74.7 KB/sec)
+16:40:56.396 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar (5 KB at 23.2 KB/sec)
+16:40:56.397 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.2/plexus-compiler-manager-2.2.jar
+16:40:56.397 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/2.2/plexus-compiler-javac-2.2.jar
+16:40:56.402 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/0.1/maven-shared-utils-0.1.jar (151 KB at 820.1 KB/sec)
+16:40:56.402 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.5.5/plexus-container-default-1.5.5.jar
+16:40:56.409 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.jar (32 KB at 162.9 KB/sec)
+16:40:56.409 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.2.2/plexus-classworlds-2.2.2.jar
+16:40:56.412 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/2.2/plexus-compiler-api-2.2.jar (25 KB at 127.8 KB/sec)
+16:40:56.413 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/org/apache/xbean/xbean-reflect/3.4/xbean-reflect-3.4.jar
+16:40:56.420 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.2/plexus-compiler-manager-2.2.jar (5 KB at 22.2 KB/sec)
+16:40:56.421 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/2.2/plexus-compiler-javac-2.2.jar (19 KB at 91.7 KB/sec)
+16:40:56.421 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/log4j/log4j/1.2.12/log4j-1.2.12.jar
+16:40:56.421 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/commons-logging/commons-logging-api/1.1/commons-logging-api-1.1.jar
+16:40:56.444 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.5.5/plexus-container-default-1.5.5.jar (212 KB at 940.3 KB/sec)
+16:40:56.444 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/com/google/collections/google-collections/1.0/google-collections-1.0.jar
+16:40:56.446 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.2.2/plexus-classworlds-2.2.2.jar (46 KB at 198.3 KB/sec)
+16:40:56.447 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloading: https://repo.maven.apache.org/maven2/junit/junit/3.8.2/junit-3.8.2.jar
+16:40:56.454 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/org/apache/xbean/xbean-reflect/3.4/xbean-reflect-3.4.jar (131 KB at 568.2 KB/sec)
+16:40:56.454 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/commons-logging/commons-logging-api/1.1/commons-logging-api-1.1.jar (44 KB at 187.7 KB/sec)
+16:40:56.474 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/junit/junit/3.8.2/junit-3.8.2.jar (118 KB at 462.0 KB/sec)
+16:40:56.481 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/log4j/log4j/1.2.12/log4j-1.2.12.jar (350 KB at 1339.8 KB/sec)
+16:40:56.538 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Downloaded: https://repo.maven.apache.org/maven2/com/google/collections/google-collections/1.0/google-collections-1.0.jar (625 KB at 1970.4 KB/sec)
+16:40:56.694 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Changes detected - recompiling the module!
+16:40:56.701 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Compiling 32 source files to /root/workspace/SzFMV2018-Tavasz/AutomatedCar/355303832/target/classes
+16:41:00.497 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] 
+16:41:00.498 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ AutomatedCar ---
+16:41:00.503 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Using 'UTF-8' encoding to copy filtered resources.
+16:41:00.503 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] skip non existing resourceDirectory /root/workspace/SzFMV2018-Tavasz/AutomatedCar/355303832/src/test/resources
+16:41:00.503 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] 
+16:41:00.503 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ AutomatedCar ---
+16:41:00.514 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Changes detected - recompiling the module!
+16:41:00.515 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Compiling 17 source files to /root/workspace/SzFMV2018-Tavasz/AutomatedCar/355303832/target/test-classes
+16:41:01.034 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] -------------------------------------------------------------
+16:41:01.034 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] COMPILATION ERROR : 
+16:41:01.035 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] -------------------------------------------------------------
+16:41:01.035 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] /root/workspace/SzFMV2018-Tavasz/AutomatedCar/355303832/src/test/java/hu/oe/nik/szfmv/automatedcar/steering/WheelDisplacementTest.java:[4,36] cannot find symbol
+16:41:01.035 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler -   symbol:   class SteeringMethods
+16:41:01.035 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler -   location: package hu.oe.nik.szfmv.automatedcar
+16:41:01.035 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] /root/workspace/SzFMV2018-Tavasz/AutomatedCar/355303832/src/test/java/hu/oe/nik/szfmv/automatedcar/steering/SteerAngleTest.java:[4,36] cannot find symbol
+16:41:01.035 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler -   symbol:   class SteeringMethods
+16:41:01.035 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler -   location: package hu.oe.nik.szfmv.automatedcar
+16:41:01.036 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] /root/workspace/SzFMV2018-Tavasz/AutomatedCar/355303832/src/test/java/hu/oe/nik/szfmv/automatedcar/steering/CarPositionTest.java:[4,36] cannot find symbol
+16:41:01.036 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler -   symbol:   class SteeringMethods
+16:41:01.036 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler -   location: package hu.oe.nik.szfmv.automatedcar
+16:41:01.036 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] /root/workspace/SzFMV2018-Tavasz/AutomatedCar/355303832/src/test/java/hu/oe/nik/szfmv/automatedcar/steering/WheelPositionTest.java:[4,36] cannot find symbol
+16:41:01.036 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler -   symbol:   class SteeringMethods
+16:41:01.036 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler -   location: package hu.oe.nik.szfmv.automatedcar
+16:41:01.036 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] /root/workspace/SzFMV2018-Tavasz/AutomatedCar/355303832/src/test/java/hu/oe/nik/szfmv/automatedcar/steering/CarHeadingTest.java:[4,36] cannot find symbol
+16:41:01.036 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler -   symbol:   class SteeringMethods
+16:41:01.036 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler -   location: package hu.oe.nik.szfmv.automatedcar
+16:41:01.036 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] 5 errors 
+16:41:01.037 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] -------------------------------------------------------------
+16:41:01.037 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] ------------------------------------------------------------------------
+16:41:01.037 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] BUILD FAILURE
+16:41:01.037 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] ------------------------------------------------------------------------
+16:41:01.038 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Total time: 22.477 s
+16:41:01.038 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Finished at: 2018-08-30T16:41:01+02:00
+16:41:01.389 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] Final Memory: 25M/565M
+16:41:01.395 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [INFO] ------------------------------------------------------------------------
+16:41:01.398 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.1:testCompile (default-testCompile) on project AutomatedCar: Compilation failure: Compilation failure:
+16:41:01.398 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] /root/workspace/SzFMV2018-Tavasz/AutomatedCar/355303832/src/test/java/hu/oe/nik/szfmv/automatedcar/steering/WheelDisplacementTest.java:[4,36] cannot find symbol
+16:41:01.399 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] symbol:   class SteeringMethods
+16:41:01.400 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] location: package hu.oe.nik.szfmv.automatedcar
+16:41:01.400 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] /root/workspace/SzFMV2018-Tavasz/AutomatedCar/355303832/src/test/java/hu/oe/nik/szfmv/automatedcar/steering/SteerAngleTest.java:[4,36] cannot find symbol
+16:41:01.400 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] symbol:   class SteeringMethods
+16:41:01.400 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] location: package hu.oe.nik.szfmv.automatedcar
+16:41:01.400 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] /root/workspace/SzFMV2018-Tavasz/AutomatedCar/355303832/src/test/java/hu/oe/nik/szfmv/automatedcar/steering/CarPositionTest.java:[4,36] cannot find symbol
+16:41:01.401 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] symbol:   class SteeringMethods
+16:41:01.401 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] location: package hu.oe.nik.szfmv.automatedcar
+16:41:01.401 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] /root/workspace/SzFMV2018-Tavasz/AutomatedCar/355303832/src/test/java/hu/oe/nik/szfmv/automatedcar/steering/WheelPositionTest.java:[4,36] cannot find symbol
+16:41:01.402 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] symbol:   class SteeringMethods
+16:41:01.402 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] location: package hu.oe.nik.szfmv.automatedcar
+16:41:01.402 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] /root/workspace/SzFMV2018-Tavasz/AutomatedCar/355303832/src/test/java/hu/oe/nik/szfmv/automatedcar/steering/CarHeadingTest.java:[4,36] cannot find symbol
+16:41:01.403 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] symbol:   class SteeringMethods
+16:41:01.403 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] location: package hu.oe.nik.szfmv.automatedcar
+16:41:01.403 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] -> [Help 1]
+16:41:01.406 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] 
+16:41:01.406 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+16:41:01.406 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+16:41:01.406 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] 
+16:41:01.406 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] For more information about the errors and possible solutions, please read the following articles:
+16:41:01.406 [Thread-5] DEBUG f.i.s.r.p.m.o.MavenFilterOutputHandler - [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+16:41:01.890 [main] ERROR f.i.s.r.process.step.BuildProject - Repository SzFMV2018-Tavasz/AutomatedCar cannot be built.
+16:41:01.891 [main] DEBUG f.i.s.r.process.step.BuildProject - STEP STATUS: [ BuildProjectBuggyBuildCandidateSourceCode : FAILURE ( NOTBUILDABLE ) ]
+16:41:01.892 [main] DEBUG f.i.s.r.process.step.BuildProject - STEP DURATION: 26s
+16:41:01.892 [main] DEBUG f.i.s.r.process.step.BuildProject - TERMINATE PIPELINE
+16:41:01.892 [main] DEBUG f.i.s.r.process.step.BuildProject - FINAL STEPS SKIPPED: The reproduction of the bug and/or the patch failed.
+16:41:01.892 [main] INFO  f.i.s.r.process.step.BuildProject - Serialize all data for the pair of builds 355303832, 355791813
+16:41:02.215 [main] INFO  fr.inria.jtravis.JTravis - GitHub ratelimit: Limit: 5000 Remaining: 4470 Reset hour: 19:34:01
+16:41:03.861 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+16:41:03.861 [main] INFO  f.i.s.r.p.i.ProjectInspector - PIPELINE EXECUTION SUMMARY
+16:41:03.861 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+16:41:03.861 [main] INFO  f.i.s.r.p.i.ProjectInspector - CloneRepository.......................................SUCCESS [  8 s ]
+16:41:03.861 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutPatchedBuildCandidate.........................SUCCESS [  0 s ]
+16:41:03.861 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeSourceDir......................................SUCCESS [  0 s ]
+16:41:03.862 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeTestDir........................................SUCCESS [  0 s ]
+16:41:03.862 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildCandidateSourceCode.................SUCCESS [  0 s ]
+16:41:03.862 [main] INFO  f.i.s.r.p.i.ProjectInspector - BuildProjectBuggyBuildCandidateSourceCode.............FAILURE [ 26 s ]
+16:41:03.862 [main] INFO  f.i.s.r.p.i.ProjectInspector - TestProjectBuggyBuildCandidateSourceCode..............NOT RUN         
+16:41:03.862 [main] INFO  f.i.s.r.p.i.ProjectInspector - GatherTestInformationBuggyBuildCandidateSourceCode....NOT RUN         
+16:41:03.862 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildTestCode............................NOT RUN         
+16:41:03.862 [main] INFO  f.i.s.r.p.i.ProjectInspector - InitRepoToPush........................................NOT RUN         
+16:41:03.862 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeClasspath......................................NOT RUN         
+16:41:03.862 [main] INFO  f.i.s.r.p.i.ProjectInspector - ComputeModules........................................NOT RUN         
+16:41:03.862 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutBuggyBuildCandidateSourceCode.................NOT RUN         
+16:41:03.863 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitChangedTests....................................NOT RUN         
+16:41:03.863 [main] INFO  f.i.s.r.p.i.ProjectInspector - CheckoutPatchedBuildCandidate.........................NOT RUN         
+16:41:03.863 [main] INFO  f.i.s.r.p.i.ProjectInspector - BuildProjectPatchedBuildCandidate.....................NOT RUN         
+16:41:03.863 [main] INFO  f.i.s.r.p.i.ProjectInspector - TestProjectPatchedBuildCandidate......................NOT RUN         
+16:41:03.863 [main] INFO  f.i.s.r.p.i.ProjectInspector - GatherTestInformationPatchedBuildCandidate............NOT RUN         
+16:41:03.863 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitPatch...........................................NOT RUN         
+16:41:03.863 [main] INFO  f.i.s.r.p.i.ProjectInspector - WritePropertyFile.....................................NOT RUN         
+16:41:03.863 [main] INFO  f.i.s.r.p.i.ProjectInspector - CommitProcessEnd......................................NOT RUN         
+16:41:03.863 [main] INFO  f.i.s.r.p.i.ProjectInspector - PushProcessEnd........................................NOT RUN         
+16:41:03.863 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+16:41:03.863 [main] INFO  f.i.s.r.p.i.ProjectInspector - PIPELINE FINDING: NOTBUILDABLE
+16:41:03.864 [main] INFO  f.i.s.r.p.i.ProjectInspector - ----------------------------------------------------------------------
+16:41:03.864 [main] INFO  f.i.s.repairnator.pipeline.Launcher - Inspector is finished. The process will exit now.
