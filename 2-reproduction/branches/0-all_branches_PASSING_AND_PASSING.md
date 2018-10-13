@@ -38,7 +38,6 @@
 * https://github.com/fermadeiral/bears-collection-pp/tree/spring-cloud-spring-cloud-gcp-330973656-330980388
 * https://github.com/fermadeiral/bears-collection-pp/tree/swagger-api-swagger-codegen-328031940-329344532
 * https://github.com/fermadeiral/bears-collection-pp/tree/Blazebit-blaze-persistence-334139933-334141657
-* https://github.com/fermadeiral/bears-collection-pp/tree/EnMasseProject-enmasse-335108361-335135943
 * https://github.com/fermadeiral/bears-collection-pp/tree/aicis-fresco-332231725-332262026
 * https://github.com/fermadeiral/bears-collection-pp/tree/aicis-fresco-332231757-332262054
 * https://github.com/fermadeiral/bears-collection-pp/tree/aicis-fresco-332237780-332273687
@@ -46,7 +45,6 @@
 * https://github.com/fermadeiral/bears-collection-pp/tree/aicis-fresco-332298265-332726353
 * https://github.com/fermadeiral/bears-collection-pp/tree/aicis-fresco-332298278-332726428
 * https://github.com/fermadeiral/bears-collection-pp/tree/aicis-fresco-335666803-335692003
-* https://github.com/fermadeiral/bears-collection-pp/tree/aicis-fresco-335839640-335841928
 * https://github.com/fermadeiral/bears-collection-pp/tree/apache-incubator-servicecomb-java-chassis-331644676-332093431
 * https://github.com/fermadeiral/bears-collection-pp/tree/apache-incubator-servicecomb-java-chassis-334598892-334967824
 * https://github.com/fermadeiral/bears-collection-pp/tree/apache-incubator-servicecomb-java-chassis-334617568-334730014
@@ -63,7 +61,6 @@
 * https://github.com/fermadeiral/bears-collection-pp/tree/swagger-api-swagger-codegen-332405489-332456354
 * https://github.com/fermadeiral/bears-collection-pp/tree/swagger-api-swagger-codegen-332456354-332549754
 * https://github.com/fermadeiral/bears-collection-pp/tree/CorfuDB-CorfuDB-335874641-335887267
-* https://github.com/fermadeiral/bears-collection-pp/tree/aicis-fresco-336458285-336458849
 * https://github.com/fermadeiral/bears-collection-pp/tree/aicis-fresco-338441725-338466078
 * https://github.com/fermadeiral/bears-collection-pp/tree/atomix-atomix-337936553-338122034
 * https://github.com/fermadeiral/bears-collection-pp/tree/languagetool-org-languagetool-336746566-336799709
@@ -74,14 +71,12 @@
 * https://github.com/fermadeiral/bears-collection-pp/tree/spring-cloud-spring-cloud-gcp-336247006-336256442
 * https://github.com/fermadeiral/bears-collection-pp/tree/CorfuDB-CorfuDB-339720517-341554440
 * https://github.com/fermadeiral/bears-collection-pp/tree/aicis-fresco-341016167-341355526
-* https://github.com/fermadeiral/bears-collection-pp/tree/apache-incubator-servicecomb-java-chassis-338913752-339389657
 * https://github.com/fermadeiral/bears-collection-pp/tree/languagetool-org-languagetool-340035055-340039886
 * https://github.com/fermadeiral/bears-collection-pp/tree/languagetool-org-languagetool-340081033-340087615
 * https://github.com/fermadeiral/bears-collection-pp/tree/linkedin-pinot-339243764-339249380
 * https://github.com/fermadeiral/bears-collection-pp/tree/linkedin-pinot-339266862-339301377
 * https://github.com/fermadeiral/bears-collection-pp/tree/Activiti-Activiti-344129788-344135577
 * https://github.com/fermadeiral/bears-collection-pp/tree/aicis-fresco-341881313-341895019
-* https://github.com/fermadeiral/bears-collection-pp/tree/apache-jackrabbit-oak-342298528-344414751
 * https://github.com/fermadeiral/bears-collection-pp/tree/debezium-debezium-343712961-343714390
 * https://github.com/fermadeiral/bears-collection-pp/tree/languagetool-org-languagetool-342006182-342041106
 * https://github.com/fermadeiral/bears-collection-pp/tree/languagetool-org-languagetool-342743349-342766620
@@ -156,11 +151,9 @@
 * https://github.com/fermadeiral/bears-collection-pp/tree/languagetool-org-languagetool-355504409-355561095
 * https://github.com/fermadeiral/bears-collection-pp/tree/languagetool-org-languagetool-355564018-355569765
 * https://github.com/fermadeiral/bears-collection-pp/tree/languagetool-org-languagetool-355569765-355597168
-* https://github.com/fermadeiral/bears-collection-pp/tree/languagetool-org-languagetool-355905987-355982121
 * https://github.com/fermadeiral/bears-collection-pp/tree/linkedin-pinot-353584108-353599587
 * https://github.com/fermadeiral/bears-collection-pp/tree/linkedin-pinot-354399253-354444954
 * https://github.com/fermadeiral/bears-collection-pp/tree/rabbitmq-rabbitmq-perf-test-355835421-355838051
-* https://github.com/fermadeiral/bears-collection-pp/tree/rabbitmq-rabbitmq-perf-test-356263807-356281849
 * https://github.com/fermadeiral/bears-collection-pp/tree/spring-cloud-spring-cloud-gcp-353938794-353989101
 * https://github.com/fermadeiral/bears-collection-pp/tree/spring-cloud-spring-cloud-gcp-354038542-355525571
 * https://github.com/fermadeiral/bears-collection-pp/tree/swagger-api-swagger-codegen-353932534-354991773
@@ -176,7 +169,6 @@
 * https://github.com/fermadeiral/bears-collection-pp/tree/SzFMV2018-Tavasz-AutomatedCar-358125951-358383684
 * https://github.com/fermadeiral/bears-collection-pp/tree/SzFMV2018-Tavasz-AutomatedCar-358126392-358383732
 * https://github.com/fermadeiral/bears-collection-pp/tree/airlift-airlift-356529353-359203777
-* https://github.com/fermadeiral/bears-collection-pp/tree/apache-incubator-servicecomb-saga-358799496-358918436
 * https://github.com/fermadeiral/bears-collection-pp/tree/debezium-debezium-356786658-357274631
 * https://github.com/fermadeiral/bears-collection-pp/tree/graphhopper-graphhopper-355388293-358383151
 * https://github.com/fermadeiral/bears-collection-pp/tree/graphhopper-graphhopper-357649020-357650131
@@ -206,10 +198,6 @@
 * https://github.com/fermadeiral/bears-collection-pp/tree/raphw-byte-buddy-359264266-359470179
 * https://github.com/fermadeiral/bears-collection-pp/tree/spring-cloud-spring-cloud-gcp-360004425-360118297
 * https://github.com/fermadeiral/bears-collection-pp/tree/thelastpickle-cassandra-reaper-359681059-359698025
-* https://github.com/fermadeiral/bears-collection-pp/tree/aicis-fresco-362099254-362119553
-* https://github.com/fermadeiral/bears-collection-pp/tree/aicis-fresco-362137624-362534968
-* https://github.com/fermadeiral/bears-collection-pp/tree/aicis-fresco-362581172-362587817
-* https://github.com/fermadeiral/bears-collection-pp/tree/aicis-fresco-362824867-362972967
 * https://github.com/fermadeiral/bears-collection-pp/tree/airlift-airlift-361418830-361498875
 * https://github.com/fermadeiral/bears-collection-pp/tree/graphhopper-graphhopper-351232965-363490335
 * https://github.com/fermadeiral/bears-collection-pp/tree/languagetool-org-languagetool-360640340-360832097
@@ -262,7 +250,6 @@
 * https://github.com/fermadeiral/bears-collection-pp/tree/spring-cloud-spring-cloud-gcp-368713712-368759847
 * https://github.com/fermadeiral/bears-collection-pp/tree/2018swecapstone-h2ms-369206210-370268233
 * https://github.com/fermadeiral/bears-collection-pp/tree/2018swecapstone-h2ms-370268233-370274719
-* https://github.com/fermadeiral/bears-collection-pp/tree/EnMasseProject-enmasse-372120547-372900360
 * https://github.com/fermadeiral/bears-collection-pp/tree/SzFMV2018-Tavasz-AutomatedCar-367724825-369995672
 * https://github.com/fermadeiral/bears-collection-pp/tree/aicis-fresco-370467437-370477490
 * https://github.com/fermadeiral/bears-collection-pp/tree/aicis-fresco-370568847-370583670
